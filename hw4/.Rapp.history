@@ -1,0 +1,1445 @@
+hist(residual,breaks=20)
+hist(residual,breaks=50)
+shapiro.test(residual)
+qqnorm(residual)#
+qqline(residual,col="red")
+pwr.anova.test(k = 4, f = 15, sig.level = 0.05, power = 0.8)
+library(pwr)
+install.packages("pwr")
+library(pwr)
+pwr.anova.test(k = 4, f = 15, sig.level = 0.05, power = 0.8)
+Sigmasquare = ss_remainder / (p*q-p-q)
+Sigmasquare
+ss_remainder
+sqrt(ss_remainder)
+p
+q
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)
+effectsize = sqrt(SSmean/Sigmasquare/p)
+effectsize
+p
+effectsize = sqrt(SSmean/Sigmasquare/(p-1))
+effectsize
+SSmean
+sqrt(SSmean)
+Sigmasquare
+sqrt(Sigmasquare)
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)/4
+SSmean
+sqrt(SSmean)
+2.8/0.8
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))
+effectsize = SDmeans/SD
+effectsize
+SD
+SDmeans
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.8)
+effectsize
+??pwr.anova.test
+?pwr.anova.test()
+pwr.anova.test(f=0.28,k=4,power=0.80,sig.level=0.05)
+pwr.anova.test(f=1,k=4,power=0.80,sig.level=0.05)
+pwr.anova.test(f=2,k=4,power=0.80,sig.level=0.05)
+pwr.anova.test(f=3,k=4,power=0.80,sig.level=0.05)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.95)
+pwr.anova.test(k = 4, f = 1, sig.level = 0.05, power = 0.95)
+pwr.anova.test(k = 4, f = 2, sig.level = 0.05, power = 0.95)
+pwr.anova.test(k = 4, f = 3, sig.level = 0.05, power = 0.95)
+pwr.anova.test(k = 4, f = 3, sig.level = 0.05, power = 0.99)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.01, power = 0.95)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.01, power = 0.90)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.90)
+alpha = 0.05#
+lowerbound = ss_remainder / qchisq(alpha/2,df=19)#
+upperbound = ss_remainder / qchisq(1-alpha/2,df=19)
+lowerbound
+upperbound
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.9)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+alpha = 0.05#
+upperbound = ss_remainder / qchisq(alpha/2,df=19)#
+# [1] 1.378652#
+lowerbound = ss_remainder / qchisq(1-alpha/2,df=19)#
+# [1] 0.3737631#
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = upperbound / (p*q-p-q)#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+effectsize
+Sigmasquare
+sqrt(Sigmasquare)
+Sigmasquare = lowerbound / (p*q-p-q)#
+SD = sqrt(Sigmasquare)
+SD
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SD = sqrt(Sigmasquare)
+SD
+lowerbound / (p*q-p-q)
+sqrt(lowerbound / (p*q-p-q))
+sqrt(0.37)
+lowerbound / (p*q-p-q)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = lowerbound#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+SD
+effectsize
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99999)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999999)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = upperbound#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999999)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = upperbound#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99999)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = upperbound#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = upperbound#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.9)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = upperbound#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = upperbound#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.95)
+install.packages("DunnettTests")
+library(DunnettTests)
+nvDT(1,0.90,r=4,k=4,mu=c(17.4,20,22.5),mu0=15,"props",dist="zdist",testcall="SD")
+nvDT(1,0.90,r=4,k=4,mu=mean(c(17.4,20,22.5)),mu0=15,"props",dist="zdist",testcall="SD")
+mean(c(17.4,20,22.5))
+nvDT(1,0.90,r=4,k=4,mu=mean(c(17.4,20,22.5)),mu0=15,"props",dist="zdist",testcall="SD")
+nvDT(2, 0.95, r=1, k=3, mu=0.7, mu0=0.5, contrast="props",dist="zdist", testcall="SD")
+T(1,0.90,r=4,k=4,mu=0.7,mu0=0.5,"props",dist="zdist",testcall="SD")
+nvDT(1,0.90,r=4,k=4,mu=0.7,mu0=0.5,"props",dist="zdist",testcall="SD")
+nvDT(1,0.90,r=4,k=4,mu=19,mu0=15,"props",dist="zdist",testcall="SD")
+nvDT(1,0.90,r=4,k=4,mu=20,mu0=15,"props",dist="zdist",testcall="SD")
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,-1,0,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))
+effectsize
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.95)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+SD
+Sigmasquare
+SSmean
+SSmean/Sigmasquare
+sqrt(SSmean/Sigmasquare)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean)#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+effectsize
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/4)#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,-1,0,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.95)
+pwr.anova.test(k = 2, f = effectsize, sig.level = 0.05, power = 0.95)
+###### second contrast#
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,-1,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.95)
+effectsize
+###### second contrast#
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,-1,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99)
+###### second contrast#
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,-1,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+###### second contrast#
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,-1,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.9999)
+###### second contrast#
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,-1,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.95)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+###### second contrast#
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,-1,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99999)
+###### second contrast#
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,-1,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.9999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.9999999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99999999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999999999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.9999999999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99999999999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999999999999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.9999999999999)
+#####################################
+############ question 2 #############
+#####################################
+temp = c(rep("185",6), rep("230",6), rep("298", 6), rep("373",6), rep("498",6))#
+k = c(rep(c("30", "40", "50", "60", "70", "80"),5))#
+value = c(19,26.3,32.2,37.2,41.5,45,14.5,23,29,32,38.7,42.5,7.5,12,15.5,18.2,20.5,23,4,5.1,6.5,7.7,8.5,9,1.3,1.3,1.3,1.3,1.3,1.3)#
+mydata = data.frame(temp,k,value)#
+fit = aov(mydata$value ~ mydata$temp + mydata$k)#
+anova(fit)#
+result = "#
+Analysis of Variance Table#
+#
+Response: mydata$value#
+Df Sum Sq Mean Sq F value    Pr(>F)#
+mydata$temp  4 4745.4 1186.36 56.6702 1.251e-10 ***#
+mydata$k     5  763.1  152.61  7.2901 0.0004938 ***#
+Residuals   20  418.7   20.93#
+---#
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1#
+"
+lambda = sum(d*y)/sum(d^2)#
+residual = y#
+for(i in 1:5){#
+    for(j in 1:6){#
+        residual[i,j] = y[i,j]-mean(y)-alpha_j[[i]] - beta_k[[j]]#
+    }#
+}#
+shapiro.test(residual)
+#####################################
+############ question 6 #############
+#####################################
+alpha_j = tapply(mydata$value, mydata$temp, mean) - mean(mydata$value)#
+beta_k = tapply(mydata$value, mydata$k, mean) - mean(mydata$value)#
+d = matrix(data=NA,nrow=5,ncol=6)#
+for(i in 1:5){#
+    for(j in 1:6){#
+        d[i,j] = alpha_j[[i]]*beta_k[[j]]#
+    }#
+}#
+d#
+result=#
+"#
+[,1]       [,2]        [,3]     [,4]     [,5]        [,6]#
+[1,] -132.4248 -63.973333 -10.2357333  27.8284  72.9296  105.875867#
+[2,] -102.7548 -49.640000  -7.9424000  21.5934  56.5896   82.154200#
+[3,]   11.7852   5.693333   0.9109333  -2.4766  -6.4904   -9.422467#
+[4,]   88.9272  42.960000   6.8736000 -18.6876 -48.9744  -71.098800#
+[5,]  134.4672  64.960000  10.3936000 -28.2576 -74.0544 -107.508800#
+"#
+y = matrix(mydata$value, nrow = 5, ncol=6, byrow=T)#
+y#
+result =#
+"#
+[,1] [,2] [,3] [,4] [,5] [,6]#
+[1,] 19.0 26.3 32.2 37.2 41.5 45.0#
+[2,] 14.5 23.0 29.0 32.0 38.7 42.5#
+[3,]  7.5 12.0 15.5 18.2 20.5 23.0#
+[4,]  4.0  5.1  6.5  7.7  8.5  9.0#
+[5,]  1.3  1.3  1.3  1.3  1.3  1.3#
+"#
+ss_nonadditivity = sum(d*y)^2 / sum(d^2)#
+# [1] 406.421#
+ss_error = 418.7#
+ss_remainder = ss_error - ss_nonadditivity#
+# [1] 12.27899#
+p = 5#
+q = 6#
+F_nonadditivity = ss_nonadditivity / (ss_remainder / (p*q - p -q))#
+# [1] 628.8791#
+qf(1-0.05,1,p*q-p-q,0)#
+# [1] 4.38075
+lambda = sum(d*y)/sum(d^2)#
+residual = y#
+for(i in 1:5){#
+    for(j in 1:6){#
+        residual[i,j] = y[i,j]-mean(y)-alpha_j[[i]] - beta_k[[j]]#
+    }#
+}#
+shapiro.test(residual)#
+result = "#
+Shapiro-Wilk normality test#
+#
+data:  residual#
+W = 0.974, p-value = 0.6546#
+"#
+#
+####### c) qq plot#
+qqnorm(residual)#
+qqline(residual,col="red")
+library(pwr)#
+#####################################
+############ question 2 #############
+#####################################
+temp = c(rep("185",6), rep("230",6), rep("298", 6), rep("373",6), rep("498",6))#
+k = c(rep(c("30", "40", "50", "60", "70", "80"),5))#
+value = c(19,26.3,32.2,37.2,41.5,45,14.5,23,29,32,38.7,42.5,7.5,12,15.5,18.2,20.5,23,4,5.1,6.5,7.7,8.5,9,1.3,1.3,1.3,1.3,1.3,1.3)#
+mydata = data.frame(temp,k,value)#
+fit = aov(mydata$value ~ mydata$temp + mydata$k)#
+anova(fit)#
+result = "#
+Analysis of Variance Table#
+#
+Response: mydata$value#
+Df Sum Sq Mean Sq F value    Pr(>F)#
+mydata$temp  4 4745.4 1186.36 56.6702 1.251e-10 ***#
+mydata$k     5  763.1  152.61  7.2901 0.0004938 ***#
+Residuals   20  418.7   20.93#
+---#
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1#
+"#
+#####################################
+############ question 6 #############
+#####################################
+alpha_j = tapply(mydata$value, mydata$temp, mean) - mean(mydata$value)#
+beta_k = tapply(mydata$value, mydata$k, mean) - mean(mydata$value)#
+d = matrix(data=NA,nrow=5,ncol=6)#
+for(i in 1:5){#
+    for(j in 1:6){#
+        d[i,j] = alpha_j[[i]]*beta_k[[j]]#
+    }#
+}#
+d#
+result=#
+"#
+[,1]       [,2]        [,3]     [,4]     [,5]        [,6]#
+[1,] -132.4248 -63.973333 -10.2357333  27.8284  72.9296  105.875867#
+[2,] -102.7548 -49.640000  -7.9424000  21.5934  56.5896   82.154200#
+[3,]   11.7852   5.693333   0.9109333  -2.4766  -6.4904   -9.422467#
+[4,]   88.9272  42.960000   6.8736000 -18.6876 -48.9744  -71.098800#
+[5,]  134.4672  64.960000  10.3936000 -28.2576 -74.0544 -107.508800#
+"#
+y = matrix(mydata$value, nrow = 5, ncol=6, byrow=T)#
+y#
+result =#
+"#
+[,1] [,2] [,3] [,4] [,5] [,6]#
+[1,] 19.0 26.3 32.2 37.2 41.5 45.0#
+[2,] 14.5 23.0 29.0 32.0 38.7 42.5#
+[3,]  7.5 12.0 15.5 18.2 20.5 23.0#
+[4,]  4.0  5.1  6.5  7.7  8.5  9.0#
+[5,]  1.3  1.3  1.3  1.3  1.3  1.3#
+"#
+ss_nonadditivity = sum(d*y)^2 / sum(d^2)#
+# [1] 406.421#
+ss_error = 418.7#
+ss_remainder = ss_error - ss_nonadditivity#
+# [1] 12.27899#
+p = 5#
+q = 6#
+F_nonadditivity = ss_nonadditivity / (ss_remainder / (p*q - p -q))#
+# [1] 628.8791#
+qf(1-0.05,1,p*q-p-q,0)#
+# [1] 4.38075#
+#####################################
+############ question 7 #############
+#####################################
+####### a) normality assumption#
+lambda = sum(d*y)/sum(d^2)#
+residual = y#
+for(i in 1:5){#
+    for(j in 1:6){#
+        residual[i,j] = y[i,j]-mean(y)-alpha_j[[i]] - beta_k[[j]]#
+    }#
+}#
+shapiro.test(residual)#
+result = "#
+Shapiro-Wilk normality test#
+#
+data:  residual#
+W = 0.974, p-value = 0.6546#
+"#
+#
+####### c) qq plot#
+qqnorm(residual)#
+qqline(residual,col="red")#
+#####################################
+############ question 8 #############
+#####################################
+###### power = 0.999 alpha = 0.05 Sigmasquare = MS(remainder)#
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SD = sqrt(Sigmasquare)
+SD
+sample(1:100000, 1)
+set.seed(21)#
+nreps <- 5000#
+Observations <- rep(0, nreps)#
+for(i in 1:nreps)   {#
+  Observations[i] <- rejectionK(fx, 0, 2, 1)#
+}
+rejectionK <- function(fx, a, b, K) {#
+  # simulates from the pdf fx using the rejection algorithm#
+  # assumes fx is 0 outside [a, b] and bounded by K#
+  # note that we exit the infinite loop using the return statement#
+  while (TRUE) {#
+    x <- runif(1, a, b)#
+    y <- runif(1, 0, K)#
+    if (y < fx(x)) return(x)#
+  }#
+}#
+#
+fx<-function(x){#
+  # triangular density#
+  if ((0<x) && (x<1)) {#
+    return(x)#
+  } else if ((1<x) && (x<2)) {#
+    return(2-x)#
+  } else {#
+    return(0)#
+  }#
+}
+ptm <- proc.time()[3]#
+# generate a sample#
+set.seed(21)#
+nreps <- 5000#
+Observations <- rep(0, nreps)#
+for(i in 1:nreps)   {#
+  Observations[i] <- rejectionK(fx, 0, 2, 1)#
+}
+Observations
+cat("\nTime taken to generate samples: ",proc.time()[3]-ptm," seconds")
+hist(Observations, breaks = seq(0, 2, by=0.1), freq = FALSE,#
+     ylim=c(0, 1.05), main="")#
+lines(c(0, 1, 2), c(0, 1, 0))
+gamma.sim <- function(lambda, m) {#
+# sim a gamma(lambda, m) rv using rejection with an exp envelope#
+# assumes m > 1 and lambda > 0#
+# generate f(x)=lambda^m*x^(m-1)*exp(-lambda*x)/gamma(m)     --- the gamma density at x#
+# generate h(x)=lambda/m*exp(-lambda/m*x)                   ---  the exponential density at x#
+# generate  k=m^m*exp(1-m)/gamma(m)                      --- in general. for m=2, λ=1 we have k=4/e#
+  while (TRUE) {               # keep sampling x’s from h(x) and testing them until you accept one#
+    X <- -log(runif(1))*m/lambda             # generate an x from h, the exponential density              #
+    # Generate y from Unif[0,Kh(x)]#
+    Y <- runif(1,0,K*h(X, m, lambda))#
+    K <- m^m*exp(1-m)/gamma(m)#
+    if (Y < f(X, m, lambda)) {#
+        return(X)#
+    }#
+  }#
+}#
+#
+hx<-function(x, m, lambda){#
+    return(lambda/m*exp(-lambda/m*x))#
+}#
+#
+fx<-function(x, m, lambda){#
+    return(lambda^m*x^(m-1)*exp(-lambda*x)/gamma(m))#
+}
+set.seed(1999)#
+n <- 10000        # number of replicates#
+g <- rep(0, n)      # create somewhere to keep the answers#
+for (i in 1:n) g[i] <- gamma.sim(1, 2)    # generate your 10000 gamma r.v.s
+K <- m^m*exp(1-m)/gamma(m)
+gamma.sim <- function(lambda, m) {#
+# sim a gamma(lambda, m) rv using rejection with an exp envelope#
+# assumes m > 1 and lambda > 0#
+# generate f(x)=lambda^m*x^(m-1)*exp(-lambda*x)/gamma(m)     --- the gamma density at x#
+# generate h(x)=lambda/m*exp(-lambda/m*x)                   ---  the exponential density at x#
+# generate  k=m^m*exp(1-m)/gamma(m)                      --- in general. for m=2, λ=1 we have k=4/e#
+  while (TRUE) {               # keep sampling x’s from h(x) and testing them until you accept one#
+    X <- -log(runif(1))*m/lambda             # generate an x from h, the exponential density              #
+    # Generate y from Unif[0,Kh(x)]#
+    K <- m^m*exp(1-m)/gamma(m)#
+    Y <- runif(1,0,K*h(X, m, lambda))#
+    if (Y < f(X, m, lambda)) {#
+        return(X)#
+    }#
+  }#
+}
+set.seed(1999)#
+n <- 10000        # number of replicates#
+g <- rep(0, n)      # create somewhere to keep the answers#
+for (i in 1:n) g[i] <- gamma.sim(1, 2)    # generate your 10000 gamma r.v.s
+h<-function(x, m, lambda){#
+    return(lambda/m*exp(-lambda/m*x))#
+}#
+#
+f<-function(x, m, lambda){#
+    return(lambda^m*x^(m-1)*exp(-lambda*x)/gamma(m))#
+}
+set.seed(1999)#
+n <- 10000        # number of replicates#
+g <- rep(0, n)      # create somewhere to keep the answers#
+for (i in 1:n) g[i] <- gamma.sim(1, 2)    # generate your 10000 gamma r.v.s
+hist(g, breaks=20, freq=F, xlab="x", ylab="pdf f(x)",#
+  main="theoretical and simulated gamma(1, 2) density")#
+x <- seq(0, max(g), .1)#
+lines(x, dgamma(x, 2, 1))
+getwd()
+setwd("/Users/chengliangdong/Desktop/PM520/hw4/")
+library(stringdist)
+frequency<-read.table("LetterPairFreqFrom7Novels.txt")
+head(frequency)
+frequency.norm<-frequency/sum(frequency)
+short <- readLines("CodedMessage_short.txt")
+short<-tolower(veryshort)
+short<-tolower(short)
+short
+true.freq<-colSums(frequency)+rowSums(frequency)
+names(true.freq)=letters
+split.file<-unlist(strsplit(short, split="", fixed = T))
+false.freq<-rep(NA,26)#
+for(i in 1:26){#
+  false.freq[i]=sum(split.file==letters[i])#
+}#
+names(false.freq)=letters
+false.freq
+true.freq
+prior.code<-rep(NA,26)#
+names(prior.code)=letters
+prior.code
+for(i in 1:26){#
+  prior.code[i]=names(true.freq)[rank(true.freq)==rank(false.freq,ties="random")[i]]#
+}#
+prior.code
+mcmc <- function(iteration, shuffle){#
+  start<-Sys.time()#
+  ##Calculate the original "likelihood" based on the prior.code#
+  log.likelihood.record<-rep(NA,iteration)#
+  logLikelihood<-0#
+  messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)#
+  messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+  for(i in 1:length(messy.prior.split)){#
+    #if first letter is in alphabet#
+    if(sum(letters ==messy.prior.split [i]) == 1){#
+      # if second letter is in alphabet#
+      if(sum(letters == messy.prior.split[i+1]) == 1){#
+        logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+      }#
+    }#
+  }#
+  log.likelihood.record[1]=logLikelihood#
+  ##Now shuffle the "codebook" & store log likelihood & use MCMC#
+  for(q in 2:iteration){#
+    p = runif(1,0,1)#
+    ##Shuffle the "code"#
+    sample<-sample(1:26,shuffle,replace=F)#
+    prior.code.new<-prior.code#
+    prior.code.new[sample]<-rev(prior.code.new[sample])#
+    ##Get the new "messy file"#
+    messy.prior.new<-chartr(old=paste(letters, collapse=""), new = paste(prior.code.new,collapse=""), short)#
+    messy.prior.split.new = unlist(strsplit(messy.prior.new, split="", fixed = T))#
+    logLikelihood<-0#
+    for(j in 1:length(messy.prior.split.new)){#
+      #if first letter is in alphabet#
+      if(sum(letters ==messy.prior.split.new [j]) == 1){#
+        # if second letter is in alphabet#
+        if(sum(letters == messy.prior.split.new[j+1]) == 1){#
+          logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split.new[j],letters == messy.prior.split.new[j+1]])#
+        }#
+      } #
+    }#
+    log.likelihood.record[q]=logLikelihood#
+    h = min(1, exp(log.likelihood.record[q]-log.likelihood.record[q-1]))#
+    if(p < h){#
+      prior.code = prior.code.new#
+    }#
+    if(q %% 100 == 0){#
+      cat(paste("at", q, "iteration", "\n"))#
+      cat(chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), data))#
+      cat("\n")#
+      cat(logLikelihood)#
+      cat("\n")#
+    }#
+  }#
+  end<-Sys.time()#
+  return(list(data = chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short), #
+              time = end-start,#
+              log.likelihood.record=log.likelihood.record))}#
+    newCodebook = proposedKernel(codebook)#
+    newLogLikelihood = getPosteriorLogLikelihood(data, frequency, newCodebook)#
+    logLikelihood = getPosteriorLogLikelihood(data, frequency, codebook)#
+    h = min(1, exp(newLogLikelihood-logLikelihood))#
+    if(p < h){#
+      codebook = newCodebook#
+    }#
+    if(i %% 100 == 0){#
+      cat(paste("at", i, "iteration", "\n"))#
+      cat(chartr(old=paste(letters, collapse=""), new = paste(codebook,collapse=""), data))#
+      cat("\n")#
+      cat(logLikelihood)#
+      cat("\n")#
+    }#
+  }#
+  end = Sys.time()#
+  return(list(data = chartr(old=paste(letters, collapse=""), new = paste(codebook,collapse=""), data), time = end-start))#
+}
+mcmc <- function(iteration, shuffle){#
+  start<-Sys.time()#
+  ##Calculate the original "likelihood" based on the prior.code#
+  log.likelihood.record<-rep(NA,iteration)#
+  logLikelihood<-0#
+  messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)#
+  messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+  for(i in 1:length(messy.prior.split)){#
+    #if first letter is in alphabet#
+    if(sum(letters ==messy.prior.split [i]) == 1){#
+      # if second letter is in alphabet#
+      if(sum(letters == messy.prior.split[i+1]) == 1){#
+        logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+      }#
+    }#
+  }#
+  log.likelihood.record[1]=logLikelihood#
+  ##Now shuffle the "codebook" & store log likelihood & use MCMC#
+  for(q in 2:iteration){#
+    p = runif(1,0,1)#
+    ##Shuffle the "code"#
+    sample<-sample(1:26,shuffle,replace=F)#
+    prior.code.new<-prior.code#
+    prior.code.new[sample]<-rev(prior.code.new[sample])#
+    ##Get the new "messy file"#
+    messy.prior.new<-chartr(old=paste(letters, collapse=""), new = paste(prior.code.new,collapse=""), short)#
+    messy.prior.split.new = unlist(strsplit(messy.prior.new, split="", fixed = T))#
+    logLikelihood<-0#
+    for(j in 1:length(messy.prior.split.new)){#
+      #if first letter is in alphabet#
+      if(sum(letters ==messy.prior.split.new [j]) == 1){#
+        # if second letter is in alphabet#
+        if(sum(letters == messy.prior.split.new[j+1]) == 1){#
+          logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split.new[j],letters == messy.prior.split.new[j+1]])#
+        }#
+      } #
+    }#
+    log.likelihood.record[q]=logLikelihood#
+    h = min(1, exp(log.likelihood.record[q]-log.likelihood.record[q-1]))#
+    if(p < h){#
+      prior.code = prior.code.new#
+    }#
+    if(q %% 100 == 0){#
+      cat(paste("at", q, "iteration", "\n"))#
+      cat(chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), data))#
+      cat("\n")#
+      cat(logLikelihood)#
+      cat("\n")#
+    }#
+  }#
+  end<-Sys.time()#
+  return(list(data = chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short), #
+              time = end-start,#
+              log.likelihood.record=log.likelihood.record))#
+}
+mcmc(1000,2)
+messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)
+messy.prior
+mcmc <- function(iteration, shuffle){#
+    start<-Sys.time()#
+    ##Calculate the original "likelihood" based on the prior.code#
+    log.likelihood.record<-rep(NA,iteration)#
+    logLikelihood<-0#
+    messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)#
+    messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+    for(i in 1:length(messy.prior.split)){#
+        #if first letter is in alphabet#
+        if(sum(letters ==messy.prior.split [i]) == 1){#
+            # if second letter is in alphabet#
+            if(sum(letters == messy.prior.split[i+1]) == 1){#
+                logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+            }#
+        }#
+    }#
+    log.likelihood.record[1]=logLikelihood#
+    ##Now shuffle the "codebook" & store log likelihood & use MCMC#
+    for(q in 2:iteration){#
+        p = runif(1,0,1)#
+        ##Shuffle the "code"#
+        sample<-sample(1:26,shuffle,replace=F)#
+        prior.code.new<-prior.code#
+        prior.code.new[sample]<-rev(prior.code.new[sample])#
+        ##Get the new "messy file"#
+        messy.prior.new<-chartr(old=paste(letters, collapse=""), new = paste(prior.code.new,collapse=""), short)#
+        messy.prior.split.new = unlist(strsplit(messy.prior.new, split="", fixed = T))#
+        logLikelihood<-0#
+        for(j in 1:length(messy.prior.split.new)){#
+            #if first letter is in alphabet#
+            if(sum(letters ==messy.prior.split.new [j]) == 1){#
+                # if second letter is in alphabet#
+                if(sum(letters == messy.prior.split.new[j+1]) == 1){#
+                    logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split.new[j],letters == messy.prior.split.new[j+1]])#
+                }#
+            }#
+        }#
+        log.likelihood.record[q]=logLikelihood#
+        h = min(1, exp(log.likelihood.record[q]-log.likelihood.record[q-1]))#
+        if(p < h){#
+            prior.code = prior.code.new#
+        }#
+        if(q %% 100 == 0){#
+            cat(paste("at", q, "iteration", "\n"))#
+            cat(chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), data))#
+            cat("\n")#
+            cat(logLikelihood)#
+            cat("\n")#
+        }#
+    }#
+    end<-Sys.time()#
+    return(list(data = chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short),#
+    time = end-start,#
+    log.likelihood.record=log.likelihood.record))#
+#
+}
+mcmc(1000,2)
+data
+mcmc <- function(iteration, shuffle){#
+    start<-Sys.time()#
+    ##Calculate the original "likelihood" based on the prior.code#
+    log.likelihood.record<-rep(NA,iteration)#
+    logLikelihood<-0#
+    messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)#
+    messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+    for(i in 1:length(messy.prior.split)){#
+        #if first letter is in alphabet#
+        if(sum(letters ==messy.prior.split [i]) == 1){#
+            # if second letter is in alphabet#
+            if(sum(letters == messy.prior.split[i+1]) == 1){#
+                logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+            }#
+        }#
+    }#
+    log.likelihood.record[1]=logLikelihood#
+    ##Now shuffle the "codebook" & store log likelihood & use MCMC#
+    for(q in 2:iteration){#
+        p = runif(1,0,1)#
+        ##Shuffle the "code"#
+        sample<-sample(1:26,shuffle,replace=F)#
+        prior.code.new<-prior.code#
+        prior.code.new[sample]<-rev(prior.code.new[sample])#
+        ##Get the new "messy file"#
+        messy.prior.new<-chartr(old=paste(letters, collapse=""), new = paste(prior.code.new,collapse=""), short)#
+        messy.prior.split.new = unlist(strsplit(messy.prior.new, split="", fixed = T))#
+        logLikelihood<-0#
+        for(j in 1:length(messy.prior.split.new)){#
+            #if first letter is in alphabet#
+            if(sum(letters ==messy.prior.split.new [j]) == 1){#
+                # if second letter is in alphabet#
+                if(sum(letters == messy.prior.split.new[j+1]) == 1){#
+                    logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split.new[j],letters == messy.prior.split.new[j+1]])#
+                }#
+            }#
+        }#
+        log.likelihood.record[q]=logLikelihood#
+        h = min(1, exp(log.likelihood.record[q]-log.likelihood.record[q-1]))#
+        if(p < h){#
+            prior.code = prior.code.new#
+        }#
+        if(q %% 100 == 0){#
+            cat(paste("at", q, "iteration", "\n"))#
+            cat(chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short))#
+            cat("\n")#
+            cat(logLikelihood)#
+            cat("\n")#
+        }#
+    }#
+    end<-Sys.time()#
+    return(list(data = chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short),#
+    time = end-start,#
+    log.likelihood.record=log.likelihood.record))#
+#
+}
+mcmc(1000,2)
+short<-readLines("CodedMessage_short.txt",n=1000)
+mcmc <- function(iteration, shuffle){#
+    start<-Sys.time()#
+    ##Calculate the original "likelihood" based on the prior.code#
+    log.likelihood.record<-rep(NA,iteration)#
+    logLikelihood<-0#
+    messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)#
+    messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+    for(i in 1:length(messy.prior.split)){#
+        #if first letter is in alphabet#
+        if(sum(letters ==messy.prior.split [i]) == 1){#
+            # if second letter is in alphabet#
+            if(sum(letters == messy.prior.split[i+1]) == 1){#
+                logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+            }#
+        }#
+    }#
+    log.likelihood.record[1]=logLikelihood#
+    ##Now shuffle the "codebook" & store log likelihood & use MCMC#
+    for(q in 2:iteration){#
+        p = runif(1,0,1)#
+        ##Shuffle the "code"#
+        sample<-sample(1:26,shuffle,replace=F)#
+        prior.code.new<-prior.code#
+        prior.code.new[sample]<-rev(prior.code.new[sample])#
+        ##Get the new "messy file"#
+        messy.prior.new<-chartr(old=paste(letters, collapse=""), new = paste(prior.code.new,collapse=""), short)#
+        messy.prior.split.new = unlist(strsplit(messy.prior.new, split="", fixed = T))#
+        logLikelihood<-0#
+        for(j in 1:length(messy.prior.split.new)){#
+            #if first letter is in alphabet#
+            if(sum(letters ==messy.prior.split.new [j]) == 1){#
+                # if second letter is in alphabet#
+                if(sum(letters == messy.prior.split.new[j+1]) == 1){#
+                    logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split.new[j],letters == messy.prior.split.new[j+1]])#
+                }#
+            }#
+        }#
+        log.likelihood.record[q]=logLikelihood#
+        h = min(1, exp(log.likelihood.record[q]-log.likelihood.record[q-1]))#
+        if(p < h){#
+            prior.code = prior.code.new#
+        }#
+        if(q %% 100 == 0){#
+            cat(paste("at", q, "iteration", "\n"))#
+            cat(chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short))#
+            cat("\n")#
+            cat(logLikelihood)#
+            cat("\n")#
+        }#
+    }#
+    end<-Sys.time()#
+    return(list(data = chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short),#
+    time = end-start,#
+    log.likelihood.record=log.likelihood.record))#
+#
+}
+mcmc(1000,2)
+messy.prior
+for(i in 1:length(messy.prior.split)){#
+        #if first letter is in alphabet#
+        if(sum(letters ==messy.prior.split [i]) == 1){#
+            # if second letter is in alphabet#
+            if(sum(letters == messy.prior.split[i+1]) == 1){#
+                logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+            }#
+        }#
+    }
+messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+    for(i in 1:length(messy.prior.split)){#
+        #if first letter is in alphabet#
+        if(sum(letters ==messy.prior.split [i]) == 1){#
+            # if second letter is in alphabet#
+            if(sum(letters == messy.prior.split[i+1]) == 1){#
+                logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+            }#
+        }#
+    }
+start<-Sys.time()#
+    ##Calculate the original "likelihood" based on the prior.code#
+    log.likelihood.record<-rep(NA,iteration)#
+    logLikelihood<-0#
+    messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)#
+    messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+    for(i in 1:length(messy.prior.split)){#
+        #if first letter is in alphabet#
+        if(sum(letters ==messy.prior.split [i]) == 1){#
+            # if second letter is in alphabet#
+            if(sum(letters == messy.prior.split[i+1]) == 1){#
+                logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+            }#
+        }#
+    }#
+    log.likelihood.record[1]=logLikelihood
+iteration = 3000
+start<-Sys.time()#
+    ##Calculate the original "likelihood" based on the prior.code#
+    log.likelihood.record<-rep(NA,iteration)#
+    logLikelihood<-0#
+    messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)#
+    messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+    for(i in 1:length(messy.prior.split)){#
+        #if first letter is in alphabet#
+        if(sum(letters ==messy.prior.split [i]) == 1){#
+            # if second letter is in alphabet#
+            if(sum(letters == messy.prior.split[i+1]) == 1){#
+                logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+            }#
+        }#
+    }#
+    log.likelihood.record[1]=logLikelihood
+log.likelihood.record
+log.likelihood.record[1]
+sample<-sample(1:26,shuffle,replace=F)
+shuffle = 2
+p = runif(1,0,1)#
+        ##Shuffle the "code"#
+        sample<-sample(1:26,shuffle,replace=F)
+sample
+prior.code.new<-prior.code#
+        prior.code.new[sample]<-rev(prior.code.new[sample])
+prior.code.new
+messy.prior.new<-chartr(old=paste(letters, collapse=""), new = paste(prior.code.new,collapse=""), short)#
+        messy.prior.split.new = unlist(strsplit(messy.prior.new, split="", fixed = T))#
+        logLikelihood<-0
+messy.prior.new
+messy.prior.split.new
+j = 1
+sum(letters ==messy.prior.split.new [j]) == 1
+messy.prior.split.new[1]
+short
+tolower(short)
+short<-readLines("code_short.txt",n=1000)#
+#Transfer Upper case to Lower case#
+short<-tolower(short)#
+short
+start<-Sys.time()#
+    ##Calculate the original "likelihood" based on the prior.code#
+    log.likelihood.record<-rep(NA,iteration)#
+    logLikelihood<-0#
+    messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)#
+    messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+    for(i in 1:length(messy.prior.split)){#
+        #if first letter is in alphabet#
+        if(sum(letters ==messy.prior.split [i]) == 1){#
+            # if second letter is in alphabet#
+            if(sum(letters == messy.prior.split[i+1]) == 1){#
+                logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+            }#
+        }#
+    }
+sum(letters ==messy.prior.split.new [j]) == 1
+p = runif(1,0,1)#
+        ##Shuffle the "code"#
+        sample<-sample(1:26,shuffle,replace=F)#
+        prior.code.new<-prior.code#
+        prior.code.new[sample]<-rev(prior.code.new[sample])#
+        ##Get the new "messy file"#
+        messy.prior.new<-chartr(old=paste(letters, collapse=""), new = paste(prior.code.new,collapse=""), short)#
+        messy.prior.split.new = unlist(strsplit(messy.prior.new, split="", fixed = T))#
+        logLikelihood<-0
+messy.prior.split.new
+sum(letters ==messy.prior.split.new [j]) == 1
+sum(letters == messy.prior.split.new[j+1]) == 1
+letters == messy.prior.split.new[j]
+prior.code.new
+mcmc <- function(iteration, shuffle){#
+    start<-Sys.time()#
+    ##Calculate the original "likelihood" based on the prior.code#
+    log.likelihood.record<-rep(NA,iteration)#
+    logLikelihood<-0#
+    messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)#
+    messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+    for(i in 1:length(messy.prior.split)){#
+        #if first letter is in alphabet#
+        if(sum(letters ==messy.prior.split [i]) == 1){#
+            # if second letter is in alphabet#
+            if(sum(letters == messy.prior.split[i+1]) == 1){#
+                logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+            }#
+        }#
+    }#
+    log.likelihood.record[1]=logLikelihood#
+    ##Now shuffle the "codebook" & store log likelihood & use MCMC#
+    for(q in 2:iteration){#
+        p = runif(1,0,1)#
+        ##Shuffle the "code"#
+        sample<-sample(1:26,shuffle,replace=F)#
+        prior.code.new<-prior.code#
+        prior.code.new[sample]<-rev(prior.code.new[sample])#
+        ##Get the new "messy file"#
+        messy.prior.new<-chartr(old=paste(letters, collapse=""), new = paste(prior.code.new,collapse=""), short)#
+        messy.prior.split.new = unlist(strsplit(messy.prior.new, split="", fixed = T))#
+        logLikelihood<-0#
+        logLikelihoodToBeCompared <- 0#
+        for(j in 1:length(messy.prior.split.new)){#
+            #if first letter is in alphabet#
+            if(sum(letters ==messy.prior.split.new [j]) == 1){#
+                # if second letter is in alphabet#
+                if(sum(letters == messy.prior.split.new[j+1]) == 1){#
+                    logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split.new[j],letters == messy.prior.split.new[j+1]])#
+                    logLikelihoodToBeCompared = logLikelihoodToBeCompared + log(frequency.norm[letters == prior.code.new[j],letters == prior.code.new[j+1]])#
+                }#
+            }#
+        }#
+        log.likelihood.record[q]=logLikelihood#
+        h = min(1, exp(log.likelihood.record[q]-logLikelihoodToBeCompared))#
+        if(p < h){#
+            prior.code = prior.code.new#
+        }#
+        if(q %% 100 == 0){#
+            cat(paste("at", q, "iteration", "\n"))#
+            cat(chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short))#
+            cat("\n")#
+            cat(logLikelihood)#
+            cat("\n")#
+        }#
+    }#
+    end<-Sys.time()#
+    return(list(data = chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short),#
+    time = end-start,#
+    log.likelihood.record=log.likelihood.record))#
+#
+}
+mcmc(1000,2)
+mcmc <- function(iteration, shuffle){#
+    start<-Sys.time()#
+    ##Calculate the original "likelihood" based on the prior.code#
+    log.likelihood.record<-rep(NA,iteration)#
+    logLikelihood<-0#
+    messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)#
+    messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+    for(i in 1:length(messy.prior.split)){#
+        #if first letter is in alphabet#
+        if(sum(letters ==messy.prior.split [i]) == 1){#
+            # if second letter is in alphabet#
+            if(sum(letters == messy.prior.split[i+1]) == 1){#
+                logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+            }#
+        }#
+    }#
+    log.likelihood.record[1]=logLikelihood#
+    ##Now shuffle the "codebook" & store log likelihood & use MCMC#
+    for(q in 2:iteration){#
+        p = runif(1,0,1)#
+        ##Shuffle the "code"#
+        sample<-sample(1:26,shuffle,replace=F)#
+        prior.code.new<-prior.code#
+        prior.code.new[sample]<-rev(prior.code.new[sample])#
+        ##Get the new "messy file"#
+        messy.prior.new<-chartr(old=paste(letters, collapse=""), new = paste(prior.code.new,collapse=""), short)#
+        messy.prior.split.new = unlist(strsplit(messy.prior.new, split="", fixed = T))#
+        logLikelihood<-0#
+        logLikelihoodToBeCompared <- 0#
+        for(j in 1:length(messy.prior.split.new)){#
+            #if first letter is in alphabet#
+            if(sum(letters ==messy.prior.split.new [j]) == 1){#
+                # if second letter is in alphabet#
+                if(sum(letters == messy.prior.split.new[j+1]) == 1){#
+                    logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split.new[j],letters == messy.prior.split.new[j+1]])#
+                }#
+            }#
+        }#
+        h = min(1, exp(log.likelihood.record[q]-logLikelihoodToBeCompared))#
+        if(p < h){#
+            prior.code = prior.code.new#
+            log.likelihood.record[q]=logLikelihood#
+        }else{#
+            log.likelihood.record[q]=logLikelihood[q-1]#
+        }#
+        if(q %% 100 == 0){#
+            cat(paste("at", q, "iteration", "\n"))#
+            cat(chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short))#
+            cat("\n")#
+            cat(logLikelihood)#
+            cat("\n")#
+        }#
+    }#
+    end<-Sys.time()#
+    return(list(data = chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short),#
+    time = end-start,#
+    log.likelihood.record=log.likelihood.record))#
+#
+}
+mcmc(1000,2)
+mcmc <- function(iteration, shuffle){#
+    start<-Sys.time()#
+    ##Calculate the original "likelihood" based on the prior.code#
+    log.likelihood.record<-rep(NA,iteration)#
+    logLikelihood<-0#
+    messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)#
+    messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+    for(i in 1:length(messy.prior.split)){#
+        #if first letter is in alphabet#
+        if(sum(letters ==messy.prior.split [i]) == 1){#
+            # if second letter is in alphabet#
+            if(sum(letters == messy.prior.split[i+1]) == 1){#
+                logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+            }#
+        }#
+    }#
+    log.likelihood.record[1]=logLikelihood#
+    ##Now shuffle the "codebook" & store log likelihood & use MCMC#
+    for(q in 2:iteration){#
+        p = runif(1,0,1)#
+        ##Shuffle the "code"#
+        sample<-sample(1:26,shuffle,replace=F)#
+        prior.code.new<-prior.code#
+        prior.code.new[sample]<-rev(prior.code.new[sample])#
+        ##Get the new "messy file"#
+        messy.prior.new<-chartr(old=paste(letters, collapse=""), new = paste(prior.code.new,collapse=""), short)#
+        messy.prior.split.new = unlist(strsplit(messy.prior.new, split="", fixed = T))#
+        logLikelihood<-0#
+        logLikelihoodToBeCompared <- 0#
+        for(j in 1:length(messy.prior.split.new)){#
+            #if first letter is in alphabet#
+            if(sum(letters ==messy.prior.split.new [j]) == 1){#
+                # if second letter is in alphabet#
+                if(sum(letters == messy.prior.split.new[j+1]) == 1){#
+                    logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split.new[j],letters == messy.prior.split.new[j+1]])#
+                }#
+            }#
+        }#
+        h = min(1, exp(log.likelihood.record[q]-log.likelihood.record[q-1]))#
+        if(p < h){#
+            prior.code = prior.code.new#
+            log.likelihood.record[q]=logLikelihood#
+        }else{#
+            log.likelihood.record[q]=logLikelihood[q-1]#
+        }#
+        if(q %% 100 == 0){#
+            cat(paste("at", q, "iteration", "\n"))#
+            cat(chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short))#
+            cat("\n")#
+            cat(logLikelihood)#
+            cat("\n")#
+        }#
+    }#
+    end<-Sys.time()#
+    return(list(data = chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short),#
+    time = end-start,#
+    log.likelihood.record=log.likelihood.record))#
+#
+}
+mcmc(1000,2)
+mcmc <- function(iteration, shuffle){#
+    start<-Sys.time()#
+    ##Calculate the original "likelihood" based on the prior.code#
+    log.likelihood.record<-rep(NA,iteration)#
+    logLikelihood<-0#
+    messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)#
+    messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+    for(i in 1:length(messy.prior.split)){#
+        #if first letter is in alphabet#
+        if(sum(letters ==messy.prior.split [i]) == 1){#
+            # if second letter is in alphabet#
+            if(sum(letters == messy.prior.split[i+1]) == 1){#
+                logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+            }#
+        }#
+    }#
+    log.likelihood.record[1]=logLikelihood#
+    ##Now shuffle the "codebook" & store log likelihood & use MCMC#
+    for(q in 2:iteration){#
+        p = runif(1,0,1)#
+        ##Shuffle the "code"#
+        sample<-sample(1:26,shuffle,replace=F)#
+        prior.code.new<-prior.code#
+        prior.code.new[sample]<-rev(prior.code.new[sample])#
+        ##Get the new "messy file"#
+        messy.prior.new<-chartr(old=paste(letters, collapse=""), new = paste(prior.code.new,collapse=""), short)#
+        messy.prior.split.new = unlist(strsplit(messy.prior.new, split="", fixed = T))#
+        logLikelihood<-0#
+        logLikelihoodToBeCompared <- 0#
+        for(j in 1:length(messy.prior.split.new)){#
+            #if first letter is in alphabet#
+            if(sum(letters ==messy.prior.split.new [j]) == 1){#
+                # if second letter is in alphabet#
+                if(sum(letters == messy.prior.split.new[j+1]) == 1){#
+                    logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split.new[j],letters == messy.prior.split.new[j+1]])#
+                }#
+            }#
+        }#
+        h = min(1, exp(logLikelihood-log.likelihood.record[q-1]))#
+        if(p < h){#
+            prior.code = prior.code.new#
+            log.likelihood.record[q]=logLikelihood#
+        }else{#
+            log.likelihood.record[q]=logLikelihood[q-1]#
+        }#
+        if(q %% 100 == 0){#
+            cat(paste("at", q, "iteration", "\n"))#
+            cat(chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short))#
+            cat("\n")#
+            cat(logLikelihood)#
+            cat("\n")#
+        }#
+    }#
+    end<-Sys.time()#
+    return(list(data = chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short),#
+    time = end-start,#
+    log.likelihood.record=log.likelihood.record))#
+#
+}
+mcmc(1000,2)
+start<-Sys.time()#
+    ##Calculate the original "likelihood" based on the prior.code#
+    log.likelihood.record<-rep(NA,iteration)#
+    logLikelihood<-0#
+    messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)#
+    messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+    for(i in 1:length(messy.prior.split)){#
+        #if first letter is in alphabet#
+        if(sum(letters ==messy.prior.split [i]) == 1){#
+            # if second letter is in alphabet#
+            if(sum(letters == messy.prior.split[i+1]) == 1){#
+                logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+            }#
+        }#
+    }
+log.likelihood.record[1]=logLikelihood
+p = runif(1,0,1)#
+        ##Shuffle the "code"#
+        sample<-sample(1:26,shuffle,replace=F)#
+        prior.code.new<-prior.code#
+        prior.code.new[sample]<-rev(prior.code.new[sample])#
+        ##Get the new "messy file"#
+        messy.prior.new<-chartr(old=paste(letters, collapse=""), new = paste(prior.code.new,collapse=""), short)#
+        messy.prior.split.new = unlist(strsplit(messy.prior.new, split="", fixed = T))#
+        logLikelihood<-0#
+        logLikelihoodToBeCompared <- 0#
+        for(j in 1:length(messy.prior.split.new)){#
+            #if first letter is in alphabet#
+            if(sum(letters ==messy.prior.split.new [j]) == 1){#
+                # if second letter is in alphabet#
+                if(sum(letters == messy.prior.split.new[j+1]) == 1){#
+                    logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split.new[j],letters == messy.prior.split.new[j+1]])#
+                }#
+            }#
+        }
+h = min(1, exp(logLikelihood-log.likelihood.record[q-1]))
+logLikelihood
+log.likelihood.record[q-1]
+q = 2
+iteration
+q = 4
+h = min(1, exp(logLikelihood-log.likelihood.record[q-1]))
+h
+q = 2
+h = min(1, exp(logLikelihood-log.likelihood.record[q-1]))
+h
+if(p < h){#
+            prior.code = prior.code.new#
+            log.likelihood.record[q]=logLikelihood#
+        }else{#
+            log.likelihood.record[q]=logLikelihood[q-1]#
+        }
+log.likelihood.record[2]
+log.likelihood.record[1]
+for(q in 2:iteration){#
+        p = runif(1,0,1)#
+        ##Shuffle the "code"#
+        sample<-sample(1:26,shuffle,replace=F)#
+        prior.code.new<-prior.code#
+        prior.code.new[sample]<-rev(prior.code.new[sample])#
+        ##Get the new "messy file"#
+        messy.prior.new<-chartr(old=paste(letters, collapse=""), new = paste(prior.code.new,collapse=""), short)#
+        messy.prior.split.new = unlist(strsplit(messy.prior.new, split="", fixed = T))#
+        logLikelihood<-0#
+        logLikelihoodToBeCompared <- 0#
+        for(j in 1:length(messy.prior.split.new)){#
+            #if first letter is in alphabet#
+            if(sum(letters ==messy.prior.split.new [j]) == 1){#
+                # if second letter is in alphabet#
+                if(sum(letters == messy.prior.split.new[j+1]) == 1){#
+                    logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split.new[j],letters == messy.prior.split.new[j+1]])#
+                }#
+            }#
+        }#
+        h = min(1, exp(logLikelihood-log.likelihood.record[q-1]))#
+        if(p < h){#
+            prior.code = prior.code.new#
+            log.likelihood.record[q]=logLikelihood#
+        }else{#
+            log.likelihood.record[q]=logLikelihood[q-1]#
+        }#
+        if(q %% 100 == 0){#
+            cat(paste("at", q, "iteration", "\n"))#
+            cat(chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short))#
+            cat("\n")#
+            cat(logLikelihood)#
+            cat("\n")#
+        }#
+    }
+logLikelihood
+log.likelihood.record
+log.likelihood.record[1]
+log.likelihood.record[2]
+log.likelihood.record[3]
+q = 3
+exp(logLikelihood-log.likelihood.record[q-1])
+exp(8)
+exp(-8)
+logLikelihood
+mcmc <- function(iteration, shuffle){#
+    start<-Sys.time()#
+    ##Calculate the original "likelihood" based on the prior.code#
+    log.likelihood.record<-rep(NA,iteration)#
+    logLikelihood<-0#
+    messy.prior<-chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short)#
+    messy.prior.split = unlist(strsplit(messy.prior, split="", fixed = T))#
+    for(i in 1:length(messy.prior.split)){#
+        #if first letter is in alphabet#
+        if(sum(letters ==messy.prior.split [i]) == 1){#
+            # if second letter is in alphabet#
+            if(sum(letters == messy.prior.split[i+1]) == 1){#
+                logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split[i],letters == messy.prior.split[i+1]])#
+            }#
+        }#
+    }#
+    log.likelihood.record[1]=logLikelihood#
+    ##Now shuffle the "codebook" & store log likelihood & use MCMC#
+    for(q in 2:iteration){#
+        p = runif(1,0,1)#
+        ##Shuffle the "code"#
+        sample<-sample(1:26,shuffle,replace=F)#
+        prior.code.new<-prior.code#
+        prior.code.new[sample]<-rev(prior.code.new[sample])#
+        ##Get the new "messy file"#
+        messy.prior.new<-chartr(old=paste(letters, collapse=""), new = paste(prior.code.new,collapse=""), short)#
+        messy.prior.split.new = unlist(strsplit(messy.prior.new, split="", fixed = T))#
+        logLikelihood<-0#
+        logLikelihoodToBeCompared <- 0#
+        for(j in 1:length(messy.prior.split.new)){#
+            #if first letter is in alphabet#
+            if(sum(letters ==messy.prior.split.new [j]) == 1){#
+                # if second letter is in alphabet#
+                if(sum(letters == messy.prior.split.new[j+1]) == 1){#
+                    logLikelihood = logLikelihood + log(frequency.norm[letters == messy.prior.split.new[j],letters == messy.prior.split.new[j+1]])#
+                }#
+            }#
+        }#
+        h = min(1, exp(logLikelihood-log.likelihood.record[q-1]))#
+        if(p < h){#
+            prior.code = prior.code.new#
+            log.likelihood.record[q]=logLikelihood#
+        }else{#
+            log.likelihood.record[q]=log.likelihood.record[q-1]#
+        }#
+        if(q %% 100 == 0){#
+            cat(paste("at", q, "iteration", "\n"))#
+            cat(chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short))#
+            cat("\n")#
+            cat(logLikelihood)#
+            cat("\n")#
+        }#
+    }#
+    end<-Sys.time()#
+    return(list(data = chartr(old=paste(letters, collapse=""), new = paste(prior.code,collapse=""), short),#
+    time = end-start,#
+    log.likelihood.record=log.likelihood.record))#
+#
+}
+mcmc(1000,2)

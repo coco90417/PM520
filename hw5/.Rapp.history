@@ -1,0 +1,882 @@
+alpha_j = tapply(mydata$value, mydata$temp, mean) - mean(mydata$value)#
+beta_k = tapply(mydata$value, mydata$k, mean) - mean(mydata$value)#
+d = matrix(data=NA,nrow=5,ncol=6)#
+for(i in 1:5){#
+    for(j in 1:6){#
+        d[i,j] = alpha_j[[i]]*beta_k[[j]]#
+    }#
+}#
+d
+alpha_j = tapply(mydata$value, mydata$temp, mean) - mean(mydata$value)
+beta_k = tapply(mydata$value, mydata$k, mean) - mean(mydata$value)
+d = matrix(data=NA,nrow=5,ncol=6)#
+for(i in 1:5){#
+    for(j in 1:6){#
+        d[i,j] = alpha_j[[i]]*beta_k[[j]]#
+    }#
+}#
+d
+lambda = sum(d*y)/sum(d^2)#
+residual = y#
+for#
+for(i in 1:5){#
+    for(j in 1:6){#
+        residual[i,j] = y[i,j]-mean(y)-alpha_j[[i]] - beta_k[[j]]#
+    }#
+}
+for(i in 1:5){#
+    for(j in 1:6){#
+        residual[i,j] = y[i,j]-mean(y)-alpha_j[[i]] - beta_k[[j]]#
+    }#
+}
+residual
+hist(resi,breaks=20)
+hist(residual,breaks=20)
+hist(residual,breaks=50)
+shapiro.test(residual)
+qqnorm(residual)#
+qqline(residual,col="red")
+pwr.anova.test(k = 4, f = 15, sig.level = 0.05, power = 0.8)
+library(pwr)
+install.packages("pwr")
+library(pwr)
+pwr.anova.test(k = 4, f = 15, sig.level = 0.05, power = 0.8)
+Sigmasquare = ss_remainder / (p*q-p-q)
+Sigmasquare
+ss_remainder
+sqrt(ss_remainder)
+p
+q
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)
+effectsize = sqrt(SSmean/Sigmasquare/p)
+effectsize
+p
+effectsize = sqrt(SSmean/Sigmasquare/(p-1))
+effectsize
+SSmean
+sqrt(SSmean)
+Sigmasquare
+sqrt(Sigmasquare)
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)/4
+SSmean
+sqrt(SSmean)
+2.8/0.8
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))
+effectsize = SDmeans/SD
+effectsize
+SD
+SDmeans
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.8)
+effectsize
+??pwr.anova.test
+?pwr.anova.test()
+pwr.anova.test(f=0.28,k=4,power=0.80,sig.level=0.05)
+pwr.anova.test(f=1,k=4,power=0.80,sig.level=0.05)
+pwr.anova.test(f=2,k=4,power=0.80,sig.level=0.05)
+pwr.anova.test(f=3,k=4,power=0.80,sig.level=0.05)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.95)
+pwr.anova.test(k = 4, f = 1, sig.level = 0.05, power = 0.95)
+pwr.anova.test(k = 4, f = 2, sig.level = 0.05, power = 0.95)
+pwr.anova.test(k = 4, f = 3, sig.level = 0.05, power = 0.95)
+pwr.anova.test(k = 4, f = 3, sig.level = 0.05, power = 0.99)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.01, power = 0.95)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.01, power = 0.90)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.90)
+alpha = 0.05#
+lowerbound = ss_remainder / qchisq(alpha/2,df=19)#
+upperbound = ss_remainder / qchisq(1-alpha/2,df=19)
+lowerbound
+upperbound
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.9)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+alpha = 0.05#
+upperbound = ss_remainder / qchisq(alpha/2,df=19)#
+# [1] 1.378652#
+lowerbound = ss_remainder / qchisq(1-alpha/2,df=19)#
+# [1] 0.3737631#
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = upperbound / (p*q-p-q)#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+effectsize
+Sigmasquare
+sqrt(Sigmasquare)
+Sigmasquare = lowerbound / (p*q-p-q)#
+SD = sqrt(Sigmasquare)
+SD
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SD = sqrt(Sigmasquare)
+SD
+lowerbound / (p*q-p-q)
+sqrt(lowerbound / (p*q-p-q))
+sqrt(0.37)
+lowerbound / (p*q-p-q)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = lowerbound#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+SD
+effectsize
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99999)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999999)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = upperbound#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999999)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = upperbound#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99999)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = upperbound#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = upperbound#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.9)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = upperbound#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = upperbound#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.95)
+install.packages("DunnettTests")
+library(DunnettTests)
+nvDT(1,0.90,r=4,k=4,mu=c(17.4,20,22.5),mu0=15,"props",dist="zdist",testcall="SD")
+nvDT(1,0.90,r=4,k=4,mu=mean(c(17.4,20,22.5)),mu0=15,"props",dist="zdist",testcall="SD")
+mean(c(17.4,20,22.5))
+nvDT(1,0.90,r=4,k=4,mu=mean(c(17.4,20,22.5)),mu0=15,"props",dist="zdist",testcall="SD")
+nvDT(2, 0.95, r=1, k=3, mu=0.7, mu0=0.5, contrast="props",dist="zdist", testcall="SD")
+T(1,0.90,r=4,k=4,mu=0.7,mu0=0.5,"props",dist="zdist",testcall="SD")
+nvDT(1,0.90,r=4,k=4,mu=0.7,mu0=0.5,"props",dist="zdist",testcall="SD")
+nvDT(1,0.90,r=4,k=4,mu=19,mu0=15,"props",dist="zdist",testcall="SD")
+nvDT(1,0.90,r=4,k=4,mu=20,mu0=15,"props",dist="zdist",testcall="SD")
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,-1,0,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))
+effectsize
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99)
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.95)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/(4))#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+SD
+Sigmasquare
+SSmean
+SSmean/Sigmasquare
+sqrt(SSmean/Sigmasquare)
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean)#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+effectsize
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SD = sqrt(Sigmasquare)#
+SSmean = sum((groupmeanvector-mean(groupmeanvector))^2)#
+SDmeans = sqrt(SSmean/4)#
+effectsize = SDmeans/SD # Cohen's ƒ square approximation#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,-1,0,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.95)
+pwr.anova.test(k = 2, f = effectsize, sig.level = 0.05, power = 0.95)
+###### second contrast#
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,-1,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.95)
+effectsize
+###### second contrast#
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,-1,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99)
+###### second contrast#
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,-1,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+###### second contrast#
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,-1,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.9999)
+###### second contrast#
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,-1,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.95)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999)
+###### second contrast#
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,-1,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99999)
+###### second contrast#
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,-1,0)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.9999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.9999999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99999999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999999999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.9999999999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.99999999999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.999999999999)
+alpha = 0.05#
+groupmeanvector = c(15,17.5,20,22.5)#
+c = c(1,0,0,-1)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+effectsize = sqrt(sum(c*groupmeanvector)^2/Sigmasquare/sum(c^2))#
+pwr.anova.test(k = 4, f = effectsize, sig.level = 0.05, power = 0.9999999999999)
+#####################################
+############ question 2 #############
+#####################################
+temp = c(rep("185",6), rep("230",6), rep("298", 6), rep("373",6), rep("498",6))#
+k = c(rep(c("30", "40", "50", "60", "70", "80"),5))#
+value = c(19,26.3,32.2,37.2,41.5,45,14.5,23,29,32,38.7,42.5,7.5,12,15.5,18.2,20.5,23,4,5.1,6.5,7.7,8.5,9,1.3,1.3,1.3,1.3,1.3,1.3)#
+mydata = data.frame(temp,k,value)#
+fit = aov(mydata$value ~ mydata$temp + mydata$k)#
+anova(fit)#
+result = "#
+Analysis of Variance Table#
+#
+Response: mydata$value#
+Df Sum Sq Mean Sq F value    Pr(>F)#
+mydata$temp  4 4745.4 1186.36 56.6702 1.251e-10 ***#
+mydata$k     5  763.1  152.61  7.2901 0.0004938 ***#
+Residuals   20  418.7   20.93#
+---#
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1#
+"
+lambda = sum(d*y)/sum(d^2)#
+residual = y#
+for(i in 1:5){#
+    for(j in 1:6){#
+        residual[i,j] = y[i,j]-mean(y)-alpha_j[[i]] - beta_k[[j]]#
+    }#
+}#
+shapiro.test(residual)
+#####################################
+############ question 6 #############
+#####################################
+alpha_j = tapply(mydata$value, mydata$temp, mean) - mean(mydata$value)#
+beta_k = tapply(mydata$value, mydata$k, mean) - mean(mydata$value)#
+d = matrix(data=NA,nrow=5,ncol=6)#
+for(i in 1:5){#
+    for(j in 1:6){#
+        d[i,j] = alpha_j[[i]]*beta_k[[j]]#
+    }#
+}#
+d#
+result=#
+"#
+[,1]       [,2]        [,3]     [,4]     [,5]        [,6]#
+[1,] -132.4248 -63.973333 -10.2357333  27.8284  72.9296  105.875867#
+[2,] -102.7548 -49.640000  -7.9424000  21.5934  56.5896   82.154200#
+[3,]   11.7852   5.693333   0.9109333  -2.4766  -6.4904   -9.422467#
+[4,]   88.9272  42.960000   6.8736000 -18.6876 -48.9744  -71.098800#
+[5,]  134.4672  64.960000  10.3936000 -28.2576 -74.0544 -107.508800#
+"#
+y = matrix(mydata$value, nrow = 5, ncol=6, byrow=T)#
+y#
+result =#
+"#
+[,1] [,2] [,3] [,4] [,5] [,6]#
+[1,] 19.0 26.3 32.2 37.2 41.5 45.0#
+[2,] 14.5 23.0 29.0 32.0 38.7 42.5#
+[3,]  7.5 12.0 15.5 18.2 20.5 23.0#
+[4,]  4.0  5.1  6.5  7.7  8.5  9.0#
+[5,]  1.3  1.3  1.3  1.3  1.3  1.3#
+"#
+ss_nonadditivity = sum(d*y)^2 / sum(d^2)#
+# [1] 406.421#
+ss_error = 418.7#
+ss_remainder = ss_error - ss_nonadditivity#
+# [1] 12.27899#
+p = 5#
+q = 6#
+F_nonadditivity = ss_nonadditivity / (ss_remainder / (p*q - p -q))#
+# [1] 628.8791#
+qf(1-0.05,1,p*q-p-q,0)#
+# [1] 4.38075
+lambda = sum(d*y)/sum(d^2)#
+residual = y#
+for(i in 1:5){#
+    for(j in 1:6){#
+        residual[i,j] = y[i,j]-mean(y)-alpha_j[[i]] - beta_k[[j]]#
+    }#
+}#
+shapiro.test(residual)#
+result = "#
+Shapiro-Wilk normality test#
+#
+data:  residual#
+W = 0.974, p-value = 0.6546#
+"#
+#
+####### c) qq plot#
+qqnorm(residual)#
+qqline(residual,col="red")
+library(pwr)#
+#####################################
+############ question 2 #############
+#####################################
+temp = c(rep("185",6), rep("230",6), rep("298", 6), rep("373",6), rep("498",6))#
+k = c(rep(c("30", "40", "50", "60", "70", "80"),5))#
+value = c(19,26.3,32.2,37.2,41.5,45,14.5,23,29,32,38.7,42.5,7.5,12,15.5,18.2,20.5,23,4,5.1,6.5,7.7,8.5,9,1.3,1.3,1.3,1.3,1.3,1.3)#
+mydata = data.frame(temp,k,value)#
+fit = aov(mydata$value ~ mydata$temp + mydata$k)#
+anova(fit)#
+result = "#
+Analysis of Variance Table#
+#
+Response: mydata$value#
+Df Sum Sq Mean Sq F value    Pr(>F)#
+mydata$temp  4 4745.4 1186.36 56.6702 1.251e-10 ***#
+mydata$k     5  763.1  152.61  7.2901 0.0004938 ***#
+Residuals   20  418.7   20.93#
+---#
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1#
+"#
+#####################################
+############ question 6 #############
+#####################################
+alpha_j = tapply(mydata$value, mydata$temp, mean) - mean(mydata$value)#
+beta_k = tapply(mydata$value, mydata$k, mean) - mean(mydata$value)#
+d = matrix(data=NA,nrow=5,ncol=6)#
+for(i in 1:5){#
+    for(j in 1:6){#
+        d[i,j] = alpha_j[[i]]*beta_k[[j]]#
+    }#
+}#
+d#
+result=#
+"#
+[,1]       [,2]        [,3]     [,4]     [,5]        [,6]#
+[1,] -132.4248 -63.973333 -10.2357333  27.8284  72.9296  105.875867#
+[2,] -102.7548 -49.640000  -7.9424000  21.5934  56.5896   82.154200#
+[3,]   11.7852   5.693333   0.9109333  -2.4766  -6.4904   -9.422467#
+[4,]   88.9272  42.960000   6.8736000 -18.6876 -48.9744  -71.098800#
+[5,]  134.4672  64.960000  10.3936000 -28.2576 -74.0544 -107.508800#
+"#
+y = matrix(mydata$value, nrow = 5, ncol=6, byrow=T)#
+y#
+result =#
+"#
+[,1] [,2] [,3] [,4] [,5] [,6]#
+[1,] 19.0 26.3 32.2 37.2 41.5 45.0#
+[2,] 14.5 23.0 29.0 32.0 38.7 42.5#
+[3,]  7.5 12.0 15.5 18.2 20.5 23.0#
+[4,]  4.0  5.1  6.5  7.7  8.5  9.0#
+[5,]  1.3  1.3  1.3  1.3  1.3  1.3#
+"#
+ss_nonadditivity = sum(d*y)^2 / sum(d^2)#
+# [1] 406.421#
+ss_error = 418.7#
+ss_remainder = ss_error - ss_nonadditivity#
+# [1] 12.27899#
+p = 5#
+q = 6#
+F_nonadditivity = ss_nonadditivity / (ss_remainder / (p*q - p -q))#
+# [1] 628.8791#
+qf(1-0.05,1,p*q-p-q,0)#
+# [1] 4.38075#
+#####################################
+############ question 7 #############
+#####################################
+####### a) normality assumption#
+lambda = sum(d*y)/sum(d^2)#
+residual = y#
+for(i in 1:5){#
+    for(j in 1:6){#
+        residual[i,j] = y[i,j]-mean(y)-alpha_j[[i]] - beta_k[[j]]#
+    }#
+}#
+shapiro.test(residual)#
+result = "#
+Shapiro-Wilk normality test#
+#
+data:  residual#
+W = 0.974, p-value = 0.6546#
+"#
+#
+####### c) qq plot#
+qqnorm(residual)#
+qqline(residual,col="red")#
+#####################################
+############ question 8 #############
+#####################################
+###### power = 0.999 alpha = 0.05 Sigmasquare = MS(remainder)#
+groupmeanvector = c(15,17.5,20,22.5)#
+Sigmasquare = ss_remainder / (p*q-p-q)#
+SD = sqrt(Sigmasquare)
+SD
+sample(1:100000, 1)
+library(VennDiagram)
+venn.plot <- draw.pairwise.venn(#
+area1 = 100,#
+area2 = 70,#
+cross.area = 68,#
+category = c("First", "Second"),#
+fill = c("blue", "red"),#
+lty = "blank",#
+cex = 2,#
+cat.cex = 2,#
+cat.pos = c(285, 105),#
+cat.dist = 0.09,#
+cat.just = list(c(-1, -1), c(1, 1)),#
+ext.pos = 30,#
+ext.dist = -0.05,#
+ext.length = 0.85,#
+ext.line.lwd = 2,#
+ext.line.lty = "dashed"#
+);#
+grid.draw(venn.plot);#
+grid.newpage();
+treatA = c(rep(0,4), rep(1,4), rep(0,8), rep(1,8), rep(0,4), rep(1,4))#
+treatB = c(rep(0,8), rep(1,4), rep(0,4), rep(1,4), rep(0,4), rep(1,8))#
+treatC = c(rep(0,12), rep(1,4), rep(0,4), rep(1,12))#
+outcome = c(4,2,7,3,6,6,8,8,2,9,7,6,1,5,10,4,3,9,6,6,7,7,5,9,9,11,7,5,8,10,8,10)#
+data = cbind(treatA, treatB, treatC, outcome)
+data
+lm(data$outcome ~ data$treatA + data$treatB + data$treatC + data$treatA * data$treatB + data$treatA * data$treatC + data$treatB * data$treatC)
+data$outcome
+data
+data = data.frame(cbind(treatA, treatB, treatC, outcome))
+data$treatA
+lm(data$outcome ~ data$treatA + data$treatB + data$treatC + data$treatA * data$treatB + data$treatA * data$treatC + data$treatB * data$treatC)
+summary(model)
+model = lm(data$outcome ~ data$treatA + data$treatB + data$treatC + data$treatA * data$treatB + data$treatA * data$treatC + data$treatB * data$treatC)#
+summary(model)
+aov(model)
+model = aov(data$outcome ~ data$treatA + data$treatB + data$treatC + data$treatA * data$treatB + data$treatA * data$treatC + data$treatB * data$treatC)#
+summary(model)
+data = data.frame(cbind(treatA, treatB, treatC, outcome))#
+model = aov(data$outcome ~ data$treatA + data$treatB + data$treatC + data$treatA * data$treatB + data$treatA * data$treatC + data$treatB * data$treatC + data$treatA * data$treatB * data$treatC )#
+summary(model)
+model
+mu = mean(data)#
+alpha_1 = tapply(data$outcome, data$treatA, mean) - mu
+mu = mean(data$outcome)
+mu
+alpha_1 = tapply(data$outcome, data$treatA, mean) - mu
+alpha_1
+mu = mean(data$outcome)#
+alpha_1 = tapply(data$outcome, data$treatA, mean) - mu#
+beta_1 = tapply(data$outcome, data$treatB, mean) - mu#
+gamma_1 = tapply(data$outcome, data$treatC, mean) - mu#
+alpha_1#
+beta_1#
+gamma_1
+alpha_beta_11 = tapply(data$outcome, data$treatA * data$treatB, mean) - 0.75 - 0.75 + mu#
+alpha_beta_21 = tapply(data$outcome, data$treatA * data$treatB, mean) - (-0.75) - 0.75 + mu
+alpha_beta_11
+alpha_beta_21
+tapply(data$outcome, data$treatA * data$treatB, mean)
+alpha_beta_11 = 7.500000 - 0.75 - 0.75 + mu
+alpha_beta_11
+tapply(data$outcome, (1-data$treatA) * data$treatB, mean)
+alpha_beta_11 = 7.5 - 0.75 - 0.75 + mu#
+alpha_beta_21 = 1-alpha_beta_11#
+alpha_beta_12 = 1-alpha_beta_11#
+alpha_beta_22 = 1-alpha_beta_12
+alpha_beta_11
+data$outcome
+mean(data$outcome)
+data$treatA
+tapply(data$outcome, data$treatA, mean)
+alpha_beta_11 = 7.5 - 7.25 - 7.25 + mu
+alpha_beta_11
+tapply(data$outcome, data$treatA * data$treatC, mean)
+tapply(data$outcome, data$treatB, mean)
+tapply(data$outcome, data$treatC, mean)
+tapply(data$outcome, data$treatB * data$treatC, mean)
+mu
+alpha
+alpha = tapply(data$outcome, data$treatA, mean) - mu#
+beta = tapply(data$outcome, data$treatB, mean) - mu#
+gamma = tapply(data$outcome, data$treatC, mean) - mu#
+#
+alpha#
+beta#
+gamma
+alpha_gamma_11 = 8 - 7.25 - 7.25 + mu
+alpha_gamma_11
+beta_gamma_11 = 8.5 - 7.25 - 7.25 + mu
+beta_gamma_11
+tapply(data$outcome, data$treatA * data$treatB * data$treatC, mean)
+alpha_beta_gamma_111 = 9 - 7.5 - 8.5 - 9.0 + 7.25 + 7.25 + 7.25 - mu
+alpha_beta_gamma_111
+alpha_beta_gamma_112 = 1-alpha_beta_gamma_111#
+alpha_beta_gamma_121 = 1-alpha_beta_gamma_111#
+alpha_beta_gamma_211 = 1-alpha_beta_gamma_111
+alpha_beta_gamma_112
+alpha_beta_gamma_222 = 6.142857 - 6.166667 - 6 - 5.833333 + 5.75 + 5.75 + 5.75 - mu
+alpha_beta_gamma_222
+tapply(data$outcome, (1-data$treatA) * (1-data$treatB), mean)
+tapply(data$outcome, (1-data$treatA) * (1-data$treatC), mean)
+tapply(data$outcome, (1-data$treatB) * (1-data$treatC), mean)
+tapply(data$outcome, (1-data$treatA) * (1-data$treatB) * (1-data$treatC), mean)
+alpha_beta_gamma_222 = 4 - 4.5 - 5 - 5.5 + 5.75 + 5.75 + 5.75 - mu
+alpha_beta_gamma_222
+alpha_1 = 0.75#
+beta_1 = 0.75#
+gamma_1= 0.75
+p = 2#
+q = 2#
+r = 2#
+n = 4#
+se_alpha_1 = sigma_square_error * (p-1) / (n * p * q * r)
+sigma_square_error = 5.667#
+p = 2#
+q = 2#
+r = 2#
+n = 4#
+se_alpha_1 = sigma_square_error * (p-1) / (n * p * q * r)
+pt(0.05/2)
+pt(0.05/2, 24)
+qt(0.05/2, 24)
+qt(1-0.05/2, 24)
+se_alpha_1 = sigma_square_error * (p-1) / (n * p * q * r)#
+c(alpha_1 - qt(1-0.05/2, 24) * se_alpha_1 , alpha_1 + qt(1-0.05/2, 24) * se_alpha_1)
+c(alpha_1 - qt(1-0.05/2, 24) * sqrt(se_alpha_1) , alpha_1 + qt(1-0.05/2, 24) * sqrt(se_alpha_1))
+se_alpha_beta_11 = sigma_square_error * (p-1) * (q-1)/ (n * p * q * r)
+se_alpha_beta_11
+se_alpha_beta_11 = sqrt(sigma_square_error * (p-1) * (q-1)/ (n * p * q * r))#
+c(alpha_beta_11 - qt(1-0.05/2,24) * se_alpha_beta_11, alpha_beta_11 + qt(1-0.05/2,24) * se_alpha_beta_11)
+se_alpha_beta_gamma_111 = sqrt(sigma_square_error * (p-1) * (q-1) * (r-1)/ (n * p * q * r))#
+c(alpha_beta_gamma_11 - qt(1-0.05/2,24) * se_alpha_beta_gamma_11, alpha_beta_gamma_11 + qt(1-0.05/2,24) * se_alpha_beta_gamma_11)
+se_alpha_beta_gamma_111 = sqrt(sigma_square_error * (p-1) * (q-1) * (r-1)/ (n * p * q * r))#
+c(alpha_beta_gamma_111 - qt(1-0.05/2,24) * se_alpha_beta_gamma_111, alpha_beta_gamma_111 + qt(1-0.05/2,24) * se_alpha_beta_gamma_111)
+model = aov(data$outcome ~ data$treatA + data$treatB + data$treatC)
+summary(model)
+model = aov(data$outcome ~ data$treatA + data$treatB + data$treatC + data$treatA * data$treatB + data$treatA * data$treatC + data$treatB * data$treatC )
+summary(model)
+se_alpha_1
+se_alpha_beta_11
+se_alpha_beta_11 = sqrt(sigma_square_error * (p-1) * (q-1)/ (n * p * q * r))
+se_alpha_beta_11
+sigma_square_error = 5.667
+se_alpha_beta_11 = sqrt(sigma_square_error * (p-1) * (q-1))/ (n * p * q * r))
+se_alpha_1 = sqrt(sigma_square_error * (p-1) / (n * p * q * r))
+se_alpha_1
+data
+numberoftreatment = c(rep(0,4), rep(1,12), rep(2,12), rep(3, 4))
+lm(data$outcome ~ numberoftreatment)
+model = lm(data$outcome ~ numberoftreatment)#
+summary(model)
+model = aov(data$outcome ~ numberoftreatment)#
+summary(model)
+model = lm(data$outcome ~ numberoftreatment)#
+summary(model)
+model = aov(data$outcome ~ numberoftreatment)#
+summary(model)
+pt(8.73,24)
+pt(8.73,3)
+1-pt(8.73,3)
+1-pt(8.73,3)/2
+(-4-6+7+9)/sqrt(0.472*3/4)
+curve(x*log*x)
+curve(x*log(x))
+curve(-x*log(x))
+# part I#
+#
+######################################################################
+############################ subroutines #############################
+######################################################################
+#
+# Define a function Urn(m,n) that simulates an Urn that produces n non-black balls,#
+# assuming the black/mutation ball has weight m, and returns the number of non-black#
+# colors among the final n balls.  Make sure it returns the number of (non-black) colors in the final urn. Then....#
+#
+setwd("/Users/chengliangdong/Desktop/PM520/hw5")#
+#
+# write a function to simulate the Urn#
+Urn<-function(MutationBallWeight,TotalNumberOfBallsNeeded){#
+  # put your code here#
+  Urn<-mat.or.vec(1,TotalNumberOfBallsNeeded)#
+  # 1= black#
+  Urn[1] = 1#
+  Urn[2] = 2#
+  Urn[3] = 2#
+  # set up a counter (NumberOfBalls) to keep track of how many balls we have#
+  NumberOfBalls<-sum(Urn==1)+sum(Urn==2)#
+  while (NumberOfBalls<(TotalNumberOfBallsNeeded+1)){#
+      # draw a ball with weight MutationBallWeight for black ball#
+      p = runif(1)#
+      # black ball#
+      if(p <= MutationBallWeight/(MutationBallWeight + length(Urn[Urn!=0]) -1)){#
+          MyIndex = sample(2:length(Urn[Urn!=0]),1)#
+          MyOtherBall = Urn[MyIndex]#
+          # pick another ball#
+          # change color of ball to new color (i.e. new number)#
+          Urn[MyIndex] = max(unique(Urn) + 1)#
+          # Set color of ball equal to  NumberOfColorsUsed#
+          # note that we don’t increase the count of the number of balls#
+      }else{#
+          MyIndex = sample(2:length(Urn[Urn!=0]),1)#
+          MyBall = Urn[MyIndex]#
+          Urn[length(Urn[Urn!=0]) + 1] = MyBall#
+          # the ball is some other color#
+          # return the ball and add another one like it#
+          # increase the counter of how many balls we have in the urn:#
+          NumberOfBalls<-NumberOfBalls+1#
+      }#
+  }#
+  # output summaries of what is in the urn when we are done#
+  Urn#
+}#
+#
+# write a function to count how many colors there are in the urn#
+NumberColors<-function(ThisUrn){#
+  # put your code here#
+  return(length(unique(ThisUrn))-1)#
+}#
+#
+GetExpRV<-function(lambda){#
+    u<-runif(1,0,1)#
+    ExpRV <- (-1/lambda)*log(u)#
+    return(ExpRV)#
+}#
+#
+PiTheta <- function(theta){#
+    return(1/20)#
+}#
+#
+CasiTheta <- function(lambda, theta){#
+    return(lambda * exp(-lambda*20)/(1-exp(-20*lambda)))#
+}
+NoReps<-10000   # how many samples to generate#
+HowManyColorsNeeded<-1   # the ‘target’ we have to hit (what we saw in an observed dataset)#
+MaxWeight<-20    # the maximum weight we will consider for the black ball#
+NoOfBalls<-5    # the number of non-black balls we want in the urn at the end#
+AcceptedWeights<-rep(-9,NoReps)#
+Posterior<-rep(-9,NoReps)#
+CountNeeded = rep(-9, NoReps)#
+#
+for (i in 1:NoReps){#
+    HowManyColorsObserved<- -9#
+    Index = 0#
+    while (HowManyColorsObserved != HowManyColorsNeeded) {#
+        # Sample a weight, ThisWeight, for the mutation ball, from Unif(0,MaxWeight). Then...#
+        ThisWeight <- runif(1,0,20)#
+        MyUrn<-Urn(ThisWeight,NoOfBalls)  # simulate the urn using this weight#
+        HowManyColorsObserved<-NumberColors(MyUrn)  # count how many colors there were at the end of this urn simulation#
+        Index = Index + 1#
+    }#
+    # you will leave the loop when you simulate an Urn that ends up with the target number of colors. So save that value of the weight...#
+    AcceptedWeights[i]<-ThisWeight#
+    CountNeeded[i]<-Index#
+}#
+pdf("hw5_rejection_count.pdf")#
+hist(CountNeeded, main = "Counts")#
+abline(v=mean(CountNeeded), col = "red")#
+legend("topleft", lty = 1, col="red", legend = paste("mean=", mean(CountNeeded), "sd=", sd(CountNeeded)))#
+dev.off()#
+#
+pdf("hw5_rejection_density.pdf")#
+kernel = density(AcceptedWeights,weights = rep(1/NoReps, NoReps), kernel = "gaussian")#
+show(kernel)#
+plot(kernel, main = "Poterior distribution")#
+dev.off()
+lambda = c(0.0000001, 0.000001, 0.00001, 0.0001, 0.001, 0.01 ,0.1,1,10)#
+for(mylambda in 1:length(lambda)){#
+for (i in 1:NoReps){#
+    HowManyColorsObserved<- -9#
+    Index = 0#
+    while (HowManyColorsObserved != HowManyColorsNeeded) {#
+           # Sample a weight, ThisWeight, for the mutation ball, from Unif(0,MaxWeight). Then...#
+           ThisWeight <- GetExpRV(mylambda)#
+           MyUrn<-Urn(ThisWeight,NoOfBalls)  # simulate the urn using this weight#
+           HowManyColorsObserved<-NumberColors(MyUrn)  # count how many colors there were at the end of this urn simulation#
+           Index = Index + 1#
+    }#
+    # you will leave the loop when you simulate an Urn that ends up with the target number of colors. So save that value of the weight...#
+    Posterior[i]<-PiTheta(ThisWeight)/CasiTheta(mylambda, ThisWeight)#
+    AcceptedWeights[i]<-ThisWeight#
+    CountNeeded[i]<-Index#
+}#
+#
+# you will now have NoReps accepted weights, so plot a histogram to see what the #
+# posterior distribution f(weight|HowManyColorsNeeded) looks like#
+#
+pdf(paste("hw5_importance_", mylambda, "_count.pdf", sep=""))#
+hist(CountNeeded, main = "Counts")#
+abline(v=mean(CountNeeded), col = "red")#
+legend("topleft", lty = 1, col="red", legend = paste("mean=", mean(CountNeeded), "sd=", sd(CountNeeded)))#
+dev.off()#
+pdf(paste("hw5_importance_", mylambda, "_density.pdf", sep=""))#
+kernel = density(AcceptedWeights,weights = Posterior/sum(Posterior), kernel = "gaussian")#
+show(kernel)#
+plot(kernel, main = "Poterior distribution")#
+dev.off()#
+}
+GetExpRV<-function(lambda){#
+    u<-runif(1,0,1)#
+    ExpRV <- (-1/lambda)*log(u)#
+    return(ExpRV)#
+}#
+#
+PiTheta <- function(theta){#
+    return(1/20)#
+}#
+#
+CasiTheta <- function(lambda, theta){#
+    return(lambda * exp(-lambda*theta)/(1-exp(-20*lambda)))#
+}
+lambda = c(0.0000001, 0.000001, 0.00001, 0.0001, 0.001, 0.01 ,0.1,1,10)#
+for(mylambda in 1:length(lambda)){#
+for (i in 1:NoReps){#
+    HowManyColorsObserved<- -9#
+    Index = 0#
+    while (HowManyColorsObserved != HowManyColorsNeeded) {#
+           # Sample a weight, ThisWeight, for the mutation ball, from Unif(0,MaxWeight). Then...#
+           ThisWeight <- GetExpRV(mylambda)#
+           MyUrn<-Urn(ThisWeight,NoOfBalls)  # simulate the urn using this weight#
+           HowManyColorsObserved<-NumberColors(MyUrn)  # count how many colors there were at the end of this urn simulation#
+           Index = Index + 1#
+    }#
+    # you will leave the loop when you simulate an Urn that ends up with the target number of colors. So save that value of the weight...#
+    Posterior[i]<-PiTheta(ThisWeight)/CasiTheta(mylambda, ThisWeight)#
+    AcceptedWeights[i]<-ThisWeight#
+    CountNeeded[i]<-Index#
+}#
+#
+# you will now have NoReps accepted weights, so plot a histogram to see what the #
+# posterior distribution f(weight|HowManyColorsNeeded) looks like#
+#
+pdf(paste("hw5_importance_", mylambda, "_count.pdf", sep=""))#
+hist(CountNeeded, main = "Counts")#
+abline(v=mean(CountNeeded), col = "red")#
+legend("topleft", lty = 1, col="red", legend = paste("mean=", mean(CountNeeded), "sd=", sd(CountNeeded)))#
+dev.off()#
+pdf(paste("hw5_importance_", mylambda, "_density.pdf", sep=""))#
+kernel = density(AcceptedWeights,weights = Posterior/sum(Posterior), kernel = "gaussian")#
+show(kernel)#
+plot(kernel, main = "Poterior distribution")#
+dev.off()#
+}

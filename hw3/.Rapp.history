@@ -1,0 +1,777 @@
+x = matrix(c(2,0,0,2), nrow=2, ncol=2)
+y <- makeCacheMatrix(x)
+myInverseX <- cacheSolve(y)
+myInverseX
+makeCacheMatrix <- function(x = matrix()) {#
+    m <- NULL#
+    set <- function(y) {#
+        x <<- y#
+        m <<- NULL#
+    }#
+    get <- function() x#
+    setinverse <- function(inverse) m <<- inverse#
+    getinverse <- function() m#
+    list(set = set, get = get,#
+    setinverse = setinverse,#
+    getinverse = getinverse)#
+}
+x = matrix(c(2,0,0,2), nrow=2, ncol=2)#
+##        x
+y <- makeCacheMatrix(x)
+myInverseX <- cacheSolve(y)
+myInverseX
+y
+makeCacheMatrix <- function(x = matrix()) {#
+    m <- NULL#
+    set <- function(y) {#
+        x <<- y#
+        m <<- NULL#
+    }#
+    get <- function() x#
+    setinverse <- function(inverse) m <<- inverse#
+    getinverse <- function() m#
+    list(set = set, get = get,#
+    setinverse = setinverse,#
+    getinverse = getinverse)#
+}
+x = matrix(c(2,0,0,2), nrow=2, ncol=2)
+cacheSolve <- function(x, ...) {#
+        ## Return a matrix that is the inverse of 'x'#
+        m <- x$getinverse()#
+        if(!is.null(m)) {#
+            message("getting cached data")#
+            return(m)#
+        }#
+        data <- x$get()#
+        m <- solve(data, ...)#
+        x$setinverse(m)#
+        m#
+}
+y <- makeCacheMatrix(x)
+myInverseX <- cacheSolve(y)
+myInverseX
+makeCacheMatrix <- function(x = matrix()) {#
+#
+ i <- NULL#
+ ## Method to set the matrix#
+ set <- function( matrix ) {#
+        m <<- matrix#
+        i <<- NULL#
+         }#
+#
+ ## Return matrix when called#
+ get <- function() {#
+         m#
+         }#
+#
+ ## Inverse the input matrix#
+ setInverse <- function(inverse) {#
+        i <<- inverse#
+ }
+Return the inversed matrix#
+ getInverse <- function() {#
+        i#
+}#
+#
+ ## Return the list of methods #
+ list(set = set, get = get,#
+         setInverse = setInverse,#
+        getInverse = getInverse)#
+#
+}
+cacheSolve <- function(x, ...) {#
+        ## Return a matrix that is the inverse of 'x'#
+        m <- x$getInverse()#
+#
+## return if inverse is calculated#
+        f( !is.null(m) ) {#
+          return(m)#
+        }#
+        ## if already calculated, retrieve the inverse from cache#
+        data <- x$get()#
+        m <- solve(data) %*% data#
+        x$setInverse(m)#
+        return(m)#
+        }
+install.packages("swirl")
+library(swirl)#
+swirl()
+5+7
+x <- 5+7
+x
+y = x-3
+y
+swirl()
+y <- x-3
+y
+c(1.1,9,3.14)
+z <- c(1.1,9,3.14)
+?c
+z
+c(z, 555, z)
+z * 2 + 100
+my_sqrt <- sqrt(z - 1)
+my_sqrt
+my_div <- z/my_sqrt
+my_div
+c(1,2,3,4) + c(0, 10)
+c(1, 2, 3, 4) + c(0, 10, 100)
+(z * 2 + 100)
+(z * 2 + 1000)
+z * 2 + 100
+z * 2 + 1000
+my_div
+getwd()
+ls()
+x <- 9
+ls()
+list.files()
+?list.files
+args(list.files())
+args(list.files)
+old.dir <- getwd()
+dir.create("testdir")
+setwd(testdir)
+setwd("testdir")
+file.create("mytest.R")
+list.files("testdir")
+list.files()
+file.exists()
+file.exists("mytest.R")
+file.info("mytest.R")
+file.rename("mytest.R", "mytest2.R")
+file.copy("mytest2.R", "mytest3.R")
+file.path("mytest3.R")
+folder1 <- file.path("mytest2.R")
+file.path("folder1", "folder2")
+?dir.create
+file.path()
+dir.create(file.path('testdir2', 'testdir3'), recursive = TRUE)
+unlink("testdir2")
+unlink("testdir2", recursive=T)
+unlink("testdir2", recursive=TRUE)
+setwd()
+setwd(getwd())
+setwd(old.dir)
+unlink("testdir", recursive=TRUE)
+1:20
+pi:10
+51:1
+15:1
+?:
+?`:`
+seq(1,20)
+seq(0, 10, by=0.5)
+seq(5, 10, length=30)
+my_seq <- seq(5, 10, length=30)
+length(my_seq)
+1:length(my_seq)
+seq(along.with = my_seq)
+seq_along(my_seq)
+rep(0, times=40)
+rep(c(0, 1, 2), times = 10)
+rep(c(0, 1, 2), each = 10)
+num_vect=c( 0.5, 55, -10,6)
+num_vect
+?c
+num_vect<-c( 0.5, 55, -10,6)
+tf <- num_vect < 1
+tp
+tf
+num_vect >= 6
+my_char <- c("My", "name", "is")
+my_char
+paste(my_char, collapse = " ")
+c(my_char, "coco")
+paste(c(my_char, "coco"), collapse=" ")
+my_name <- c(my_char, "Swirl")
+my_name
+paste(my_name, collapse=" ")
+aste("Hello",#
+| "world!", sep = " ")
+paste("Hello",#
+ "world!", sep = " ")
+paste(c(1:3, c("X", "Y", "Z")), sep = "")
+paste(1:3, c("X", "Y", "Z"), sep = "")
+paste(LETTERS, 1:4, sep = "-")
+x <- c(44, NA, 5, NA)
+x/3
+x*3
+y <- rnorm(1000)
+z <- rep(NA, 1000)
+my_data <- sample(c(y, z), 100)
+is.na(my_data)
+my_na <- is.na(my_data)
+my_na
+my_data == NA
+sum(my_na)
+my_data
+0/0
+Inf/Inf
+Inf-Inf
+x
+x[1:10]
+x[is.na(x)]
+y <- x[!is.na(x)]
+y
+y[y>0]
+x[x>0]
+x[!is.na(x) & x > 0]
+x?
+)
+c()
+c(3, 5, 7)
+x[c(3, 5, 7)]
+x[0]
+x[3000]
+x(c(-2, -10))
+x[c(-2, -10)]
+x[-c(2, 10)]
+vect <- c(foo = 11, bar = 2, norf = NA)
+vect
+names()
+names(vect)
+vect2 <- c(11, 2, NA)
+names(vect2) <- c("foo", "bar", "norf")
+identical(vect, vect2)
+vect["bar"]
+vect[c("foo", "bar")]
+my_vector <- 1:20
+my_vect
+my_vector
+dim(my_vector)
+length(my_vector)
+dim(my_vector)#
+| <- c(4, 5)
+dim(my_vector)#
+ <- c(4, 5)
+dim(my_vector)<- c(4, 5)
+dim(my_vector)
+attributes()
+attributes(my_vector)
+my_vector
+class(my_vector)
+my_matrix <- my_vector
+?matrix()
+?matrix
+my_matrix2 <- matrix(c(1:20), nrow=4, ncol = 5)
+identical(my_matrix, my_matrix2)
+c("Bill", "Gina", "Kelly", "Sean")
+patients <- c("Bill", "Gina", "Kelly", "Sean")
+cbind(patients, my_matrix)
+my_data <- data.frame(patients, my_matrix)
+my_data
+class(my_data)
+c("patient", "age", "weight","bp", "rating", "test")
+cnames <- c("patient", "age", "weight","bp", "rating", "test")
+dim(cnames)
+colnames(my_data) <- cnames
+my_data
+2 == 3
+TRUE == TRUE
+(FALSE == TRUE) == FALSE
+6 == 7
+6 <7
+10 <= 10
+5 != 7
+!(5 != 7)
+!(5 == 7 )
+FALSE & FALSE
+TRUE & c(TRUE, FALSE, FALSE)
+TRUE && c(TRUE, FALSE, FALSE)
+TRUE | c(TRUE, FALSE, FALSE)
+TRUE || c(TRUE, FALSE, FALSE)
+5 > 8 || 6 != 8 && 4 > 3.9
+isTRUE(6 > 4)
+identical('twins', 'twins')
+xor(5 == 6, !FALSE)
+ints <- sample(10)
+ints
+ints > 5
+which(ints > 5)
+which(ints > 7)
+any(ints < 0)
+all(ints < 0)
+all(ints > 0)
+setwd("/Users/chengliangdong/Desktop/PM520/hw3/")#
+#
+######################### No. 1 ##########################
+# 1. write code to create a tree.#
+# Here's a list containing all the elements of a tree#
+MakeTree<-function(TreeSize){#
+	Tree<-list(#
+	Nodes= 1:TreeSize,    # note that we can name each element of the list as we go#
+	LeftNeighbor= rep(0,TreeSize), # note also that we need to put a comma after each list element, except for the last one#
+	RightNeighbor= rep(0,TreeSize),#
+    Variables= rep(0,3), # note that the number of variables are hard coded according to what we have in the homework#
+	MutationsOnBranch=rep(0,TreeSize)#
+	)#
+	return(Tree)	#
+}
+MakeTree(3)
+MakeTree<-function(TreeSize){#
+	Tree<-list(#
+	Nodes= 1:TreeSize,    # note that we can name each element of the list as we go#
+	LeftNeighbor= rep(0,TreeSize), # note also that we need to put a comma after each list element, except for the last one#
+	RightNeighbor= rep(0,TreeSize),#
+    Variables= c(list(1=c(1,2,3)), list(2=c(1,4,7)), list(3=c(1,5,6))), # note that the number of variables are hard coded according to what we have in the homework#
+	IncomingMessage=rep(0,TreeSize),#
+    OutcomingMessage=rep(0,TreeSize),#
+    InitialPotential=rep(0,TreeSize),#
+    Believe=rep(0,TreeSize)#
+	)#
+	return(Tree)	#
+}
+c(list(1=c(1,2,3)), list(2=c(1,4,7)), list(3=c(1,5,6)))
+list(c(1,2,3)),c(1,4,7),c(1,5,6))
+list(c(1,2,3),c(1,4,7),c(1,5,6))
+MakeTree<-function(TreeSize){#
+	Tree<-list(#
+	Nodes= 1:TreeSize,    # note that we can name each element of the list as we go#
+	LeftNeighbor= rep(0,TreeSize), # note also that we need to put a comma after each list element, except for the last one#
+	RightNeighbor= rep(0,TreeSize),#
+    Variables= list(c(1,2,3),c(1,4,7),c(1,5,6)), # note that the number of variables are hard coded according to what we have in the homework#
+	IncomingMessage=rep(0,TreeSize),#
+    OutcomingMessage=rep(0,TreeSize),#
+    InitialPotential=rep(0,TreeSize),#
+    Believe=rep(0,TreeSize)#
+	)#
+	return(Tree)	#
+}
+MakeTree(3)
+# Three cliques: A,B,E; A,J,T; A,M,N#
+MakeTree<-function(TreeSize){#
+	Tree<-list(#
+	Nodes= 1:TreeSize,    # note that we can name each element of the list as we go#
+	LeftNeighbor= rep(0,TreeSize), # note also that we need to put a comma after each list element, except for the last one#
+	RightNeighbor= rep(0,TreeSize),#
+    Variables= list(c(0,0,0),c(0,0,0),c(0,0,0)), # note that the number of variables are hard coded according to what we have in the homework#
+	IncomingMessage=rep(0,TreeSize),#
+    OutcomingMessage=rep(0,TreeSize),#
+    InitialPotential=list(data.frame(matrix(ncol = 4, nrow = 8)), data.frame(matrix(ncol = 4, nrow = 8)),data.frame(matrix(ncol = 4, nrow = 8))),#
+    Believe=rep(0,TreeSize)#
+	)#
+	return(Tree)	#
+}
+MakeTree(3)
+InitiateTree<-function(Tree){#
+    Tree<-list(#
+    Nodes= 1:TreeSize,    # note that we can name each element of the list as we go#
+    LeftNeighbor= (0,1,2), # note also that we need to put a comma after each list element, except for the last one#
+    RightNeighbor= (1,2,0),#
+    Variables= list(c(1,2,3),c(1,4,7),c(1,5,6)), # note that the number of variables are hard coded according to what we have in the homework#
+    IncomingMessage=rep(0,TreeSize),#
+    OutcomingMessage=rep(0,TreeSize),#
+    InitialPotential=list(data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,2,3))), data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,4,7))),data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,5,6)))),#
+    Believe=rep(0,TreeSize)#
+    )#
+    return(Tree)#
+}
+InitiateTree<-function(Tree){#
+    TreeSize = lenght(Tree$Nodes)#
+    Tree<-list(#
+    Nodes= 1:TreeSize,    # note that we can name each element of the list as we go#
+    LeftNeighbor= (0,1,2), # note also that we need to put a comma after each list element, except for the last one#
+    RightNeighbor= (1,2,0),#
+    Variables= list(c(1,2,3),c(1,4,7),c(1,5,6)), # note that the number of variables are hard coded according to what we have in the homework#
+    IncomingMessage=rep(0,TreeSize),#
+    OutcomingMessage=rep(0,TreeSize),#
+    InitialPotential=list(data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,2,3))), data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,4,7))),data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,5,6)))),#
+    Believe=rep(0,TreeSize)#
+    )#
+    return(Tree)#
+}
+InitiateTree<-function(Tree){#
+    TreeSize = length(Tree$Nodes)#
+    Tree<-list(#
+    Nodes= 1:TreeSize,    # note that we can name each element of the list as we go#
+    LeftNeighbor= (0,1,2), # note also that we need to put a comma after each list element, except for the last one#
+    RightNeighbor= (1,2,0),#
+    Variables= list(c(1,2,3),c(1,4,7),c(1,5,6)), # note that the number of variables are hard coded according to what we have in the homework#
+    IncomingMessage=rep(0,TreeSize),#
+    OutcomingMessage=rep(0,TreeSize),#
+    InitialPotential=list(data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,2,3))), data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,4,7))),data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,5,6)))),#
+    Believe=rep(0,TreeSize)#
+    )#
+    return(Tree)#
+}
+Tree<-list(#
+    Nodes= 1:TreeSize,    # note that we can name each element of the list as we go#
+    LeftNeighbor= (0,1,2), # note also that we need to put a comma after each list element, except for the last one#
+    RightNeighbor= (1,2,0),#
+    Variables= list(c(1,2,3),c(1,4,7),c(1,5,6)), # note that the number of variables are hard coded according to what we have in the homework#
+    IncomingMessage=rep(0,TreeSize),#
+    OutcomingMessage=rep(0,TreeSize),#
+    InitialPotential=list(data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,2,3))), data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,4,7))),data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,5,6)))),#
+    Believe=rep(0,TreeSize)#
+    )
+InitiateTree<-function(Tree){#
+    TreeSize = length(Tree$Nodes)#
+    Tree<-list(#
+    Nodes= 1:TreeSize,    # note that we can name each element of the list as we go#
+    LeftNeighbor= c(0,1,2), # note also that we need to put a comma after each list element, except for the last one#
+    RightNeighbor= c(1,2,0),#
+    Variables= list(c(1,2,3),c(1,4,7),c(1,5,6)), # note that the number of variables are hard coded according to what we have in the homework#
+    IncomingMessage=rep(0,TreeSize),#
+    OutcomingMessage=rep(0,TreeSize),#
+    InitialPotential=list(data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,2,3))), data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,4,7))),data.frame(matrix(ncol = 4, nrow = 8, colnames = c(1,5,6)))),#
+    Believe=rep(0,TreeSize)#
+    )#
+    return(Tree)#
+}
+InitiateTree(Tree)
+Tree = MakeTree(3)
+InitiateTree(Tree)
+?matrix()
+?matrix()
+InitiateTree<-function(Tree){#
+    TreeSize = length(Tree$Nodes)#
+    Tree<-list(#
+    Nodes= 1:TreeSize,    # note that we can name each element of the list as we go#
+    LeftNeighbor= c(0,1,2), # note also that we need to put a comma after each list element, except for the last one#
+    RightNeighbor= c(1,2,0),#
+    Variables= list(c(1,2,3),c(1,4,7),c(1,5,6)), # note that the number of variables are hard coded according to what we have in the homework#
+    IncomingMessage=rep(0,TreeSize),#
+    OutcomingMessage=rep(0,TreeSize),#
+    InitialPotential=list(data.frame(matrix(ncol = 4, nrow = 8, dimnames = list(seq(1:8), c(1,2,3)))), data.frame(matrix(ncol = 4, nrow = 8, dimnames = list(seq(1:8), c(1,4,7)) ),data.frame(matrix(ncol = 4, nrow = 8, dimnames = list(seq(1:8), c(1,5,6)))),#
+    Believe=rep(0,TreeSize)#
+    )#
+    return(Tree)#
+}
+data.frame(matrix(ncol = 4, nrow = 8, dimnames = list(seq(1:8), c(1,2,3))))
+dim(matrix(ncol = 4, nrow = 8, dimnames = list(seq(1:8), c(1,2,3))))
+dim(matrix(ncol = 4, nrow = 8, dimnames = list(seq(1:8), c(1,2,3)))
+)
+InitialPotential=list(data.frame(matrix(ncol = 4, nrow = 8, dimnames = list(seq(1:8), c(1,2,3,"Value")))), data.frame(matrix(ncol = 4, nrow = 8, dimnames = list(seq(1:8), c(1,4,7,"Value")) ),data.frame(matrix(ncol = 4, nrow = 8, dimnames = list(seq(1:8), c(1,5,6,"Value"))))
+)
+)
+NumOfTrials=1000#
+#
+NumLeftDescendents<-rep(0, NumOfTrials)#
+#
+for (i in 1:NumOfTrials){#
+#
+MyTree<-function(SampleSize){#
+#
+  n<-SampleSize#
+#
+  k=SampleSize   #Initiate the number of alive lines#
+#
+  actset=seq(1:n)   #record the active nodes#
+#
+  NumofCoalescence=0#
+#
+  TreeList=MakeTree(n) #
+#
+  Time=rep(0, n-1) # time of n-1 coalescence#
+  while (k>1) {#
+#
+    Time[NumofCoalescence+1]=rexp(1, k*(k-1)/2)#
+#
+    SampleTwo=sample(actset,2)  #randomly sample two points#
+#
+    actset=actset[-which(actset %in% SampleTwo)]  # exclude the two selected points#
+#
+    actset=union(actset, n+1+NumofCoalescence)  # update the new set of nodes#
+    #Coalescence#
+#
+    k=k-1   #number of active lines decrease by 1#
+#
+    NumofCoalescence=NumofCoalescence+1  #number of coalescent increased by 1#
+#
+    TreeList$LeftDescendants[n+NumofCoalescence]=SampleTwo[1]  #
+#
+    TreeList$RightDescendants[n+NumofCoalescence]=SampleTwo[2]  #
+#
+    TreeList$Times[n+NumofCoalescence]=Time[NumofCoalescence]   #record the delta time for coalescence#
+#
+    TreeList$CumTime[n+NumofCoalescence]=TreeList$CumTime[n+NumofCoalescence-1]+Time[NumofCoalescence]  #
+  }#
+  return(TreeList)#
+#
+}#
+CurrentNode<-(2*SampleSize-1)#
+#
+CurrentNode<-NewTree$LeftDescendants[CurrentNode]#
+#
+SampleSize=6#
+#
+CountLeftDescendents <- function(node){#
+  NumberOfLeftDescendents <-0#
+#
+  # check the left branch#
+#
+  LeftDescendents <- NewTree$LeftDescendants[node]#
+#
+  if(LeftDescendents==0){#
+#
+    NumberOfLeftDescendents <- NumberOfLeftDescendents+1#
+#
+  } else {#
+#
+    if (LeftDescendents <= SampleSize) {#
+#
+      NumberOfLeftDescendents <- NumberOfLeftDescendents+1      #
+#
+    } else {        #
+#
+      NumberOfLeftDescendents <- CountLeftDescendents (LeftDescendents)+NumberOfLeftDescendents#
+#
+    }#
+    #print(NumberOfLeftDescendents)#
+#
+    # check the right branch#
+#
+    RightDescendents <- NewTree$RightDescendants[node]#
+    if (RightDescendents <= SampleSize) {#
+#
+      NumberOfLeftDescendents <- NumberOfLeftDescendents+1#
+#
+      #print(NumberOfLeftDescendents)         #
+#
+    } else {#
+      NumberOfLeftDescendents <- CountLeftDescendents (RightDescendents)+NumberOfLeftDescendents#
+#
+      #print(NumberOfLeftDescendents)       #
+#
+    }#
+#
+  }#
+#
+  return(NumberOfLeftDescendents)#
+#
+}#
+NumLeftDescendents[i]<-CountLeftDescendents(CurrentNode)#
+#
+}
+SampleSize = 5
+NumOfTrials=1000#
+#
+NumLeftDescendents<-rep(0, NumOfTrials)#
+#
+for (i in 1:NumOfTrials){#
+#
+MyTree<-function(SampleSize){#
+#
+  n<-SampleSize#
+#
+  k=SampleSize   #Initiate the number of alive lines#
+#
+  actset=seq(1:n)   #record the active nodes#
+#
+  NumofCoalescence=0#
+#
+  TreeList=MakeTree(n) #
+#
+  Time=rep(0, n-1) # time of n-1 coalescence#
+  while (k>1) {#
+#
+    Time[NumofCoalescence+1]=rexp(1, k*(k-1)/2)#
+#
+    SampleTwo=sample(actset,2)  #randomly sample two points#
+#
+    actset=actset[-which(actset %in% SampleTwo)]  # exclude the two selected points#
+#
+    actset=union(actset, n+1+NumofCoalescence)  # update the new set of nodes#
+    #Coalescence#
+#
+    k=k-1   #number of active lines decrease by 1#
+#
+    NumofCoalescence=NumofCoalescence+1  #number of coalescent increased by 1#
+#
+    TreeList$LeftDescendants[n+NumofCoalescence]=SampleTwo[1]  #
+#
+    TreeList$RightDescendants[n+NumofCoalescence]=SampleTwo[2]  #
+#
+    TreeList$Times[n+NumofCoalescence]=Time[NumofCoalescence]   #record the delta time for coalescence#
+#
+    TreeList$CumTime[n+NumofCoalescence]=TreeList$CumTime[n+NumofCoalescence-1]+Time[NumofCoalescence]  #
+  }#
+  return(TreeList)#
+#
+}#
+CurrentNode<-(2*SampleSize-1)#
+#
+CurrentNode<-NewTree$LeftDescendants[CurrentNode]#
+#
+SampleSize=6#
+#
+CountLeftDescendents <- function(node){#
+  NumberOfLeftDescendents <-0#
+#
+  # check the left branch#
+#
+  LeftDescendents <- NewTree$LeftDescendants[node]#
+#
+  if(LeftDescendents==0){#
+#
+    NumberOfLeftDescendents <- NumberOfLeftDescendents+1#
+#
+  } else {#
+#
+    if (LeftDescendents <= SampleSize) {#
+#
+      NumberOfLeftDescendents <- NumberOfLeftDescendents+1      #
+#
+    } else {        #
+#
+      NumberOfLeftDescendents <- CountLeftDescendents (LeftDescendents)+NumberOfLeftDescendents#
+#
+    }#
+    #print(NumberOfLeftDescendents)#
+#
+    # check the right branch#
+#
+    RightDescendents <- NewTree$RightDescendants[node]#
+    if (RightDescendents <= SampleSize) {#
+#
+      NumberOfLeftDescendents <- NumberOfLeftDescendents+1#
+#
+      #print(NumberOfLeftDescendents)         #
+#
+    } else {#
+      NumberOfLeftDescendents <- CountLeftDescendents (RightDescendents)+NumberOfLeftDescendents#
+#
+      #print(NumberOfLeftDescendents)       #
+#
+    }#
+#
+  }#
+#
+  return(NumberOfLeftDescendents)#
+#
+}#
+NumLeftDescendents[i]<-CountLeftDescendents(CurrentNode)#
+#
+}
+NumOfTrials=1000#
+#
+NumLeftDescendents<-rep(0, NumOfTrials)#
+#
+for (i in 1:NumOfTrials){#
+#
+MyTree<-function(SampleSize){#
+#
+  n<-SampleSize#
+#
+  k=SampleSize   #Initiate the number of alive lines#
+#
+  actset=seq(1:n)   #record the active nodes#
+#
+  NumofCoalescence=0#
+#
+  TreeList=MakeTree(n) #
+#
+  Time=rep(0, n-1) # time of n-1 coalescence#
+  while (k>1) {#
+#
+    Time[NumofCoalescence+1]=rexp(1, k*(k-1)/2)#
+#
+    SampleTwo=sample(actset,2)  #randomly sample two points#
+#
+    actset=actset[-which(actset %in% SampleTwo)]  # exclude the two selected points#
+#
+    actset=union(actset, n+1+NumofCoalescence)  # update the new set of nodes#
+    #Coalescence#
+#
+    k=k-1   #number of active lines decrease by 1#
+#
+    NumofCoalescence=NumofCoalescence+1  #number of coalescent increased by 1#
+#
+    TreeList$LeftDescendants[n+NumofCoalescence]=SampleTwo[1]  #
+#
+    TreeList$RightDescendants[n+NumofCoalescence]=SampleTwo[2]  #
+#
+    TreeList$Times[n+NumofCoalescence]=Time[NumofCoalescence]   #record the delta time for coalescence#
+#
+    TreeList$CumTime[n+NumofCoalescence]=TreeList$CumTime[n+NumofCoalescence-1]+Time[NumofCoalescence]  #
+  }#
+  return(TreeList)#
+#
+}
+』
+MyTree<-function(SampleSize){#
+#
+  n<-SampleSize#
+#
+  k=SampleSize   #Initiate the number of alive lines#
+#
+  actset=seq(1:n)   #record the active nodes#
+#
+  NumofCoalescence=0#
+#
+  TreeList=MakeTree(n) #
+#
+  Time=rep(0, n-1) # time of n-1 coalescence#
+  while (k>1) {#
+#
+    Time[NumofCoalescence+1]=rexp(1, k*(k-1)/2)#
+#
+    SampleTwo=sample(actset,2)  #randomly sample two points#
+#
+    actset=actset[-which(actset %in% SampleTwo)]  # exclude the two selected points#
+#
+    actset=union(actset, n+1+NumofCoalescence)  # update the new set of nodes#
+    #Coalescence#
+#
+    k=k-1   #number of active lines decrease by 1#
+#
+    NumofCoalescence=NumofCoalescence+1  #number of coalescent increased by 1#
+#
+    TreeList$LeftDescendants[n+NumofCoalescence]=SampleTwo[1]  #
+#
+    TreeList$RightDescendants[n+NumofCoalescence]=SampleTwo[2]  #
+#
+    TreeList$Times[n+NumofCoalescence]=Time[NumofCoalescence]   #record the delta time for coalescence#
+#
+    TreeList$CumTime[n+NumofCoalescence]=TreeList$CumTime[n+NumofCoalescence-1]+Time[NumofCoalescence]  #
+  }#
+  return(TreeList)#
+#
+}
+CountLeftDescendents <- function(node){#
+  NumberOfLeftDescendents <-0#
+#
+  # check the left branch#
+#
+  LeftDescendents <- NewTree$LeftDescendants[node]#
+#
+  if(LeftDescendents==0){#
+#
+    NumberOfLeftDescendents <- NumberOfLeftDescendents+1#
+#
+  } else {#
+#
+    if (LeftDescendents <= SampleSize) {#
+#
+      NumberOfLeftDescendents <- NumberOfLeftDescendents+1      #
+#
+    } else {        #
+#
+      NumberOfLeftDescendents <- CountLeftDescendents (LeftDescendents)+NumberOfLeftDescendents#
+#
+    }#
+    #print(NumberOfLeftDescendents)#
+#
+    # check the right branch#
+#
+    RightDescendents <- NewTree$RightDescendants[node]#
+    if (RightDescendents <= SampleSize) {#
+#
+      NumberOfLeftDescendents <- NumberOfLeftDescendents+1#
+#
+      #print(NumberOfLeftDescendents)         #
+#
+    } else {#
+      NumberOfLeftDescendents <- CountLeftDescendents (RightDescendents)+NumberOfLeftDescendents#
+#
+      #print(NumberOfLeftDescendents)       #
+#
+    }#
+#
+  }#
+#
+  return(NumberOfLeftDescendents)#
+#
+}
+MyTree(3)

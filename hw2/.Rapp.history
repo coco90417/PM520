@@ -1,0 +1,2104 @@
+x <- 4L
+class(x)
+x <- c(4, "a", TRUE)
+class(x)
+x <- 1:4
+y = 2
+x + y
+x <- c(3, 5, 1, 10, 12, 6)
+x[x %in% 1:5] <- 0
+x
+x <- 4
+class(x)
+x <- c(1,3, 5)
+y <- c(3, 2, 10)
+rbind(x, y)
+x <- list(2, "a", "b", TRUE)
+x[[1]]
+x <- 1:4
+y <- 2:3
+x + y
+The first function, "makeCacheMatrix" creates a special "matrix", which is#
+## really a list containing a function to#
+#
+#1.  set the value of the matrix#
+#2.  get the value of the matrix#
+#3.  set the value of the inverse matrix#
+#4.  get the value of the inverse matrix#
+#
+makeCacheMatrix <- function(x = matrix()) {#
+    m <- NULL#
+    set <- function(y) {#
+        x <<- y#
+        m <<- NULL#
+    }#
+    get <- function() x#
+    setinverse <- function(inverse) m <<- inverse#
+    getinverse <- function() m#
+    list(set = set, get = get,#
+    setinverse = setinverse,#
+    getinverse = getinverse)#
+}#
+## The following function calculates the inverse of the special "matrix"#
+## created with the above function. However, it first checks to see if the#
+## inverse has already been calculated. If so, it "gets" the inverse matrix#
+## from the cache and skips the computation. Otherwise, it calculates the#
+## inverse of the data and sets the value of the inverse in the cache via#
+## the "setinverse" function.#
+#
+cacheSolve <- function(x, ...) {#
+        ## Return a matrix that is the inverse of 'x'#
+        m <- x$getinverse()#
+        if(!is.null(m)) {#
+            message("getting cached data")#
+            return(m)#
+        }#
+        data <- x$get()#
+        m <- solve(data, ...)#
+        x$setinverse(m)#
+        m#
+}
+x = matrix(c(1,2,3,4,5,6,7,8,9,10,11,12), nrow=3, ncol=4)
+x
+y <- makeCacheMatrix(x)
+myInverseX <- cacheSolve(y)
+x = matrix(c(2,0,0,2), nrow=2, ncol=2)
+x
+y <- makeCacheMatrix(x)
+myInverseX <- cacheSolve(y)
+myInverseX
+myInverseX <- cacheSolve(y)
+myInverseX
+set the random number seed#
+set.seed(16)#
+#
+# define your variables#
+# How many balls do we start with#
+InitialNumberOfBalls<-2#
+# How many balls do we need eventually#
+TargetNumberOfBalls<-10
+set up the initial state of the urn#
+Urn<-mat.or.vec(1,TargetNumberOfBalls) #
+# we will start with two balls of different colors: "red" and "blue"#
+# The first element of the urn vector should be set to "red", the second element should be set to "bue" (say)
+set up a counter (NumberOfBalls) to keep track of how many balls we have#
+NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")
+Urn
+NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")
+NumberOfBalls
+Urn[1]
+Urn[1] = "red"#
+Urn[2] = "blue"
+Urn
+length(Urn[Urn!=0])
+sample(1,1:length(Urn[Urn!=0]))
+sample(1, 1:2)
+sample(1:2, 1)
+Urn[sample(1:length(Urn[Urn!=0]),1)]
+set the random number seed#
+set.seed(16)#
+#
+# define your variables#
+# How many balls do we start with#
+InitialNumberOfBalls<-2#
+# How many balls do we need eventually#
+TargetNumberOfBalls<-10#
+# set up the initial state of the urn#
+Urn<-mat.or.vec(1,TargetNumberOfBalls) #
+# we will start with two balls of different colors: "red" and "blue"#
+# The first element of the urn vector should be set to "red", the second element should be set to "blue" (say)#
+Urn[1] = "red"#
+Urn[2] = "blue"#
+#
+# set up a counter (NumberOfBalls) to keep track of how many balls we have#
+NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+#
+# set-up a loop that pulls a ball from the urn and takes the appropriate action#
+while (NumberOfBalls<TargetNumberOfBalls){#
+	# draw a ball (WhichBall)#
+    MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+	# return the ball and add another one like it#
+    Urn[length(Urn[Urn!=0]) + 1] = MyBall#
+	# increase the counter of how many balls we have in the urn#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+}#
+#
+# output summaries of what is in the urn when we are done (ignoring the extra ball )#
+NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")
+NumberOfBalls
+Urn
+function#
+DrawBallsFromUrn <- function(InitialNumberOfBalls=2, TargetNumberOfBalls=10){#
+    # set up the initial state of the urn#
+    Urn<-mat.or.vec(1,TargetNumberOfBalls)#
+    # we will start with two balls of different colors: "red" and "blue"#
+    # The first element of the urn vector should be set to "red", the second element should be set to "blue" (say)#
+    Urn[1] = "red"#
+    Urn[2] = "blue"#
+    # set up a counter (NumberOfBalls) to keep track of how many balls we have#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    # set-up a loop that pulls a ball from the urn and takes the appropriate action#
+    while (NumberOfBalls<TargetNumberOfBalls){#
+        # draw a ball (WhichBall)#
+        MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+        # return the ball and add another one like it#
+        Urn[length(Urn[Urn!=0]) + 1] = MyBall#
+        # increase the counter of how many balls we have in the urn#
+        NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    }#
+    # output summaries of what is in the urn when we are done (ignoring the extra ball )#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    Urn#
+}
+DrawBallsFromUrn(InitialNumberOfBalls=4, TargetNumberOfBalls=20)
+MyRedNumber = rep(0,1000)
+MyRedNumber = rep(0,1000)#
+for i in (1:1000){#
+     MyUrn = DrawBallsFromUrn(InitialNumberOfBalls=2, TargetNumberOfBalls=50)#
+     MyRedNumber[i] = sum(MyUrn[MyUrn=="red"])#
+}
+MyRedNumber = rep(0,1000)#
+for (i in 1:1000){#
+     MyUrn = DrawBallsFromUrn(InitialNumberOfBalls=2, TargetNumberOfBalls=50)#
+     MyRedNumber[i] = sum(MyUrn[MyUrn=="red"])#
+}
+MyRedNumber = rep(0,1000)#
+for (i in 1:1000){#
+     MyUrn = DrawBallsFromUrn(InitialNumberOfBalls=2, TargetNumberOfBalls=50)#
+     MyRedNumber[i] = length(MyUrn[MyUrn=="red"])#
+}
+hist(MyRedNumber)
+task 2#
+MyMean = rep(0,49)#
+for (j in 1:49)#
+MyRedNumber = rep(0,1000)#
+for (i in 1:1000){#
+    MyUrn = DrawBallsFromUrn(InitialNumberOfBalls=2, TargetNumberOfBalls=50)#
+    MyRedNumber[i] = length(MyUrn[MyUrn=="red"])#
+}#
+    MyMean[j] = mean(MyRedNumber)#
+}
+MyMean = rep(0,49)#
+for (j in 1:49){#
+    MyRedNumber = rep(0,1000)#
+    for (i in 1:1000){#
+    MyUrn = DrawBallsFromUrn(InitialNumberOfBalls=2, TargetNumberOfBalls=50)#
+    MyRedNumber[i] = length(MyUrn[MyUrn=="red"])#
+    }#
+    MyMean[j] = mean(MyRedNumber)#
+}
+hist(MyMean = rep(0,49)#
+for (j in 1:49){#
+    MyRedNumber = rep(0,1000)#
+    for (i in 1:1000){#
+    MyUrn = DrawBallsFromUrn(InitialNumberOfBalls=2, TargetNumberOfBalls=50)#
+    MyRedNumber[i] = length(MyUrn[MyUrn=="red"])#
+    }#
+    MyMean[j] = mean(MyRedNumber)#
+})
+hist(MyMean)
+function#
+DrawBallsFromUrn <- function(InitialNumberOfBalls=2, TargetNumberOfBalls=10){#
+    # set up the initial state of the urn#
+    Urn<-mat.or.vec(1,TargetNumberOfBalls)#
+    # we will start with two balls of different colors: "red" and "blue"#
+    # The first element of the urn vector should be set to "red", the second element should be set to "blue" (say)#
+    Urn[1] = "red"#
+    if(InitialNumberOfBalls > 1){#
+    Urn[2] = "blue"#
+    }#
+    # set up a counter (NumberOfBalls) to keep track of how many balls we have#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    # set-up a loop that pulls a ball from the urn and takes the appropriate action#
+    while (NumberOfBalls<TargetNumberOfBalls){#
+        # draw a ball (WhichBall)#
+        MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+        # return the ball and add another one like it#
+        Urn[length(Urn[Urn!=0]) + 1] = MyBall#
+        # increase the counter of how many balls we have in the urn#
+        NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    }#
+    # output summaries of what is in the urn when we are done (ignoring the extra ball )#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    Urn#
+}
+task 2#
+MyMean = rep(0,49)#
+for (j in 1:49){#
+    MyRedNumber = rep(0,1000)#
+    for (i in 1:1000){#
+    MyUrn = DrawBallsFromUrn(InitialNumberOfBalls=j, TargetNumberOfBalls=50)#
+    MyRedNumber[i] = length(MyUrn[MyUrn=="red"])#
+    }#
+    MyMean[j] = mean(MyRedNumber)#
+}
+hist(MyMean)
+MyMean
+function#
+DrawBallsFromUrn <- function(InitialNumberOfBalls=1, TargetNumberOfBalls=10){#
+    # set up the initial state of the urn#
+    Urn<-mat.or.vec(1,TargetNumberOfBalls)#
+    # we will start with two balls of different colors: "red" and "blue"#
+    # The first element of the urn vector should be set to "red", the second element should be set to "blue" (say)#
+#
+    if(InitialNumberOfBalls == 1){#
+            Urn[1] = "red"#
+            Urn[2] = "blue"#
+    }else{#
+        for(i in 1:(InitialNumberOfBalls-1)){#
+            Urn[i] = "red"#
+        }#
+        Urn[InitialNumberOfBalls] = "blue"#
+    }#
+    # set up a counter (NumberOfBalls) to keep track of how many balls we have#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    # set-up a loop that pulls a ball from the urn and takes the appropriate action#
+    while (NumberOfBalls<TargetNumberOfBalls){#
+        # draw a ball (WhichBall)#
+        MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+        # return the ball and add another one like it#
+        Urn[length(Urn[Urn!=0]) + 1] = MyBall#
+        # increase the counter of how many balls we have in the urn#
+        NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    }#
+    # output summaries of what is in the urn when we are done (ignoring the extra ball )#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    Urn#
+}
+task 2#
+MyMean = rep(0,49)#
+for (j in 1:49){#
+    MyRedNumber = rep(0,1000)#
+    for (i in 1:1000){#
+    MyUrn = DrawBallsFromUrn(InitialNumberOfBalls=j, TargetNumberOfBalls=50)#
+    MyRedNumber[i] = length(MyUrn[MyUrn=="red"])#
+    }#
+    MyMean[j] = mean(MyRedNumber)#
+}
+hist(#
+# task 2#
+MyMean = rep(0,49)#
+for (j in 1:49){#
+    MyRedNumber = rep(0,1000)#
+    for (i in 1:1000){#
+    MyUrn = DrawBallsFromUrn(InitialNumberOfBalls=j, TargetNumberOfBalls=50)#
+    MyRedNumber[i] = length(MyUrn[MyUrn=="red"])#
+    }#
+    MyMean[j] = mean(MyRedNumber)#
+}#
+)
+hist(MyMean)
+MyMean
+point(1:49,MyMean)
+plot(1:49,MyMean)
+c#
+# function#
+DrawBallsFromUrn <- function(InitialNumberOfBalls=1, TargetNumberOfBalls=10, ReturnBall=1){#
+    # set up the initial state of the urn#
+    Urn<-mat.or.vec(1,TargetNumberOfBalls)#
+    # we will start with two balls of different colors: "red" and "blue"#
+    # The first element of the urn vector should be set to "red", the second element should be set to "blue" (say)#
+#
+    if(InitialNumberOfBalls == 1){#
+            Urn[1] = "red"#
+            Urn[2] = "blue"#
+    }else{#
+        for(i in 1:(InitialNumberOfBalls-1)){#
+            Urn[i] = "red"#
+        }#
+        Urn[InitialNumberOfBalls] = "blue"#
+    }#
+    # set up a counter (NumberOfBalls) to keep track of how many balls we have#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    # set-up a loop that pulls a ball from the urn and takes the appropriate action#
+    while (NumberOfBalls<TargetNumberOfBalls){#
+        # draw a ball (WhichBall)#
+        MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+        # return the ball and add another one like it#
+        for(i in 1:(ReturnBall)){#
+            Urn[length(Urn[Urn!=0]) + i] = MyBall#
+        }#
+        # increase the counter of how many balls we have in the urn#
+        NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    }#
+    # output summaries of what is in the urn when we are done (ignoring the extra ball )#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    Urn#
+}
+task 3#
+MyMean = rep(0,10)#
+for (j in 1:10){#
+    MyRedNumber = rep(0,1000)#
+    for (i in 1:1000){#
+        MyUrn = DrawBallsFromUrn(TargetNumberOfBalls=50, ReturnBall = j)#
+        MyRedNumber[i] = length(MyUrn[MyUrn=="red"])#
+    }#
+    MyMean[j] = mean(MyRedNumber)#
+}
+task 3#
+MyMean = rep(0,10)#
+for (j in 1:10){#
+    MyRedNumber = rep(0,1000)#
+    for (i in 1:1000){#
+        MyUrn = DrawBallsFromUrn(InitialNumberOfBalls=1, TargetNumberOfBalls=50, ReturnBall = j)#
+        MyRedNumber[i] = length(MyUrn[MyUrn=="red"])#
+    }#
+    MyMean[j] = mean(MyRedNumber)#
+}
+Urn<-mat.or.vec(1,TargetNumberOfBalls)#
+    # we will start with two balls of different colors: "red" and "blue"#
+    # The first element of the urn vector should be set to "red", the second element should be set to "blue" (say)#
+#
+    if(InitialNumberOfBalls == 1){#
+            Urn[1] = "red"#
+            Urn[2] = "blue"#
+    }else{#
+        for(i in 1:(InitialNumberOfBalls-1)){#
+            Urn[i] = "red"#
+        }#
+        Urn[InitialNumberOfBalls] = "blue"#
+    }#
+    # set up a counter (NumberOfBalls) to keep track of how many balls we have#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    # set-up a loop that pulls a ball from the urn and takes the appropriate action#
+    while (NumberOfBalls<TargetNumberOfBalls){#
+        # draw a ball (WhichBall)#
+        MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+        # return the ball and add another one like it#
+        for(i in 1:(ReturnBall)){#
+            Urn[length(Urn[Urn!=0]) + i] = MyBall#
+        }#
+        # increase the counter of how many balls we have in the urn#
+        NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    }#
+    # output summaries of what is in the urn when we are done (ignoring the extra ball )#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    Urn
+DrawBallsFromUrn <- function(InitialNumberOfBalls=1, TargetNumberOfBalls=10, ReturnBall=1){#
+    # set up the initial state of the urn#
+    Urn<-mat.or.vec(1,TargetNumberOfBalls)#
+    # we will start with two balls of different colors: "red" and "blue"#
+    # The first element of the urn vector should be set to "red", the second element should be set to "blue" (say)#
+#
+    if(InitialNumberOfBalls == 1){#
+            Urn[1] = "red"#
+            Urn[2] = "blue"#
+    }else{#
+        for(i in 1:(InitialNumberOfBalls-1)){#
+            Urn[i] = "red"#
+        }#
+        Urn[InitialNumberOfBalls] = "blue"#
+    }#
+    # set up a counter (NumberOfBalls) to keep track of how many balls we have#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    # set-up a loop that pulls a ball from the urn and takes the appropriate action#
+    while (NumberOfBalls<TargetNumberOfBalls){#
+        # draw a ball (WhichBall)#
+        MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+        # return the ball and add another one like it#
+        for(i in 1:ReturnBall){#
+            Urn[length(Urn[Urn!=0]) + i] = MyBall#
+        }#
+        # increase the counter of how many balls we have in the urn#
+        NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    }#
+    # output summaries of what is in the urn when we are done (ignoring the extra ball )#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    Urn#
+}
+InitialNumberOfBalls=1, TargetNumberOfBalls=10, ReturnBall=1
+InitialNumberOfBalls=1
+TargetNumberOfBalls=10
+ReturnBall=1
+Urn<-mat.or.vec(1,TargetNumberOfBalls)#
+    # we will start with two balls of different colors: "red" and "blue"#
+    # The first element of the urn vector should be set to "red", the second element should be set to "blue" (say)#
+#
+    if(InitialNumberOfBalls == 1){#
+            Urn[1] = "red"#
+            Urn[2] = "blue"#
+    }else{#
+        for(i in 1:(InitialNumberOfBalls-1)){#
+            Urn[i] = "red"#
+        }#
+        Urn[InitialNumberOfBalls] = "blue"#
+    }#
+    # set up a counter (NumberOfBalls) to keep track of how many balls we have#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    # set-up a loop that pulls a ball from the urn and takes the appropriate action#
+    while (NumberOfBalls<TargetNumberOfBalls){#
+        # draw a ball (WhichBall)#
+        MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+        # return the ball and add another one like it#
+        for(i in 1:ReturnBall){#
+            Urn[length(Urn[Urn!=0]) + i] = MyBall#
+        }#
+        # increase the counter of how many balls we have in the urn#
+        NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    }#
+    # output summaries of what is in the urn when we are done (ignoring the extra ball )#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    Urn
+ReturnBall = 10
+Urn<-mat.or.vec(1,TargetNumberOfBalls)#
+    # we will start with two balls of different colors: "red" and "blue"#
+    # The first element of the urn vector should be set to "red", the second element should be set to "blue" (say)#
+#
+    if(InitialNumberOfBalls == 1){#
+            Urn[1] = "red"#
+            Urn[2] = "blue"#
+    }else{#
+        for(i in 1:(InitialNumberOfBalls-1)){#
+            Urn[i] = "red"#
+        }#
+        Urn[InitialNumberOfBalls] = "blue"#
+    }#
+    # set up a counter (NumberOfBalls) to keep track of how many balls we have#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    # set-up a loop that pulls a ball from the urn and takes the appropriate action#
+    while (NumberOfBalls<TargetNumberOfBalls){#
+        # draw a ball (WhichBall)#
+        MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+        # return the ball and add another one like it#
+        for(i in 1:ReturnBall){#
+            Urn[length(Urn[Urn!=0]) + i] = MyBall#
+        }#
+        # increase the counter of how many balls we have in the urn#
+        NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    }#
+    # output summaries of what is in the urn when we are done (ignoring the extra ball )#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    Urn
+DrawBallsFromUrn <- function(InitialNumberOfBalls=1, TargetNumberOfBalls=10, ReturnBall=1){#
+    # set up the initial state of the urn#
+    Urn<-mat.or.vec(1,TargetNumberOfBalls)#
+    # we will start with two balls of different colors: "red" and "blue"#
+    # The first element of the urn vector should be set to "red", the second element should be set to "blue" (say)#
+#
+    if(InitialNumberOfBalls == 1){#
+            Urn[1] = "red"#
+            Urn[2] = "blue"#
+    }else{#
+        for(i in 1:(InitialNumberOfBalls-1)){#
+            Urn[i] = "red"#
+        }#
+        Urn[InitialNumberOfBalls] = "blue"#
+    }#
+    # set up a counter (NumberOfBalls) to keep track of how many balls we have#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    # set-up a loop that pulls a ball from the urn and takes the appropriate action#
+    while (NumberOfBalls<TargetNumberOfBalls){#
+        # draw a ball (WhichBall)#
+        MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+        # return the ball and add another one like it#
+        MyCurrentIndex = length(Urn[Urn!=0])#
+        for(i in 1:ReturnBall){#
+            Urn[MyCurrentIndex + i] = MyBall#
+        }#
+        # increase the counter of how many balls we have in the urn#
+        NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    }#
+    # output summaries of what is in the urn when we are done (ignoring the extra ball )#
+    NumberOfBalls<-sum(Urn=="red")+sum(Urn=="blue")#
+    Urn#
+}
+j = 5
+MyRedNumber = rep(0,1000)#
+    for (i in 1:1000){#
+        MyUrn = DrawBallsFromUrn(InitialNumberOfBalls=1, TargetNumberOfBalls=50, ReturnBall = j)#
+        MyRedNumber[i] = length(MyUrn[MyUrn=="red"])#
+    }#
+    MyMean[j] = mean(MyRedNumber)
+MyMean
+task 3#
+MyMean = rep(0,10)#
+for (j in 1:10){#
+    MyRedNumber = rep(0,1000)#
+    for (i in 1:1000){#
+        MyUrn = DrawBallsFromUrn(InitialNumberOfBalls=1, TargetNumberOfBalls=50, ReturnBall = j)#
+        MyRedNumber[i] = length(MyUrn[MyUrn=="red"])#
+    }#
+    MyMean[j] = mean(MyRedNumber)#
+}
+plot(1:10,MyMean)
+task 3#
+MyMean = rep(0,12)#
+par(mfrow=c(3,4))#
+for (j in 1:12){#
+    MyRedNumber = rep(0,1000)#
+    for (i in 1:1000){#
+        MyUrn = DrawBallsFromUrn(InitialNumberOfBalls=1, TargetNumberOfBalls=50, ReturnBall = j)#
+        MyRedNumber[i] = length(MyUrn[MyUrn=="red"])#
+    }#
+    hist(MyRedNumber)#
+    MyMean[j] = mean(MyRedNumber)#
+}
+Urn<-mat.or.vec(1,TargetNumberOfBalls)#
+# 1= black#
+Urn[1] = 1#
+Urn[2] = 2#
+# set up a counter (NumberOfBalls) to keep track of how many balls we have#
+NumberOfBalls<-sum(Urn==1)+sum(Urn==2)
+NumberOfBalls<-sum(Urn==1)+sum(Urn==2)#
+HowManyBallsWeNeed = 50#
+while (NumberOfBalls<(HowManyBallsWeNeed+1)){#
+  # draw a ball#
+  MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+  if (MyBall == 1){#
+    MyIndex = sample(2:length(Urn[Urn!=0]),1)#
+    MyOtherBall = Urn[MyIndex]#
+    # pick another ball#
+    # change color of ball to new color (i.e. new number)#
+    Urn[MyIndex] = max(uniq(Urn) + 1)#
+    # Set color of ball equal to  NumberOfColorsUsed#
+    # note that we don’t increase the count of the number of balls#
+  }else{#
+    Urn[length(Urn[Urn!=0]) + 1] = MyBall#
+    # the ball is some other color#
+    # return the ball and add another one like it#
+    # increase the counter of how many balls we have in the urn:#
+    # NumberOfBalls<-NumberOfBalls+1#
+  }#
+}#
+#
+# outp
+while (NumberOfBalls<(HowManyBallsWeNeed+1)){#
+  # draw a ball#
+  MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+  if (MyBall == 1){#
+    MyIndex = sample(2:length(Urn[Urn!=0]),1)#
+    MyOtherBall = Urn[MyIndex]#
+    # pick another ball#
+    # change color of ball to new color (i.e. new number)#
+    Urn[MyIndex] = max(unique(Urn) + 1)#
+    # Set color of ball equal to  NumberOfColorsUsed#
+    # note that we don’t increase the count of the number of balls#
+  }else{#
+    Urn[length(Urn[Urn!=0]) + 1] = MyBall#
+    # the ball is some other color#
+    # return the ball and add another one like it#
+    # increase the counter of how many balls we have in the urn:#
+    # NumberOfBalls<-NumberOfBalls+1#
+  }#
+}#
+#
+# output summaries of what is in the urn when we are done
+while (NumberOfBalls<(HowManyBallsWeNeed+1)){#
+  # draw a ball#
+  MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+  if (MyBall == 1){#
+    MyIndex = sample(2:length(Urn[Urn!=0]),1)#
+    MyOtherBall = Urn[MyIndex]#
+    # pick another ball#
+    # change color of ball to new color (i.e. new number)#
+    Urn[MyIndex] = max(unique(Urn) + 1)#
+    # Set color of ball equal to  NumberOfColorsUsed#
+    # note that we don’t increase the count of the number of balls#
+  }else{#
+    Urn[length(Urn[Urn!=0]) + 1] = MyBall#
+    # the ball is some other color#
+    # return the ball and add another one like it#
+    # increase the counter of how many balls we have in the urn:#
+  }#
+  NumberOfBalls<-NumberOfBalls+1#
+}#
+#
+# output summaries of what is in the urn when we are done
+Urn
+NumberOfBalls<-sum(Urn==1)+sum(Urn==2)#
+HowManyBallsWeNeed = 50#
+while (NumberOfBalls<(HowManyBallsWeNeed+1)){#
+  # draw a ball#
+  MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+  if (MyBall == 1){#
+    MyIndex = sample(2:length(Urn[Urn!=0]),1)#
+    MyOtherBall = Urn[MyIndex]#
+    # pick another ball#
+    # change color of ball to new color (i.e. new number)#
+    Urn[MyIndex] = max(unique(Urn) + 1)#
+    # Set color of ball equal to  NumberOfColorsUsed#
+    # note that we don’t increase the count of the number of balls#
+  }else{#
+    Urn[length(Urn[Urn!=0]) + 1] = MyBall#
+    # the ball is some other color#
+    # return the ball and add another one like it#
+    # increase the counter of how many balls we have in the urn:#
+    NumberOfBalls<-NumberOfBalls+1#
+  }#
+}
+Urn
+TargetNumberOfBalls = 50
+Urn<-mat.or.vec(1,TargetNumberOfBalls)#
+# 1= black#
+Urn[1] = 1#
+Urn[2] = 2#
+# set up a counter (NumberOfBalls) to keep track of how many balls we have#
+NumberOfBalls<-sum(Urn==1)+sum(Urn==2)#
+HowManyBallsWeNeed = 50#
+while (NumberOfBalls<(HowManyBallsWeNeed+1)){#
+  # draw a ball#
+  MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+  if (MyBall == 1){#
+    MyIndex = sample(2:length(Urn[Urn!=0]),1)#
+    MyOtherBall = Urn[MyIndex]#
+    # pick another ball#
+    # change color of ball to new color (i.e. new number)#
+    Urn[MyIndex] = max(unique(Urn) + 1)#
+    # Set color of ball equal to  NumberOfColorsUsed#
+    # note that we don’t increase the count of the number of balls#
+  }else{#
+    Urn[length(Urn[Urn!=0]) + 1] = MyBall#
+    # the ball is some other color#
+    # return the ball and add another one like it#
+    # increase the counter of how many balls we have in the urn:#
+    NumberOfBalls<-NumberOfBalls+1#
+  }#
+}
+Urn
+MyColorNumber = length(unique(Urn)) - 1
+MyColorNumber
+MyColor = rep(0, 100)#
+for (i in 1:100){#
+TargetNumberOfBalls = 50#
+Urn<-mat.or.vec(1,TargetNumberOfBalls)#
+# 1= black#
+Urn[1] = 1#
+Urn[2] = 2#
+# set up a counter (NumberOfBalls) to keep track of how many balls we have#
+NumberOfBalls<-sum(Urn==1)+sum(Urn==2)#
+HowManyBallsWeNeed = 50#
+while (NumberOfBalls<(HowManyBallsWeNeed+1)){#
+  # draw a ball#
+  MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+  if (MyBall == 1){#
+    MyIndex = sample(2:length(Urn[Urn!=0]),1)#
+    MyOtherBall = Urn[MyIndex]#
+    # pick another ball#
+    # change color of ball to new color (i.e. new number)#
+    Urn[MyIndex] = max(unique(Urn) + 1)#
+    # Set color of ball equal to  NumberOfColorsUsed#
+    # note that we don’t increase the count of the number of balls#
+  }else{#
+    Urn[length(Urn[Urn!=0]) + 1] = MyBall#
+    # the ball is some other color#
+    # return the ball and add another one like it#
+    # increase the counter of how many balls we have in the urn:#
+    NumberOfBalls<-NumberOfBalls+1#
+  }#
+}#
+# output summaries of what is in the urn when we are done#
+MyColor[i] = length(unique(Urn)) - 1#
+}
+hist(MyColor)
+GetUrn <- function(){#
+TargetNumberOfBalls = 50#
+Urn<-mat.or.vec(1,TargetNumberOfBalls)#
+# 1= black#
+Urn[1] = 1#
+Urn[2] = 2#
+# set up a counter (NumberOfBalls) to keep track of how many balls we have#
+NumberOfBalls<-sum(Urn==1)+sum(Urn==2)#
+HowManyBallsWeNeed = 50#
+while (NumberOfBalls<(HowManyBallsWeNeed+1)){#
+  # draw a ball#
+  MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+  if (MyBall == 1){#
+    MyIndex = sample(2:length(Urn[Urn!=0]),1)#
+    MyOtherBall = Urn[MyIndex]#
+    # pick another ball#
+    # change color of ball to new color (i.e. new number)#
+    Urn[MyIndex] = max(unique(Urn) + 1)#
+    # Set color of ball equal to  NumberOfColorsUsed#
+    # note that we don’t increase the count of the number of balls#
+  }else{#
+    Urn[length(Urn[Urn!=0]) + 1] = MyBall#
+    # the ball is some other color#
+    # return the ball and add another one like it#
+    # increase the counter of how many balls we have in the urn:#
+    NumberOfBalls<-NumberOfBalls+1#
+  }#
+}#
+# output summaries of what is in the urn when we are done#
+}
+MyColor = rep(0, 100)#
+for (i in 1:100){#
+    MyUrn  = GetUrn()#
+    MyColor[i] = length(unique(MyUrn)) - 1#
+}
+MyColor
+GetUrn <- function(){#
+TargetNumberOfBalls = 50#
+Urn<-mat.or.vec(1,TargetNumberOfBalls)#
+# 1= black#
+Urn[1] = 1#
+Urn[2] = 2#
+# set up a counter (NumberOfBalls) to keep track of how many balls we have#
+NumberOfBalls<-sum(Urn==1)+sum(Urn==2)#
+HowManyBallsWeNeed = 50#
+while (NumberOfBalls<(HowManyBallsWeNeed+1)){#
+  # draw a ball#
+  MyBall = Urn[sample(1:length(Urn[Urn!=0]),1)]#
+  if (MyBall == 1){#
+    MyIndex = sample(2:length(Urn[Urn!=0]),1)#
+    MyOtherBall = Urn[MyIndex]#
+    # pick another ball#
+    # change color of ball to new color (i.e. new number)#
+    Urn[MyIndex] = max(unique(Urn) + 1)#
+    # Set color of ball equal to  NumberOfColorsUsed#
+    # note that we don’t increase the count of the number of balls#
+  }else{#
+    Urn[length(Urn[Urn!=0]) + 1] = MyBall#
+    # the ball is some other color#
+    # return the ball and add another one like it#
+    # increase the counter of how many balls we have in the urn:#
+    NumberOfBalls<-NumberOfBalls+1#
+  }#
+}#
+# output summaries of what is in the urn when we are done#
+    Urn#
+}
+MyColor = rep(0, 100)#
+for (i in 1:100){#
+    MyUrn  = GetUrn()#
+    MyColor[i] = length(unique(MyUrn)) - 1#
+}
+MyColor
+2. commonest color#
+MyColor = rep(0, 100)#
+for (i in 1:100){#
+    MyUrn  = GetUrn()#
+    MyMaxCount = 0#
+    for (j in seq_along(unique(MyUrn))){#
+        MyCount = length(MyUrn[MyUrn==unique(MyUrn)[j]])#
+        if(MyCount > MyMaxCount){#
+            MyColor[i] = unique(MyUrn)[j]#
+            MyMaxCount = MyColor[i]#
+        }#
+    }#
+}
+MyColor
+2. commonest color#
+MyColor = rep(0, 100)#
+for (i in 1:100){#
+    MyUrn  = GetUrn()#
+    MyMaxCount = 0#
+    for (j in seq_along(unique(MyUrn))){#
+        MyCount = length(MyUrn[MyUrn==unique(MyUrn)[j]])#
+        if(MyCount > MyMaxCount){#
+            MyColor[i] = MyCount#
+            MyMaxCount = MyColor[i]#
+        }#
+    }#
+}
+MyColor
+MyColor = rep(0, 1000)#
+for (i in 1:1000){#
+    MyUrn  = GetUrn()#
+    MyColor[i] = length(unique(MyUrn)) - 1#
+}#
+hist(MyColor)
+mean(MyColor)
+MyColor = rep(0, 5000)#
+for (i in 1:5000){#
+    MyUrn  = GetUrn()#
+    MyColor[i] = length(unique(MyUrn)) - 1#
+}#
+hist(MyColor)
+mean(MyColor)
+2. commonest color#
+MyColor = rep(0, 100)#
+for (i in 1:100){#
+    MyUrn  = GetUrn()#
+    MyMaxCount = 0#
+    for (j in seq_along(unique(MyUrn))){#
+        MyCount = length(MyUrn[MyUrn==unique(MyUrn)[j]])#
+        if(MyCount > MyMaxCount){#
+            MyColor[i] = MyCount#
+            MyMaxCount = MyColor[i]#
+        }#
+    }#
+}
+MyColor
+hist(MyColor)
+x <- vector("numeric", length=20)
+x
+x <- c(1,2,1.3,"a")
+x
+library(MASS)
+data()
+data(CO2)
+CO2
+CO2$Treatment
+CO2$uptake
+a1 = aov(CO2$uptake ~ CO2$Treatment)
+TukeyHSD(x=a1, conf.level=0.95)
+a1
+summary(a1)
+a1 = aov(CO2$uptake ~ CO2$Treatment * CO2$Type)
+TukeyHSD(x=a1, conf.level=0.95)
+fitted = TukeyHSD(x=a1, conf.level=0.95)
+summary(fitted)
+fitted
+group2 = c(315.00388,488.87543,350.01733,391.12344,396.27188,301.90414,348.12418,355.73776,317.31851,336.90356,373.71454,334.51654,400.25818,272.38702,284.88992,419.94064,236.16988,416.61121,345.38052)
+mean(group2)
+group2 = c(315.00388,488.87543,350.01733,391.12344,396.27188,301.90414,348.12418,355.73776,317.31851,336.90356,373.71454,334.51654,400.25818,272.38702,284.88992,419.94064,236.16988,416.61121,345.38052, 323.0459)
+mean(group2)
+group1 = c(224.5998,418.28607,397.22278,413.92776,425.58047,471.90265,404.01022,494.1188,515.2843,480.24216,539.0799,440.97305,424.88931,499.93317,401.73883,459.10605,415.9205,447.82498,484.45789,401.06277)
+mean(group1)
+group3 = c(378.78024,326.7515,403.34308,383.69864,493.23679,373.08759,368.0329,236.14633,315.00388,488.87543,350.01733,391.12344,396.27188,301.90414,348.12418,355.73776,317.31851,336.90356,373.71454,334.51654)
+mean(group3)
+group4 = c(299.06354,400.23563,341.15424,344.15552,434.29428,273.89771,315.2984,350.03546,369.98737,340.43961,185.53178,195.46239,239.26065,304.74884,365.12408,327.78293,349.76236,326.81973,267.3071,363.54321)
+mean(group4)
+mydata = cbind(group1, group2, group3, group4)
+mydata
+mydata = rbind(group1, group2, group3, group4)
+mydata
+mydata = c(group1, group2, group3, group4)
+mydata
+mygroup = c(rep("one",20), rep("two", 20), rep("three", 20), rep("four", 20))
+mygroup
+myfinaldata = cbind(mydata, mygroup)
+myfinaldata
+a1 = aov(myfinaldata$mydata ~ myfinaldata$mygroup)
+a1 = aov(myfinaldata$mydata ~ myfinaldata[,2])
+myfinaldata$mydata
+class(myfinaldata)
+myfinaldata[],1
+myfinaldata[,1]
+myfinaldata[,2]
+a1 = aov(myfinaldata[,1] ~ myfinaldata[,2])
+summary(a1)
+a1
+TukeyHSD(x=a1, conf.level=0.95)
+b1 = TukeyHSD(x=a1, conf.level=0.95)
+b1
+summary(b1)
+b1
+hist(group1)
+hist(group2)
+hist(group3)
+hist(group4)
+hist(group1)
+hist(group2)
+hist(group3)
+hist(group4)
+library(vioplot)
+vioplot(group1, group2, group3, group4, names=c("group one", "group two", "group three", "group four"))
+new_group1 = group1/9.66
+new_group2 = group2/9.66
+new_group3 = group3/7.65
+new_group4 = group4/7.75
+new_group4 = group4/7.65
+mynewdata = c(new_group1, new_group2, new_group3, new_group4)
+myfinaldata = cbind(mydata, mygroup, mynewdata)
+a1 = aov(myfinaldata[,3] ~ myfinaldata[,2])
+summary(a1)
+names(myfinaldata)
+myfinaldata
+b1 = TukeyHSD(x=a1, conf.level=0.95)
+b1
+vioplot(new_group1, new_group2, new_group3, new_group4, names=c("group one", "group two", "group three", "group four"), color=c(1,4,7,11))
+vioplot(new_group1, new_group2, new_group3, new_group4, names=c("group one", "group two", "group three", "group four"))
+library(gplots)#
+palette(rev(rich.colors(32)))
+vioplot(new_group1, new_group2, new_group3, new_group4, names=c("group one", "group two", "group three", "group four"), color=c(1,4,7,11))
+vioplot(new_group1, new_group2, new_group3, new_group4, names=c("group one", "group two", "group three", "group four"), col=c(1,4,7,11))
+vioplot(new_group1, new_group2, new_group3, new_group4, names=c("group one", "group two", "group three", "group four"), col=rainbow)
+vioplot(new_group1, new_group2, new_group3, new_group4, names=c("group one", "group two", "group three", "group four"), col=1)
+vioplot(new_group1, new_group2, new_group3, new_group4, names=c("group one", "group two", "group three", "group four"))
+vioplot(new_group1, new_group2, new_group3, new_group4, names=c("group one", "group two", "group three", "group four"), col=c(1,5,9,13))
+vioplot(new_group1, new_group2, new_group3, new_group4, names=c("group one", "group two", "group three", "group four"), col=c("red", "blue", "green", ))
+vioplot(new_group1, new_group2, new_group3, new_group4, names=c("group one", "group two", "group three", "group four"), col=c("red", "blue", "green", "black"))
+vioplot(new_group1, new_group2, new_group3, new_group4, names=c("group one", "group two", "group three", "group four"))
+title ("Violin plot of MPa of four groups")
+F1<-function(x){#
+    return(c(cos(x)-x, -sin(x)-1))#
+}#
+#
+# a function we will work with log(x)-exp(-x), return f(x) and f'(x)#
+F2<-function(x){#
+    return(c(log(x)-exp(-x), 1/x+exp(-x)))#
+}
+Implement Secant Method#
+Secant <-function(func,X_zero, X_one,Tolerance,MaxNumberOfIterations){#
+    #initialize a variable, Deviation (say), to record |f(x)| so that you know how far away you are from 0.#
+    #(So initialze it to some arbitrary large number)#
+    Deviation = 10^5#
+    #Set up a counter, i, to record how many iterations you have performed. Set it equal to 0#
+    i <- 0#
+    MyX = rep(0,MaxNumberOfIterations+2)#
+    MyDeviance = rep(0,MaxNumberOfIterations+2)#
+    # Initialize the values of x and f(x)#
+    X_n_minus_one = X_zero#
+    X_n = X_one#
+    Z_n_minus_one = func(X_zero)[1]#
+    Z_n = func(X_one)[1]#
+    MyX[1] = X_n_minus_one#
+    MyX[2] = X_n#
+    MyDeviance[1] = abs(Z_n_minus_one)#
+    MyDeviance[2] = abs(Z_n)#
+    #Set up a while loop until we hit the required target accuracy or the max. number of steps#
+    cat("\nStart Secant")#
+    while ((i<MaxNumberOfIterations)&&(Deviation>Tolerance))#
+    {#
+        # Record the value of f(x) and f'(x), for the current x value.#
+        # I put them in a variable Z. Z[1]=f(x); Z[2]=f'(x)#
+        # To be safe, check that the function and it's derivative are defined at X (either could be NaN if you are unlucky)#
+        if ((Z_n_minus_one=="NaN")||(Z_n=="NaN")){#
+            cat("Function not defined error.\n")#
+            break#
+        }#
+        #Find the next X-value using Secant's formula. Let's call that value X#
+        X_n_plue_one = X_n - Z_n * (X_n - X_n_minus_one) / (Z_n - Z_n_minus_one)#
+        if(func == F2){#
+        if(X_n_plue_one < 0){#
+            X_n_plue_one = 10^(-10)#
+        }else if(is.infinite(X_n_plue_one)){#
+            X_n_plue_one = 10^10#
+        }#
+        }#
+        Deviation = abs(func(X_n_plue_one)[1])#
+        X_n_minus_one = X_n#
+        X_n = X_n_plue_one#
+#
+        Z_n_minus_one = func(X_n_minus_one)[1]#
+        Z_n = func(X_n)[1]#
+        # increase the value of your iteration counter#
+        i<-i+1#
+        # if you like, have the program write out how it is getting on#
+        Index = i+2#
+        MyX[Index] = X_n#
+        MyDeviance[Index] = Deviation#
+        cat(paste("\nIteration ",i,":   X=",X_n,"  Y=",Z_n,"Deviation=", Deviation))#
+#
+    }#
+    # output the result#
+    if (Deviation<Tolerance){#
+        cat(paste("\nFound the root point: ",X_n, "after ", i, "iterations"))#
+        return(cbind(XValue = MyX[1:Index], Deviance = MyDeviance[1:Index]))#
+    }else{#
+        cat(paste("\nConvergence failure. Deviation: ",Deviation, "after ", i, 	"iterations"))#
+        return(cbind(XValue = MyX, Deviance = MyDeviance))#
+    }#
+}
+Define your Newton-Raphson  function#
+NewtonRaphson<-function(func,StartingValue,Tolerance,MaxNumberOfIterations){#
+    #initialize a variable, Deviation (say), to record |f(x)| so that you know how far away you are from 0.#
+    #(So initialze it to some arbitrary large number)#
+    Deviation = 10^5#
+    #Set up a counter, i, to record how many iterations you have performed. Set it equal to 0#
+    i <- 0#
+    MyX = rep(0,MaxNumberOfIterations+1)#
+    MyDeviance = rep(0,MaxNumberOfIterations+1)#
+    # Initialize the values of x and f(x)#
+    X = StartingValue#
+    Z = rep(0,2)#
+    Z[1] = func(X)[1]#
+    Z[2] = func(X)[2]#
+    MyX[1] = X#
+    MyDeviance[1] = abs(Z[1])#
+    cat("\nStart Newton Raphson")#
+    #Set up a while loop until we hit the required target accuracy or the max. number of steps#
+    while ((i<MaxNumberOfIterations)&&(Deviation>Tolerance))#
+    {#
+        # Record the value of f(x) and f'(x), for the current x value.#
+        # I put them in a variable Z. Z[1]=f(x); Z[2]=f'(x)#
+        # To be safe, check that the function and it's derivative are defined at X (either could be NaN if you are unlucky)#
+        if ((Z[1]=="NaN")||(Z[2]=="NaN")){#
+            cat("Function or derivative not defined error.\n")#
+            break#
+        }#
+        #Find the next X-value using Newton-Raphson's formula. Let's call that value X#
+        X = X - Z[1]/Z[2]#
+        # fix inconvergence#
+        if(func == F2){#
+        if(X < 0){#
+            X = 10^(-10)#
+        }else if(is.infinite(X)){#
+            X = 10^10#
+        }#
+        }#
+        # calculate Deviation<- |f(x)-0|#
+        Z[1] = func(X)[1]#
+        Z[2] = func(X)[2]#
+        Deviation = abs(Z[1])#
+        Y = Z[1]#
+        # increase the value of your iteration counter#
+        i<-i+1#
+        # if you like, have the program write out how it is getting on#
+        cat(paste("\nIteration ",i,":   X=",X,"  Y=",Y, "Deviation=", Deviation))#
+        Index = i+1#
+        MyX[Index] = X#
+        MyDeviance[Index] = Deviation#
+    }#
+    # output the result#
+    if (Deviation<Tolerance){#
+        cat(paste("\nFound the root point: ",X, "after ", i, "iterations"))#
+        return(XValue = cbind(MyX[1:Index], Deviance = MyDeviance[1:Index]))#
+    }else{#
+        cat(paste("\nConvergence failure. Deviation: ",Deviation, "after ", i, 	"iterations"))#
+        return(XValue = cbind(MyX, Deviance = MyDeviance))#
+    }#
+}
+working directory setting#
+setwd("/Users/chengliangdong/Desktop/PM520/hw2/")#
+#
+# 2.Test it, using x0=1 and x1=2 on: 1.cos(x)-x, 2.log(x)-exp(-x)#
+Secant_F1 = Secant(func=F1,X_zero=1, X_one=2,Tolerance=10^(-5),MaxNumberOfIterations=50)#
+Secant_F2 = Secant(func=F2,X_zero=1, X_one=2,Tolerance=10^(-5),MaxNumberOfIterations=50)#
+#
+# 3.Compare it with the performance of Newton-Raphson on the same functions.#
+#
+# a. Simple Comparison#
+NewtonRaphson_F1 = NewtonRaphson(func=F1,StartingValue=1,Tolerance=10^(-5),MaxNumberOfIterations=50)#
+NewtonRaphson_F2 =NewtonRaphson(func=F2,StartingValue=1,Tolerance=10^(-5),MaxNumberOfIterations=50)
+Implement Secant Method#
+Secant <-function(func,X_zero, X_one,Tolerance,MaxNumberOfIterations){#
+    #initialize a variable, Deviation (say), to record |f(x)| so that you know how far away you are from 0.#
+    #(So initialze it to some arbitrary large number)#
+    Deviation = 10^5#
+    #Set up a counter, i, to record how many iterations you have performed. Set it equal to 0#
+    i <- 0#
+    MyX = rep(0,MaxNumberOfIterations+2)#
+    MyDeviance = rep(0,MaxNumberOfIterations+2)#
+    # Initialize the values of x and f(x)#
+    X_n_minus_one = X_zero#
+    X_n = X_one#
+    Z_n_minus_one = func(X_zero)[1]#
+    Z_n = func(X_one)[1]#
+    MyX[1] = X_n_minus_one#
+    MyX[2] = X_n#
+    MyDeviance[1] = abs(Z_n_minus_one)#
+    MyDeviance[2] = abs(Z_n)#
+    #Set up a while loop until we hit the required target accuracy or the max. number of steps#
+    cat("\nStart Secant")#
+    while ((i<MaxNumberOfIterations)&&(Deviation>Tolerance))#
+    {#
+        # Record the value of f(x) and f'(x), for the current x value.#
+        # I put them in a variable Z. Z[1]=f(x); Z[2]=f'(x)#
+        # To be safe, check that the function and it's derivative are defined at X (either could be NaN if you are unlucky)#
+        if ((Z_n_minus_one=="NaN")||(Z_n=="NaN")){#
+            cat("Function not defined error.\n")#
+            break#
+        }#
+        #Find the next X-value using Secant's formula. Let's call that value X#
+        X_n_plue_one = X_n - Z_n * (X_n - X_n_minus_one) / (Z_n - Z_n_minus_one)#
+        if(isTRUE(all.equal(func,F2))){#
+        if(X_n_plue_one < 0){#
+            X_n_plue_one = 10^(-10)#
+        }else if(is.infinite(X_n_plue_one)){#
+            X_n_plue_one = 10^10#
+        }#
+        }#
+        Deviation = abs(func(X_n_plue_one)[1])#
+        X_n_minus_one = X_n#
+        X_n = X_n_plue_one#
+#
+        Z_n_minus_one = func(X_n_minus_one)[1]#
+        Z_n = func(X_n)[1]#
+        # increase the value of your iteration counter#
+        i<-i+1#
+        # if you like, have the program write out how it is getting on#
+        Index = i+2#
+        MyX[Index] = X_n#
+        MyDeviance[Index] = Deviation#
+        cat(paste("\nIteration ",i,":   X=",X_n,"  Y=",Z_n,"Deviation=", Deviation))#
+#
+    }#
+    # output the result#
+    if (Deviation<Tolerance){#
+        cat(paste("\nFound the root point: ",X_n, "after ", i, "iterations"))#
+        return(cbind(XValue = MyX[1:Index], Deviance = MyDeviance[1:Index]))#
+    }else{#
+        cat(paste("\nConvergence failure. Deviation: ",Deviation, "after ", i, 	"iterations"))#
+        return(cbind(XValue = MyX, Deviance = MyDeviance))#
+    }#
+}#
+#
+# Define your Newton-Raphson  function#
+NewtonRaphson<-function(func,StartingValue,Tolerance,MaxNumberOfIterations){#
+    #initialize a variable, Deviation (say), to record |f(x)| so that you know how far away you are from 0.#
+    #(So initialze it to some arbitrary large number)#
+    Deviation = 10^5#
+    #Set up a counter, i, to record how many iterations you have performed. Set it equal to 0#
+    i <- 0#
+    MyX = rep(0,MaxNumberOfIterations+1)#
+    MyDeviance = rep(0,MaxNumberOfIterations+1)#
+    # Initialize the values of x and f(x)#
+    X = StartingValue#
+    Z = rep(0,2)#
+    Z[1] = func(X)[1]#
+    Z[2] = func(X)[2]#
+    MyX[1] = X#
+    MyDeviance[1] = abs(Z[1])#
+    cat("\nStart Newton Raphson")#
+    #Set up a while loop until we hit the required target accuracy or the max. number of steps#
+    while ((i<MaxNumberOfIterations)&&(Deviation>Tolerance))#
+    {#
+        # Record the value of f(x) and f'(x), for the current x value.#
+        # I put them in a variable Z. Z[1]=f(x); Z[2]=f'(x)#
+        # To be safe, check that the function and it's derivative are defined at X (either could be NaN if you are unlucky)#
+        if ((Z[1]=="NaN")||(Z[2]=="NaN")){#
+            cat("Function or derivative not defined error.\n")#
+            break#
+        }#
+        #Find the next X-value using Newton-Raphson's formula. Let's call that value X#
+        X = X - Z[1]/Z[2]#
+        # fix inconvergence#
+        if(isTRUE(all.equal(func,F2))){#
+        if(X < 0){#
+            X = 10^(-10)#
+        }else if(is.infinite(X)){#
+            X = 10^10#
+        }#
+        }#
+        # calculate Deviation<- |f(x)-0|#
+        Z[1] = func(X)[1]#
+        Z[2] = func(X)[2]#
+        Deviation = abs(Z[1])#
+        Y = Z[1]#
+        # increase the value of your iteration counter#
+        i<-i+1#
+        # if you like, have the program write out how it is getting on#
+        cat(paste("\nIteration ",i,":   X=",X,"  Y=",Y, "Deviation=", Deviation))#
+        Index = i+1#
+        MyX[Index] = X#
+        MyDeviance[Index] = Deviation#
+    }#
+    # output the result#
+    if (Deviation<Tolerance){#
+        cat(paste("\nFound the root point: ",X, "after ", i, "iterations"))#
+        return(XValue = cbind(MyX[1:Index], Deviance = MyDeviance[1:Index]))#
+    }else{#
+        cat(paste("\nConvergence failure. Deviation: ",Deviation, "after ", i, 	"iterations"))#
+        return(XValue = cbind(MyX, Deviance = MyDeviance))#
+    }#
+}
+Implement Secant Method#
+Secant <-function(func,X_zero, X_one,Tolerance,MaxNumberOfIterations){#
+    #initialize a variable, Deviation (say), to record |f(x)| so that you know how far away you are from 0.#
+    #(So initialze it to some arbitrary large number)#
+    Deviation = 10^5#
+    #Set up a counter, i, to record how many iterations you have performed. Set it equal to 0#
+    i <- 0#
+    MyX = rep(0,MaxNumberOfIterations+2)#
+    MyDeviance = rep(0,MaxNumberOfIterations+2)#
+    # Initialize the values of x and f(x)#
+    X_n_minus_one = X_zero#
+    X_n = X_one#
+    Z_n_minus_one = func(X_zero)[1]#
+    Z_n = func(X_one)[1]#
+    MyX[1] = X_n_minus_one#
+    MyX[2] = X_n#
+    MyDeviance[1] = abs(Z_n_minus_one)#
+    MyDeviance[2] = abs(Z_n)#
+    #Set up a while loop until we hit the required target accuracy or the max. number of steps#
+    cat("\nStart Secant")#
+    while ((i<MaxNumberOfIterations)&&(Deviation>Tolerance))#
+    {#
+        # Record the value of f(x) and f'(x), for the current x value.#
+        # I put them in a variable Z. Z[1]=f(x); Z[2]=f'(x)#
+        # To be safe, check that the function and it's derivative are defined at X (either could be NaN if you are unlucky)#
+        if ((Z_n_minus_one=="NaN")||(Z_n=="NaN")){#
+            cat("Function not defined error.\n")#
+            break#
+        }#
+        #Find the next X-value using Secant's formula. Let's call that value X#
+        X_n_plue_one = X_n - Z_n * (X_n - X_n_minus_one) / (Z_n - Z_n_minus_one)#
+        if(func == F2){#
+        if(X_n_plue_one < 0){#
+            X_n_plue_one = 10^(-10)#
+        }else if(is.infinite(X_n_plue_one)){#
+            X_n_plue_one = 10^10#
+        }#
+        }#
+        Deviation = abs(func(X_n_plue_one)[1])#
+        X_n_minus_one = X_n#
+        X_n = X_n_plue_one#
+#
+        Z_n_minus_one = func(X_n_minus_one)[1]#
+        Z_n = func(X_n)[1]#
+        # increase the value of your iteration counter#
+        i<-i+1#
+        # if you like, have the program write out how it is getting on#
+        Index = i+2#
+        MyX[Index] = X_n#
+        MyDeviance[Index] = Deviation#
+        cat(paste("\nIteration ",i,":   X=",X_n,"  Y=",Z_n,"Deviation=", Deviation))#
+#
+    }#
+    # output the result#
+    if (Deviation<Tolerance){#
+        cat(paste("\nFound the root point: ",X_n, "after ", i, "iterations"))#
+        return(cbind(XValue = MyX[1:Index], Deviance = MyDeviance[1:Index]))#
+    }else{#
+        cat(paste("\nConvergence failure. Deviation: ",Deviation, "after ", i, 	"iterations"))#
+        return(cbind(XValue = MyX, Deviance = MyDeviance))#
+    }#
+}
+Implement Secant Method#
+Secant <-function(func,X_zero, X_one,Tolerance,MaxNumberOfIterations){#
+    #initialize a variable, Deviation (say), to record |f(x)| so that you know how far away you are from 0.#
+    #(So initialze it to some arbitrary large number)#
+    Deviation = 10^5#
+    #Set up a counter, i, to record how many iterations you have performed. Set it equal to 0#
+    i <- 0#
+    MyX = rep(0,MaxNumberOfIterations+2)#
+    MyDeviance = rep(0,MaxNumberOfIterations+2)#
+    # Initialize the values of x and f(x)#
+    X_n_minus_one = X_zero#
+    X_n = X_one#
+    Z_n_minus_one = func(X_zero)[1]#
+    Z_n = func(X_one)[1]#
+    MyX[1] = X_n_minus_one#
+    MyX[2] = X_n#
+    MyDeviance[1] = abs(Z_n_minus_one)#
+    MyDeviance[2] = abs(Z_n)#
+    #Set up a while loop until we hit the required target accuracy or the max. number of steps#
+    cat("\nStart Secant")#
+    while ((i<MaxNumberOfIterations)&&(Deviation>Tolerance))#
+    {#
+        # Record the value of f(x) and f'(x), for the current x value.#
+        # I put them in a variable Z. Z[1]=f(x); Z[2]=f'(x)#
+        # To be safe, check that the function and it's derivative are defined at X (either could be NaN if you are unlucky)#
+        if ((Z_n_minus_one=="NaN")||(Z_n=="NaN")){#
+            cat("Function not defined error.\n")#
+            break#
+        }#
+        #Find the next X-value using Secant's formula. Let's call that value X#
+        X_n_plue_one = X_n - Z_n * (X_n - X_n_minus_one) / (Z_n - Z_n_minus_one)#
+        if(isTRUE(all.equal(func,F2))){#
+        if(X_n_plue_one < 0){#
+            X_n_plue_one = 10^(-10)#
+        }else if(is.infinite(X_n_plue_one)){#
+            X_n_plue_one = 10^10#
+        }#
+        }#
+        Deviation = abs(func(X_n_plue_one)[1])#
+        X_n_minus_one = X_n#
+        X_n = X_n_plue_one#
+#
+        Z_n_minus_one = func(X_n_minus_one)[1]#
+        Z_n = func(X_n)[1]#
+        # increase the value of your iteration counter#
+        i<-i+1#
+        # if you like, have the program write out how it is getting on#
+        Index = i+2#
+        MyX[Index] = X_n#
+        MyDeviance[Index] = Deviation#
+        cat(paste("\nIteration ",i,":   X=",X_n,"  Y=",Z_n,"Deviation=", Deviation))#
+#
+    }#
+    # output the result#
+    if (Deviation<Tolerance){#
+        cat(paste("\nFound the root point: ",X_n, "after ", i, "iterations"))#
+        return(cbind(XValue = MyX[1:Index], Deviance = MyDeviance[1:Index]))#
+    }else{#
+        cat(paste("\nConvergence failure. Deviation: ",Deviation, "after ", i, 	"iterations"))#
+        return(cbind(XValue = MyX, Deviance = MyDeviance))#
+    }#
+}#
+#
+# Define your Newton-Raphson  function#
+NewtonRaphson<-function(func,StartingValue,Tolerance,MaxNumberOfIterations){#
+    #initialize a variable, Deviation (say), to record |f(x)| so that you know how far away you are from 0.#
+    #(So initialze it to some arbitrary large number)#
+    Deviation = 10^5#
+    #Set up a counter, i, to record how many iterations you have performed. Set it equal to 0#
+    i <- 0#
+    MyX = rep(0,MaxNumberOfIterations+1)#
+    MyDeviance = rep(0,MaxNumberOfIterations+1)#
+    # Initialize the values of x and f(x)#
+    X = StartingValue#
+    Z = rep(0,2)#
+    Z[1] = func(X)[1]#
+    Z[2] = func(X)[2]#
+    MyX[1] = X#
+    MyDeviance[1] = abs(Z[1])#
+    cat("\nStart Newton Raphson")#
+    #Set up a while loop until we hit the required target accuracy or the max. number of steps#
+    while ((i<MaxNumberOfIterations)&&(Deviation>Tolerance))#
+    {#
+        # Record the value of f(x) and f'(x), for the current x value.#
+        # I put them in a variable Z. Z[1]=f(x); Z[2]=f'(x)#
+        # To be safe, check that the function and it's derivative are defined at X (either could be NaN if you are unlucky)#
+        if ((Z[1]=="NaN")||(Z[2]=="NaN")){#
+            cat("Function or derivative not defined error.\n")#
+            break#
+        }#
+        #Find the next X-value using Newton-Raphson's formula. Let's call that value X#
+        X = X - Z[1]/Z[2]#
+        # fix inconvergence#
+        if(isTRUE(all.equal(func,F2))){#
+        if(X < 0){#
+            X = 10^(-10)#
+        }else if(is.infinite(X)){#
+            X = 10^10#
+        }#
+        }#
+        # calculate Deviation<- |f(x)-0|#
+        Z[1] = func(X)[1]#
+        Z[2] = func(X)[2]#
+        Deviation = abs(Z[1])#
+        Y = Z[1]#
+        # increase the value of your iteration counter#
+        i<-i+1#
+        # if you like, have the program write out how it is getting on#
+        cat(paste("\nIteration ",i,":   X=",X,"  Y=",Y, "Deviation=", Deviation))#
+        Index = i+1#
+        MyX[Index] = X#
+        MyDeviance[Index] = Deviation#
+    }#
+    # output the result#
+    if (Deviation<Tolerance){#
+        cat(paste("\nFound the root point: ",X, "after ", i, "iterations"))#
+        return(XValue = cbind(MyX[1:Index], Deviance = MyDeviance[1:Index]))#
+    }else{#
+        cat(paste("\nConvergence failure. Deviation: ",Deviation, "after ", i, 	"iterations"))#
+        return(XValue = cbind(MyX, Deviance = MyDeviance))#
+    }#
+}
+working directory setting#
+setwd("/Users/chengliangdong/Desktop/PM520/hw2/")#
+#
+# 2.Test it, using x0=1 and x1=2 on: 1.cos(x)-x, 2.log(x)-exp(-x)#
+Secant_F1 = Secant(func=F1,X_zero=1, X_one=2,Tolerance=10^(-5),MaxNumberOfIterations=50)#
+Secant_F2 = Secant(func=F2,X_zero=1, X_one=2,Tolerance=10^(-5),MaxNumberOfIterations=50)#
+#
+# 3.Compare it with the performance of Newton-Raphson on the same functions.#
+#
+# a. Simple Comparison#
+NewtonRaphson_F1 = NewtonRaphson(func=F1,StartingValue=1,Tolerance=10^(-5),MaxNumberOfIterations=50)#
+NewtonRaphson_F2 =NewtonRaphson(func=F2,StartingValue=1,Tolerance=10^(-5),MaxNumberOfIterations=50)
+F1 y = cos(x)-x#
+pdf("Simple_comparison.pdf")#
+par(mfrow=c(2,2))#
+curve(cos(x)-x,min(min(Secant_F1[,1]),min(NewtonRaphson_F1[,1]))-0.5,max(max(Secant_F1[,1]),max(NewtonRaphson_F1[,1]))+0.5, lty = 2)#
+for(i in 1:nrow(Secant_F1)){#
+    segments(Secant_F1[i,1], 0, Secant_F1[i,1], F1(Secant_F1[i,1])[1], col="blue")#
+    text(Secant_F1[i,1], 0.2, labels = paste("X",i-1, sep=""), cex = 0.6)#
+    if(i < nrow(Secant_F1)){#
+        segments(Secant_F1[i,1], F1(Secant_F1[i,1])[1], Secant_F1[i+1,1], 0, col="blue", lty = 2)#
+    }#
+}#
+#
+abline(h=0, lwd = 2) # this is the root we should find#
+title("cos(x)-x with Secant")#
+curve(cos(x)-x,min(min(Secant_F1[,1]),min(NewtonRaphson_F1[,1]))-0.5,max(max(Secant_F1[,1]),max(NewtonRaphson_F1[,1]))+0.5, lty = 2)#
+for(i in 1:nrow(NewtonRaphson_F1)){#
+    segments(NewtonRaphson_F1[i,1], 0, NewtonRaphson_F1[i,1], F1(NewtonRaphson_F1[i,1])[1], col="red")#
+    text(NewtonRaphson_F1[i,1], 0.2, labels = paste("X",i-1, sep=""), cex = 0.6)#
+    if(i < nrow(NewtonRaphson_F1)){#
+        segments(NewtonRaphson_F1[i,1], F1(NewtonRaphson_F1[i,1])[1], NewtonRaphson_F1[i+1,1], 0, col="red", lty = 2)#
+    }#
+}#
+abline(h=0, lwd = 2) # this is the root we should find#
+title("cos(x)-x with Newton Raphson")#
+#
+# F2 y = log(x)-exp(-x)#
+curve(log(x)-exp(-x),min(min(Secant_F2[,1]),min(NewtonRaphson_F2[,1]))-0.5,max(max(Secant_F2[,1]),max(NewtonRaphson_F2[,1]))+0.5, lty = 2)#
+for(i in 1:nrow(Secant_F2)){#
+    segments(Secant_F2[i,1], 0, Secant_F2[i,1], F2(Secant_F2[i,1])[1], col="blue")#
+    text(Secant_F2[i,1], 0.2, labels = paste("X",i-1, sep=""), cex = 0.6)#
+    if(i < nrow(Secant_F2)){#
+        segments(Secant_F2[i,1], F2(Secant_F2[i,1])[1], Secant_F2[i+1,1], 0, col="blue", lty = 2)#
+    }#
+}#
+abline(h=0, lwd = 2) # this is the root we should find#
+title("log(x)-exp(-x) with Secant", cex = 0.6)#
+curve(log(x)-exp(-x),min(min(Secant_F2[,1]),min(NewtonRaphson_F2[,1]))-0.5,max(max(Secant_F2[,1]),max(NewtonRaphson_F2[,1]))+0.5, lty = 2) # supposing our function is f(x)=x^2 and we want to plot the function between -10 and 10#
+for(i in 1:nrow(NewtonRaphson_F2)){#
+    segments(NewtonRaphson_F2[i,1], 0, NewtonRaphson_F2[i,1], F2(NewtonRaphson_F2[i,1])[1], col="red")#
+    text(NewtonRaphson_F2[i,1], 0.2, labels = paste("X",i-1, sep=""), cex = 0.6)#
+    if(i < nrow(NewtonRaphson_F2)){#
+        segments(NewtonRaphson_F2[i,1], F2(NewtonRaphson_F2[i,1])[1], NewtonRaphson_F2[i+1,1], 0, col="red", lty = 2)#
+    }#
+}#
+abline(h=0, lwd = 2) # this is the root we should find#
+title("log(x)-exp(-x) with Newton Raphson", cex = 0.6)#
+#
+dev.off()
+Length = 200#
+myStart_F1 = rep(0, Length)#
+myStart_F2 = rep(0, Length)#
+mySecant_Iteration_F1 = rep(0, Length)#
+myNewtonRaphson_Iteration_F1 = rep(0, Length)#
+mySecant_Iteration_F2 = rep(0, Length)#
+myNewtonRaphson_Iteration_F2 = rep(0, Length)#
+#
+myNewtonRaphson_Time_F1 = cbind(rep(0, Length),rep(0, Length),rep(0, Length))#
+mySecant_Time_F1 = cbind(rep(0, Length),rep(0, Length),rep(0, Length))#
+myNewtonRaphson_Time_F2 = cbind(rep(0, Length),rep(0, Length),rep(0, Length))#
+mySecant_Time_F2 = cbind(rep(0, Length),rep(0, Length),rep(0, Length))#
+#
+mySecant_Solution_F1 = rep(0, Length)#
+myNewtonRaphson_Solution_F1 = rep(0, Length)#
+mySecant_Solution_F2 = rep(0, Length)#
+myNewtonRaphson_Solution_F2 = rep(0, Length)#
+#
+for(i in seq_along(myStart_F1)){#
+    myStart_F1[i] = 0.739 * 1.1^(i-1)#
+    myStart_F2[i] = 1.310 * 1.1^(i-1)#
+}#
+#
+for(i in seq_along(myStart_F1)){#
+Secant_F1 = Secant(func=F1,X_zero=myStart_F1[i], X_one=myStart_F1[i]+1,Tolerance=10^(-5),MaxNumberOfIterations=500)#
+NewtonRaphson_F1 = NewtonRaphson(func=F1,StartingValue=myStart_F1[i],Tolerance=10^(-5),MaxNumberOfIterations=500)#
+#
+Secant_F1_time = system.time(Secant(func=F1,X_zero=myStart_F1[i], X_one=myStart_F1[i]+1,Tolerance=10^(-5),MaxNumberOfIterations=500))#
+NewtonRaphson_F1_time = system.time(NewtonRaphson(func=F1,StartingValue=myStart_F1[i],Tolerance=10^(-5),MaxNumberOfIterations=500))#
+#
+mySecant_Time_F1[i,1] = Secant_F1_time[[1]]#
+mySecant_Time_F1[i,2] = Secant_F1_time[[2]]#
+mySecant_Time_F1[i,2] = Secant_F1_time[[3]]#
+#
+myNewtonRaphson_Time_F1[i,1] = NewtonRaphson_F1_time[[1]]#
+myNewtonRaphson_Time_F1[i,2] = NewtonRaphson_F1_time[[2]]#
+myNewtonRaphson_Time_F1[i,2] = NewtonRaphson_F1_time[[3]]#
+#
+mySecant_Iteration_F1[i] = nrow(Secant_F1)#
+myNewtonRaphson_Iteration_F1[i] = nrow(NewtonRaphson_F1)#
+#
+mySecant_Solution_F1[i] = Secant_F1[mySecant_Iteration_F1[i],1]#
+myNewtonRaphson_Solution_F1[i] = NewtonRaphson_F1[myNewtonRaphson_Iteration_F1[i],1]#
+#
+Secant_F2 = Secant(func=F2,X_zero=myStart_F2[i], X_one=myStart_F2[i]+1,Tolerance=10^(-5),MaxNumberOfIterations=500)#
+NewtonRaphson_F2 = NewtonRaphson(func=F2,StartingValue=myStart_F2[i],Tolerance=10^(-5),MaxNumberOfIterations=500)#
+#
+Secant_F2_time = system.time(Secant(func=F2,X_zero=myStart_F2[i], X_one=myStart_F2[i]+1,Tolerance=10^(-5),MaxNumberOfIterations=500))#
+NewtonRaphson_F2_time = system.time(NewtonRaphson(func=F2,StartingValue=myStart_F2[i],Tolerance=10^(-5),MaxNumberOfIterations=500))#
+#
+mySecant_Time_F2[i,1] = Secant_F2_time[[1]]#
+mySecant_Time_F2[i,2] = Secant_F2_time[[2]]#
+mySecant_Time_F2[i,2] = Secant_F2_time[[3]]#
+#
+myNewtonRaphson_Time_F2[i,1] = NewtonRaphson_F2_time[[1]]#
+myNewtonRaphson_Time_F2[i,2] = NewtonRaphson_F2_time[[2]]#
+myNewtonRaphson_Time_F2[i,2] = NewtonRaphson_F2_time[[3]]#
+#
+mySecant_Iteration_F2[i] = nrow(Secant_F2)#
+myNewtonRaphson_Iteration_F2[i] = nrow(NewtonRaphson_F2)#
+mySecant_Solution_F2[i] = Secant_F2[mySecant_Iteration_F2[i],1]#
+myNewtonRaphson_Solution_F2[i] = NewtonRaphson_F2[myNewtonRaphson_Iteration_F2[i],1]#
+}
+pdf("Initialization_comparison.pdf")#
+par(mfrow=c(2,2))#
+hist(mySecant_Iteration_F1, breaks = 20, main = "cos(x)-x with Secant", xlab = "Number of iterations")#
+abline(v=mean(mySecant_Iteration_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F1),sep="" ))#
+hist(myNewtonRaphson_Iteration_F1, breaks = 20, main = "cos(x)-x with Newton Raphson", xlab = "Number of iterations")#
+abline(v=mean(myNewtonRaphson_Iteration_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F1),sep="" ))#
+hist(mySecant_Iteration_F2, breaks = 20, main = "log(x)-exp(-x) with Secant", xlab = "Number of iterations")#
+abline(v=mean(mySecant_Iteration_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F2),sep="" ))#
+hist(myNewtonRaphson_Iteration_F2, breaks = 20, main = "log(x)-exp(-x) with Newton Raphson", xlab = "Number of iterations")#
+abline(v=mean(myNewtonRaphson_Iteration_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Iteration_F2),sep="" ))#
+dev.off()#
+#
+pdf("Initialization_comparison_along.pdf")#
+par(mfrow=c(2,2))#
+plot(myStart_F1-0.739, mySecant_Iteration_F1, type = "n", main = "cos(x)-x with Secant", xlab = "Distance from true solution", ylab="Number of iterations", ylim=c(1,20))#
+lines(myStart_F1-0.739, mySecant_Iteration_F1)#
+abline(h=mean(mySecant_Iteration_F1), lwd = 2, col="red", cex = 0.5)#
+legend("bottomright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F1),sep="" ))#
+plot(myStart_F1-0.739, myNewtonRaphson_Iteration_F1, type = "n", main = "cos(x)-x with Newton Raphson", xlab = "Distance from true solution", ylab="Number of iterations", ylim=c(1,20))#
+lines(myStart_F1-0.739, myNewtonRaphson_Iteration_F1)#
+abline(h=mean(myNewtonRaphson_Iteration_F1), lwd = 2, col="red", cex = 0.5)#
+legend("bottomright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F1),sep="" ))#
+plot(myStart_F2-1.310, mySecant_Iteration_F2, type = "n", main = "log(x)-exp(-x) with Secant", xlab = "Distance from true solution", ylab="Number of iterations", ylim=c(1,130))#
+lines(myStart_F2-1.310, mySecant_Iteration_F2)#
+abline(h=mean(mySecant_Iteration_F2), lwd = 2, col="red", cex = 0.5)#
+legend("bottomright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F2),sep="" ))#
+plot(myStart_F2-1.310, myNewtonRaphson_Iteration_F2, type = "n", main = "log(x)-exp(-x) with Newton Raphson", xlab = "Distance from true solution", ylab="Number of iterations",ylim=c(1,130))#
+lines(myStart_F2-1.310, myNewtonRaphson_Iteration_F2)#
+abline(h=mean(myNewtonRaphson_Iteration_F2), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Iteration_F2),sep="" ))#
+#
+dev.off()#
+library(vioplot)#
+pdf("Time_consumption_userTime.pdf")#
+par(mfrow=c(2,2))#
+vioplot(mySecant_Time_F1[,1],myNewtonRaphson_Time_F1[,1],col="blue",  names =c("Secant","Newton Raphson"))#
+title("User time for cos(x)-x")#
+vioplot(mySecant_Time_F1[,2],myNewtonRaphson_Time_F1[,2],col="red",  names =c("Secant","Newton Raphson"))#
+title("System time for cos(x)-x")#
+vioplot(mySecant_Time_F2[,1],myNewtonRaphson_Time_F2[,1],col="green",  names =c("Secant","Newton Raphson"))#
+title("User time for log(x)-exp(-x)")#
+vioplot(mySecant_Time_F2[,2],myNewtonRaphson_Time_F2[,2],col="purple",  names =c("Secant","Newton Raphson"))#
+title("System time for log(x)-exp(-x)")#
+dev.off()#
+pdf("Solution_comparison.pdf")#
+par(mfrow=c(2,2))#
+hist(mySecant_Solution_F1, breaks = 20, main = "cos(x)-x with Secant", xlab = "Solutions")#
+abline(v=mean(mySecant_Solution_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = "mean")#
+hist(myNewtonRaphson_Solution_F1, breaks = 20, main = "cos(x)-x with Newton Raphson", xlab = "Solutions")#
+abline(v=mean(myNewtonRaphson_Solution_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend = "mean")#
+hist(mySecant_Solution_F2, breaks = 20, main = "log(x)-exp(-x) with Secant", xlab = "Solutions")#
+abline(v=mean(mySecant_Solution_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend = "mean")#
+hist(myNewtonRaphson_Solution_F2, breaks = 20, main = "log(x)-exp(-x) with Newton Raphson", xlab = "Solutions")#
+abline(v=mean(myNewtonRaphson_Solution_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend = "mean")#
+dev.off()#
+pdf("Solution_comparison_along.pdf")#
+par(mfrow=c(2,2))#
+plot(myStart_F1-0.739, mySecant_Solution_F1, type = "n", main = "cos(x)-x with Secant", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(0.73908,0.73909))#
+lines(myStart_F1-0.739, mySecant_Solution_F1)#
+abline(h=mean(mySecant_Solution_F1), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Solution_F1),sep="" ))#
+plot(myStart_F1-0.739, myNewtonRaphson_Solution_F1, type = "n", main = "cos(x)-x with Newton Raphson", xlab = "Distance from true solution", ylab="Number of Solutions",ylim=c(0.73908,0.73909))#
+lines(myStart_F1-0.739, myNewtonRaphson_Solution_F1)#
+abline(h=mean(myNewtonRaphson_Solution_F1), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Solution_F1),sep=""))#
+plot(myStart_F2-1.310, mySecant_Solution_F2, type = "n", main = "log(x)-exp(-x) with Secant", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(1.30978, 1.30982))#
+lines(myStart_F2-1.310, mySecant_Solution_F2)#
+abline(h=mean(mySecant_Solution_F2), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Solution_F2),sep="" ))#
+plot(myStart_F2-1.310, myNewtonRaphson_Solution_F2, type = "n", main = "log(x)-exp(-x) with Newton Raphson", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(1.30978, 1.30982))#
+lines(myStart_F2-1.310, myNewtonRaphson_Solution_F2)#
+abline(h=mean(myNewtonRaphson_Solution_F2), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Solution_F2),sep=""))#
+#
+dev.off()
+pdf("Initialization_comparison_along.pdf")#
+par(mfrow=c(2,2))#
+plot(myStart_F1-0.739, mySecant_Iteration_F1, type = "n", main = "cos(x)-x with Secant", xlab = "Distance from true solution", ylab="Number of iterations", ylim=c(1,500))#
+lines(myStart_F1-0.739, mySecant_Iteration_F1)#
+abline(h=mean(mySecant_Iteration_F1), lwd = 2, col="red", cex = 0.5)#
+legend("bottomright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F1),sep="" ))#
+plot(myStart_F1-0.739, myNewtonRaphson_Iteration_F1, type = "n", main = "cos(x)-x with Newton Raphson", xlab = "Distance from true solution", ylab="Number of iterations", ylim=c(1,500))#
+lines(myStart_F1-0.739, myNewtonRaphson_Iteration_F1)#
+abline(h=mean(myNewtonRaphson_Iteration_F1), lwd = 2, col="red", cex = 0.5)#
+legend("bottomright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F1),sep="" ))#
+plot(myStart_F2-1.310, mySecant_Iteration_F2, type = "n", main = "log(x)-exp(-x) with Secant", xlab = "Distance from true solution", ylab="Number of iterations", ylim=c(1,130))#
+lines(myStart_F2-1.310, mySecant_Iteration_F2)#
+abline(h=mean(mySecant_Iteration_F2), lwd = 2, col="red", cex = 0.5)#
+legend("bottomright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F2),sep="" ))#
+plot(myStart_F2-1.310, myNewtonRaphson_Iteration_F2, type = "n", main = "log(x)-exp(-x) with Newton Raphson", xlab = "Distance from true solution", ylab="Number of iterations",ylim=c(1,130))#
+lines(myStart_F2-1.310, myNewtonRaphson_Iteration_F2)#
+abline(h=mean(myNewtonRaphson_Iteration_F2), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Iteration_F2),sep="" ))#
+#
+dev.off()
+pdf("Initialization_comparison_along.pdf")#
+par(mfrow=c(2,2))#
+plot(myStart_F1-0.739, mySecant_Iteration_F1, type = "n", main = "cos(x)-x with Secant", xlab = "Distance from true solution", ylab="Number of iterations", ylim=c(1,500))#
+lines(myStart_F1-0.739, mySecant_Iteration_F1)#
+abline(h=mean(mySecant_Iteration_F1), lwd = 2, col="red", cex = 0.5)#
+legend("bottomright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F1),sep="" ))#
+plot(myStart_F1-0.739, myNewtonRaphson_Iteration_F1, type = "n", main = "cos(x)-x with Newton Raphson", xlab = "Distance from true solution", ylab="Number of iterations", ylim=c(1,500))#
+lines(myStart_F1-0.739, myNewtonRaphson_Iteration_F1)#
+abline(h=mean(myNewtonRaphson_Iteration_F1), lwd = 2, col="red", cex = 0.5)#
+legend("bottomright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Iteration_F1),sep="" ))#
+plot(myStart_F2-1.310, mySecant_Iteration_F2, type = "n", main = "log(x)-exp(-x) with Secant", xlab = "Distance from true solution", ylab="Number of iterations", ylim=c(1,130))#
+lines(myStart_F2-1.310, mySecant_Iteration_F2)#
+abline(h=mean(mySecant_Iteration_F2), lwd = 2, col="red", cex = 0.5)#
+legend("bottomright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F2),sep="" ))#
+plot(myStart_F2-1.310, myNewtonRaphson_Iteration_F2, type = "n", main = "log(x)-exp(-x) with Newton Raphson", xlab = "Distance from true solution", ylab="Number of iterations",ylim=c(1,130))#
+lines(myStart_F2-1.310, myNewtonRaphson_Iteration_F2)#
+abline(h=mean(myNewtonRaphson_Iteration_F2), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Iteration_F2),sep="" ))#
+#
+dev.off()
+curve(cos(x)-x, -10000, 10000)
+str(NewtonRaphson)
+NewtonRaphson(func=F1, StartingValue=200, Tolerance = 10^(-5), MaxNumberOfIterations= 500)
+str(Secant())
+str(Secant)
+Secant(func=F1, X_zero=200, X_one=201, Tolerance=10^(-5), MaxNumberOfIterations=500)
+Secant(func=F1, X_zero=200, X_one=200.00000000000000000000001, Tolerance=10^(-5), MaxNumberOfIterations=500)
+Secant(func=F1, X_zero=200, X_one=200.00000000000000001, Tolerance=10^(-5), MaxNumberOfIterations=500)
+Secant(func=F1, X_zero=200, X_one=200.00000000000001, Tolerance=10^(-5), MaxNumberOfIterations=500)
+Secant(func=F1, X_zero=200, X_one=200.000001, Tolerance=10^(-5), MaxNumberOfIterations=500)
+Secant(func=F1, X_zero=200, X_one=200.00000001, Tolerance=10^(-5), MaxNumberOfIterations=500)
+Secant(func=F1, X_zero=200, X_one=200.0000000001, Tolerance=10^(-5), MaxNumberOfIterations=500)
+Secant(func=F1, X_zero=200, X_one=200.000000000001, Tolerance=10^(-5), MaxNumberOfIterations=500)
+Secant(func=F1, X_zero=200, X_one=200.00000000000001, Tolerance=10^(-5), MaxNumberOfIterations=500)
+Secant(func=F1, X_zero=200, X_one=200.0000000000001, Tolerance=10^(-5), MaxNumberOfIterations=500)
+Secant(func=F1, X_zero=200, X_one=200.000000000001, Tolerance=10^(-5), MaxNumberOfIterations=500)
+a function we will work with cos(x)-x, return f(x) and f'(x)#
+F1<-function(x){#
+    return(c(cos(x)-x, -sin(x)-1))#
+}#
+#
+# a function we will work with log(x)-exp(-x), return f(x) and f'(x)#
+F2<-function(x){#
+    return(c(log(x)-exp(-x), 1/x+exp(-x)))#
+}#
+#
+# Implement Secant Method#
+Secant <-function(func,X_zero, X_one,Tolerance,MaxNumberOfIterations){#
+    #initialize a variable, Deviation (say), to record |f(x)| so that you know how far away you are from 0.#
+    #(So initialze it to some arbitrary large number)#
+    Deviation = 10^5#
+    #Set up a counter, i, to record how many iterations you have performed. Set it equal to 0#
+    i <- 0#
+    MyX = rep(0,MaxNumberOfIterations+2)#
+    MyDeviance = rep(0,MaxNumberOfIterations+2)#
+    # Initialize the values of x and f(x)#
+    X_n_minus_one = X_zero#
+    X_n = X_one#
+    Z_n_minus_one = func(X_zero)[1]#
+    Z_n = func(X_one)[1]#
+    MyX[1] = X_n_minus_one#
+    MyX[2] = X_n#
+    MyDeviance[1] = abs(Z_n_minus_one)#
+    MyDeviance[2] = abs(Z_n)#
+    #Set up a while loop until we hit the required target accuracy or the max. number of steps#
+    cat("\nStart Secant")#
+    while ((i<MaxNumberOfIterations)&&(Deviation>Tolerance))#
+    {#
+        # Record the value of f(x) and f'(x), for the current x value.#
+        # I put them in a variable Z. Z[1]=f(x); Z[2]=f'(x)#
+        # To be safe, check that the function and it's derivative are defined at X (either could be NaN if you are unlucky)#
+        if ((Z_n_minus_one=="NaN")||(Z_n=="NaN")){#
+            cat("Function not defined error.\n")#
+            break#
+        }#
+        #Find the next X-value using Secant's formula. Let's call that value X#
+        X_n_plue_one = X_n - Z_n * (X_n - X_n_minus_one) / (Z_n - Z_n_minus_one)#
+        if(isTRUE(all.equal(func,F2))){#
+        if(X_n_plue_one < 0){#
+            X_n_plue_one = 10^(-10)#
+        }else if(is.infinite(X_n_plue_one)){#
+            X_n_plue_one = 10^10#
+        }#
+        }#
+        Deviation = abs(func(X_n_plue_one)[1])#
+        X_n_minus_one = X_n#
+        X_n = X_n_plue_one#
+#
+        Z_n_minus_one = func(X_n_minus_one)[1]#
+        Z_n = func(X_n)[1]#
+        # increase the value of your iteration counter#
+        i<-i+1#
+        # if you like, have the program write out how it is getting on#
+        Index = i+2#
+        MyX[Index] = X_n#
+        MyDeviance[Index] = Deviation#
+        cat(paste("\nIteration ",i,":   X=",X_n,"  Y=",Z_n,"Deviation=", Deviation))#
+#
+    }#
+    # output the result#
+    if (Deviation<Tolerance){#
+        cat(paste("\nFound the root point: ",X_n, "after ", i, "iterations"))#
+        return(cbind(XValue = MyX[1:Index], Deviance = MyDeviance[1:Index]))#
+    }else{#
+        cat(paste("\nConvergence failure. Deviation: ",Deviation, "after ", i, 	"iterations"))#
+        return(cbind(XValue = MyX, Deviance = MyDeviance))#
+    }#
+}#
+#
+# Define your Newton-Raphson  function#
+NewtonRaphson<-function(func,StartingValue,Tolerance,MaxNumberOfIterations){#
+    #initialize a variable, Deviation (say), to record |f(x)| so that you know how far away you are from 0.#
+    #(So initialze it to some arbitrary large number)#
+    Deviation = 10^5#
+    #Set up a counter, i, to record how many iterations you have performed. Set it equal to 0#
+    i <- 0#
+    MyX = rep(0,MaxNumberOfIterations+1)#
+    MyDeviance = rep(0,MaxNumberOfIterations+1)#
+    # Initialize the values of x and f(x)#
+    X = StartingValue#
+    Z = rep(0,2)#
+    Z[1] = func(X)[1]#
+    Z[2] = func(X)[2]#
+    MyX[1] = X#
+    MyDeviance[1] = abs(Z[1])#
+    cat("\nStart Newton Raphson")#
+    #Set up a while loop until we hit the required target accuracy or the max. number of steps#
+    while ((i<MaxNumberOfIterations)&&(Deviation>Tolerance))#
+    {#
+        # Record the value of f(x) and f'(x), for the current x value.#
+        # I put them in a variable Z. Z[1]=f(x); Z[2]=f'(x)#
+        # To be safe, check that the function and it's derivative are defined at X (either could be NaN if you are unlucky)#
+        if ((Z[1]=="NaN")||(Z[2]=="NaN")){#
+            cat("Function or derivative not defined error.\n")#
+            break#
+        }#
+        #Find the next X-value using Newton-Raphson's formula. Let's call that value X#
+        X = X - Z[1]/Z[2]#
+        # fix inconvergence#
+        if(isTRUE(all.equal(func,F2))){#
+        if(X < 0){#
+            X = 10^(-10)#
+        }else if(is.infinite(X)){#
+            X = 10^10#
+        }#
+        }#
+        # calculate Deviation<- |f(x)-0|#
+        Z[1] = func(X)[1]#
+        Z[2] = func(X)[2]#
+        Deviation = abs(Z[1])#
+        Y = Z[1]#
+        # increase the value of your iteration counter#
+        i<-i+1#
+        # if you like, have the program write out how it is getting on#
+        cat(paste("\nIteration ",i,":   X=",X,"  Y=",Y, "Deviation=", Deviation))#
+        Index = i+1#
+        MyX[Index] = X#
+        MyDeviance[Index] = Deviation#
+    }#
+    # output the result#
+    if (Deviation<Tolerance){#
+        cat(paste("\nFound the root point: ",X, "after ", i, "iterations"))#
+        return(XValue = cbind(MyX[1:Index], Deviance = MyDeviance[1:Index]))#
+    }else{#
+        cat(paste("\nConvergence failure. Deviation: ",Deviation, "after ", i, 	"iterations"))#
+        return(XValue = cbind(MyX, Deviance = MyDeviance))#
+    }#
+}#
+###################################################
+#################### analysis #####################
+###################################################
+# working directory setting#
+setwd("/Users/chengliangdong/Desktop/PM520/hw2/")
+2.Test it, using x0=1 and x1=2 on: 1.cos(x)-x, 2.log(x)-exp(-x)#
+Secant_F1 = Secant(func=F1,X_zero=1, X_one=2,Tolerance=10^(-5),MaxNumberOfIterations=50)#
+Secant_F2 = Secant(func=F2,X_zero=1, X_one=2,Tolerance=10^(-5),MaxNumberOfIterations=50)#
+#
+# 3.Compare it with the performance of Newton-Raphson on the same functions.#
+#
+# a. Simple Comparison#
+NewtonRaphson_F1 = NewtonRaphson(func=F1,StartingValue=1,Tolerance=10^(-5),MaxNumberOfIterations=50)#
+NewtonRaphson_F2 =NewtonRaphson(func=F2,StartingValue=1,Tolerance=10^(-5),MaxNumberOfIterations=50)#
+#
+# F1 y = cos(x)-x#
+pdf("Simple_comparison.pdf")#
+par(mfrow=c(2,2))#
+curve(cos(x)-x,min(min(Secant_F1[,1]),min(NewtonRaphson_F1[,1]))-0.5,max(max(Secant_F1[,1]),max(NewtonRaphson_F1[,1]))+0.5, lty = 2)#
+for(i in 1:nrow(Secant_F1)){#
+    segments(Secant_F1[i,1], 0, Secant_F1[i,1], F1(Secant_F1[i,1])[1], col="blue")#
+    text(Secant_F1[i,1], 0.2, labels = paste("X",i-1, sep=""), cex = 0.6)#
+    if(i < nrow(Secant_F1)){#
+        segments(Secant_F1[i,1], F1(Secant_F1[i,1])[1], Secant_F1[i+1,1], 0, col="blue", lty = 2)#
+    }#
+}#
+#
+abline(h=0, lwd = 2) # this is the root we should find#
+title("cos(x)-x with Secant")#
+curve(cos(x)-x,min(min(Secant_F1[,1]),min(NewtonRaphson_F1[,1]))-0.5,max(max(Secant_F1[,1]),max(NewtonRaphson_F1[,1]))+0.5, lty = 2)#
+for(i in 1:nrow(NewtonRaphson_F1)){#
+    segments(NewtonRaphson_F1[i,1], 0, NewtonRaphson_F1[i,1], F1(NewtonRaphson_F1[i,1])[1], col="red")#
+    text(NewtonRaphson_F1[i,1], 0.2, labels = paste("X",i-1, sep=""), cex = 0.6)#
+    if(i < nrow(NewtonRaphson_F1)){#
+        segments(NewtonRaphson_F1[i,1], F1(NewtonRaphson_F1[i,1])[1], NewtonRaphson_F1[i+1,1], 0, col="red", lty = 2)#
+    }#
+}#
+abline(h=0, lwd = 2) # this is the root we should find#
+title("cos(x)-x with Newton Raphson")#
+#
+# F2 y = log(x)-exp(-x)#
+curve(log(x)-exp(-x),min(min(Secant_F2[,1]),min(NewtonRaphson_F2[,1]))-0.5,max(max(Secant_F2[,1]),max(NewtonRaphson_F2[,1]))+0.5, lty = 2)#
+for(i in 1:nrow(Secant_F2)){#
+    segments(Secant_F2[i,1], 0, Secant_F2[i,1], F2(Secant_F2[i,1])[1], col="blue")#
+    text(Secant_F2[i,1], 0.2, labels = paste("X",i-1, sep=""), cex = 0.6)#
+    if(i < nrow(Secant_F2)){#
+        segments(Secant_F2[i,1], F2(Secant_F2[i,1])[1], Secant_F2[i+1,1], 0, col="blue", lty = 2)#
+    }#
+}#
+abline(h=0, lwd = 2) # this is the root we should find#
+title("log(x)-exp(-x) with Secant", cex = 0.6)#
+curve(log(x)-exp(-x),min(min(Secant_F2[,1]),min(NewtonRaphson_F2[,1]))-0.5,max(max(Secant_F2[,1]),max(NewtonRaphson_F2[,1]))+0.5, lty = 2) # supposing our function is f(x)=x^2 and we want to plot the function between -10 and 10#
+for(i in 1:nrow(NewtonRaphson_F2)){#
+    segments(NewtonRaphson_F2[i,1], 0, NewtonRaphson_F2[i,1], F2(NewtonRaphson_F2[i,1])[1], col="red")#
+    text(NewtonRaphson_F2[i,1], 0.2, labels = paste("X",i-1, sep=""), cex = 0.6)#
+    if(i < nrow(NewtonRaphson_F2)){#
+        segments(NewtonRaphson_F2[i,1], F2(NewtonRaphson_F2[i,1])[1], NewtonRaphson_F2[i+1,1], 0, col="red", lty = 2)#
+    }#
+}#
+abline(h=0, lwd = 2) # this is the root we should find#
+title("log(x)-exp(-x) with Newton Raphson", cex = 0.6)#
+#
+dev.off()#
+#
+# b. More Depth#
+#
+# initializing value#
+# root of F1 = 0.739, F2 = 1.310#
+#
+Length = 200#
+myStart_F1 = rep(0, Length)#
+myStart_F2 = rep(0, Length)#
+mySecant_Iteration_F1 = rep(0, Length)#
+myNewtonRaphson_Iteration_F1 = rep(0, Length)#
+mySecant_Iteration_F2 = rep(0, Length)#
+myNewtonRaphson_Iteration_F2 = rep(0, Length)#
+#
+myNewtonRaphson_Time_F1 = cbind(rep(0, Length),rep(0, Length),rep(0, Length))#
+mySecant_Time_F1 = cbind(rep(0, Length),rep(0, Length),rep(0, Length))#
+myNewtonRaphson_Time_F2 = cbind(rep(0, Length),rep(0, Length),rep(0, Length))#
+mySecant_Time_F2 = cbind(rep(0, Length),rep(0, Length),rep(0, Length))#
+#
+mySecant_Solution_F1 = rep(0, Length)#
+myNewtonRaphson_Solution_F1 = rep(0, Length)#
+mySecant_Solution_F2 = rep(0, Length)#
+myNewtonRaphson_Solution_F2 = rep(0, Length)#
+#
+for(i in seq_along(myStart_F1)){#
+    myStart_F1[i] = 0.739 * 1.1^(i-1)#
+    myStart_F2[i] = 1.310 * 1.1^(i-1)#
+}#
+#
+for(i in seq_along(myStart_F1)){#
+Secant_F1 = Secant(func=F1,X_zero=myStart_F1[i], X_one=myStart_F1[i]+1,Tolerance=10^(-5),MaxNumberOfIterations=500)#
+NewtonRaphson_F1 = NewtonRaphson(func=F1,StartingValue=myStart_F1[i],Tolerance=10^(-5),MaxNumberOfIterations=500)#
+#
+Secant_F1_time = system.time(Secant(func=F1,X_zero=myStart_F1[i], X_one=myStart_F1[i]+1,Tolerance=10^(-5),MaxNumberOfIterations=500))#
+NewtonRaphson_F1_time = system.time(NewtonRaphson(func=F1,StartingValue=myStart_F1[i],Tolerance=10^(-5),MaxNumberOfIterations=500))#
+#
+mySecant_Time_F1[i,1] = Secant_F1_time[[1]]#
+mySecant_Time_F1[i,2] = Secant_F1_time[[2]]#
+mySecant_Time_F1[i,2] = Secant_F1_time[[3]]#
+#
+myNewtonRaphson_Time_F1[i,1] = NewtonRaphson_F1_time[[1]]#
+myNewtonRaphson_Time_F1[i,2] = NewtonRaphson_F1_time[[2]]#
+myNewtonRaphson_Time_F1[i,2] = NewtonRaphson_F1_time[[3]]#
+#
+mySecant_Iteration_F1[i] = nrow(Secant_F1)#
+myNewtonRaphson_Iteration_F1[i] = nrow(NewtonRaphson_F1)#
+#
+mySecant_Solution_F1[i] = Secant_F1[mySecant_Iteration_F1[i],1]#
+myNewtonRaphson_Solution_F1[i] = NewtonRaphson_F1[myNewtonRaphson_Iteration_F1[i],1]#
+#
+Secant_F2 = Secant(func=F2,X_zero=myStart_F2[i], X_one=myStart_F2[i]+1,Tolerance=10^(-5),MaxNumberOfIterations=500)#
+NewtonRaphson_F2 = NewtonRaphson(func=F2,StartingValue=myStart_F2[i],Tolerance=10^(-5),MaxNumberOfIterations=500)#
+#
+Secant_F2_time = system.time(Secant(func=F2,X_zero=myStart_F2[i], X_one=myStart_F2[i]+1,Tolerance=10^(-5),MaxNumberOfIterations=500))#
+NewtonRaphson_F2_time = system.time(NewtonRaphson(func=F2,StartingValue=myStart_F2[i],Tolerance=10^(-5),MaxNumberOfIterations=500))#
+#
+mySecant_Time_F2[i,1] = Secant_F2_time[[1]]#
+mySecant_Time_F2[i,2] = Secant_F2_time[[2]]#
+mySecant_Time_F2[i,2] = Secant_F2_time[[3]]#
+#
+myNewtonRaphson_Time_F2[i,1] = NewtonRaphson_F2_time[[1]]#
+myNewtonRaphson_Time_F2[i,2] = NewtonRaphson_F2_time[[2]]#
+myNewtonRaphson_Time_F2[i,2] = NewtonRaphson_F2_time[[3]]#
+#
+mySecant_Iteration_F2[i] = nrow(Secant_F2)#
+myNewtonRaphson_Iteration_F2[i] = nrow(NewtonRaphson_F2)#
+mySecant_Solution_F2[i] = Secant_F2[mySecant_Iteration_F2[i],1]#
+myNewtonRaphson_Solution_F2[i] = NewtonRaphson_F2[myNewtonRaphson_Iteration_F2[i],1]#
+}
+pdf("Initialization_comparison.pdf")#
+par(mfrow=c(2,2))#
+hist(mySecant_Iteration_F1, breaks = 20, main = "cos(x)-x with Secant", xlab = "Number of iterations")#
+abline(v=mean(mySecant_Iteration_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F1),sep="" ))#
+hist(myNewtonRaphson_Iteration_F1, breaks = 20, main = "cos(x)-x with Newton Raphson", xlab = "Number of iterations")#
+abline(v=mean(myNewtonRaphson_Iteration_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Iteration_F1),sep="" ))#
+hist(mySecant_Iteration_F2, breaks = 20, main = "log(x)-exp(-x) with Secant", xlab = "Number of iterations")#
+abline(v=mean(mySecant_Iteration_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F2),sep="" ))#
+hist(myNewtonRaphson_Iteration_F2, breaks = 20, main = "log(x)-exp(-x) with Newton Raphson", xlab = "Number of iterations")#
+abline(v=mean(myNewtonRaphson_Iteration_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Iteration_F2),sep="" ))#
+dev.off()#
+#
+pdf("Initialization_comparison_along.pdf")#
+par(mfrow=c(2,2))#
+plot(myStart_F1-0.739, mySecant_Iteration_F1, type = "n", main = "cos(x)-x with Secant", xlab = "Distance from true solution", ylab="Number of iterations", ylim=c(1,500))#
+lines(myStart_F1-0.739, mySecant_Iteration_F1)#
+abline(h=mean(mySecant_Iteration_F1), lwd = 2, col="red", cex = 0.5)#
+legend("bottomright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F1),sep="" ))#
+plot(myStart_F1-0.739, myNewtonRaphson_Iteration_F1, type = "n", main = "cos(x)-x with Newton Raphson", xlab = "Distance from true solution", ylab="Number of iterations", ylim=c(1,500))#
+lines(myStart_F1-0.739, myNewtonRaphson_Iteration_F1)#
+abline(h=mean(myNewtonRaphson_Iteration_F1), lwd = 2, col="red", cex = 0.5)#
+legend("bottomright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Iteration_F1),sep="" ))#
+plot(myStart_F2-1.310, mySecant_Iteration_F2, type = "n", main = "log(x)-exp(-x) with Secant", xlab = "Distance from true solution", ylab="Number of iterations", ylim=c(1,130))#
+lines(myStart_F2-1.310, mySecant_Iteration_F2)#
+abline(h=mean(mySecant_Iteration_F2), lwd = 2, col="red", cex = 0.5)#
+legend("bottomright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Iteration_F2),sep="" ))#
+plot(myStart_F2-1.310, myNewtonRaphson_Iteration_F2, type = "n", main = "log(x)-exp(-x) with Newton Raphson", xlab = "Distance from true solution", ylab="Number of iterations",ylim=c(1,130))#
+lines(myStart_F2-1.310, myNewtonRaphson_Iteration_F2)#
+abline(h=mean(myNewtonRaphson_Iteration_F2), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Iteration_F2),sep="" ))#
+#
+dev.off()#
+library(vioplot)#
+pdf("Time_consumption_userTime.pdf")#
+par(mfrow=c(2,2))#
+vioplot(mySecant_Time_F1[,1],myNewtonRaphson_Time_F1[,1],col="blue",  names =c("Secant","Newton Raphson"))#
+title("User time for cos(x)-x")#
+vioplot(mySecant_Time_F1[,2],myNewtonRaphson_Time_F1[,2],col="red",  names =c("Secant","Newton Raphson"))#
+title("System time for cos(x)-x")#
+vioplot(mySecant_Time_F2[,1],myNewtonRaphson_Time_F2[,1],col="green",  names =c("Secant","Newton Raphson"))#
+title("User time for log(x)-exp(-x)")#
+vioplot(mySecant_Time_F2[,2],myNewtonRaphson_Time_F2[,2],col="purple",  names =c("Secant","Newton Raphson"))#
+title("System time for log(x)-exp(-x)")#
+dev.off()#
+pdf("Solution_comparison.pdf")#
+par(mfrow=c(2,2))#
+hist(mySecant_Solution_F1, breaks = 20, main = "cos(x)-x with Secant", xlab = "Solutions")#
+abline(v=mean(mySecant_Solution_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = "mean")#
+hist(myNewtonRaphson_Solution_F1, breaks = 20, main = "cos(x)-x with Newton Raphson", xlab = "Solutions")#
+abline(v=mean(myNewtonRaphson_Solution_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend = "mean")#
+hist(mySecant_Solution_F2, breaks = 20, main = "log(x)-exp(-x) with Secant", xlab = "Solutions")#
+abline(v=mean(mySecant_Solution_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend = "mean")#
+hist(myNewtonRaphson_Solution_F2, breaks = 20, main = "log(x)-exp(-x) with Newton Raphson", xlab = "Solutions")#
+abline(v=mean(myNewtonRaphson_Solution_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend = "mean")#
+dev.off()#
+pdf("Solution_comparison_along.pdf")#
+par(mfrow=c(2,2))#
+plot(myStart_F1-0.739, mySecant_Solution_F1, type = "n", main = "cos(x)-x with Secant", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(0.73908,0.73909))#
+lines(myStart_F1-0.739, mySecant_Solution_F1)#
+abline(h=mean(mySecant_Solution_F1), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Solution_F1),sep="" ))#
+plot(myStart_F1-0.739, myNewtonRaphson_Solution_F1, type = "n", main = "cos(x)-x with Newton Raphson", xlab = "Distance from true solution", ylab="Number of Solutions",ylim=c(0.73908,0.73909))#
+lines(myStart_F1-0.739, myNewtonRaphson_Solution_F1)#
+abline(h=mean(myNewtonRaphson_Solution_F1), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Solution_F1),sep=""))#
+plot(myStart_F2-1.310, mySecant_Solution_F2, type = "n", main = "log(x)-exp(-x) with Secant", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(1.30978, 1.30982))#
+lines(myStart_F2-1.310, mySecant_Solution_F2)#
+abline(h=mean(mySecant_Solution_F2), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Solution_F2),sep="" ))#
+plot(myStart_F2-1.310, myNewtonRaphson_Solution_F2, type = "n", main = "log(x)-exp(-x) with Newton Raphson", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(1.30978, 1.30982))#
+lines(myStart_F2-1.310, myNewtonRaphson_Solution_F2)#
+abline(h=mean(myNewtonRaphson_Solution_F2), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Solution_F2),sep=""))#
+#
+dev.off()
+pdf("Solution_comparison.pdf")#
+par(mfrow=c(2,2))#
+hist(mySecant_Solution_F1, breaks = 20, main = "cos(x)-x with Secant", xlab = "Solutions")#
+abline(v=mean(mySecant_Solution_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Solution_F1),sep="" ))#
+hist(myNewtonRaphson_Solution_F1, breaks = 20, main = "cos(x)-x with Newton Raphson", xlab = "Solutions")#
+abline(v=mean(myNewtonRaphson_Solution_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend =  paste("mean=",mean(myNewtonRaphson_Solution_F1),sep="" ))#
+hist(mySecant_Solution_F2, breaks = 20, main = "log(x)-exp(-x) with Secant", xlab = "Solutions")#
+abline(v=mean(mySecant_Solution_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend =  paste("mean=",mean(mySecant_Solution_F2),sep="" ))#
+hist(myNewtonRaphson_Solution_F2, breaks = 20, main = "log(x)-exp(-x) with Newton Raphson", xlab = "Solutions")#
+abline(v=mean(myNewtonRaphson_Solution_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend =  paste("mean=",mean(myNewtonRaphson_Solution_F2),sep="" ))#
+dev.off()
+pdf("Solution_comparison.pdf")#
+par(mfrow=c(2,2))#
+hist(mySecant_Solution_F1, breaks = 20, main = "cos(x)-x with Secant", xlab = "Solutions")#
+abline(v=mean(mySecant_Solution_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = paste("mean=",round(mean(mySecant_Solution_F1), digits = 4),sep="" ))#
+hist(myNewtonRaphson_Solution_F1, breaks = 20, main = "cos(x)-x with Newton Raphson", xlab = "Solutions")#
+abline(v=mean(myNewtonRaphson_Solution_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend =  paste("mean=",round(mean(myNewtonRaphson_Solution_F1), digits = 4),sep="" ))#
+hist(mySecant_Solution_F2, breaks = 20, main = "log(x)-exp(-x) with Secant", xlab = "Solutions")#
+abline(v=mean(mySecant_Solution_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend =  paste("mean=",round(mean(mySecant_Solution_F2), digits=4),sep="" ))#
+hist(myNewtonRaphson_Solution_F2, breaks = 20, main = "log(x)-exp(-x) with Newton Raphson", xlab = "Solutions")#
+abline(v=mean(myNewtonRaphson_Solution_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend =  paste("mean=",round(mean(myNewtonRaphson_Solution_F2), digits = 4),sep="" ))#
+dev.off()
+pdf("Solution_comparison.pdf")#
+par(mfrow=c(2,2))#
+hist(mySecant_Solution_F1, breaks = 20, main = "cos(x)-x with Secant", xlab = "Solutions")#
+abline(v=mean(mySecant_Solution_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = paste("mean=",round(mean(mySecant_Solution_F1), digits = 4),sep="" ))#
+hist(myNewtonRaphson_Solution_F1, breaks = 20, main = "cos(x)-x with Newton Raphson", xlab = "Solutions")#
+abline(v=mean(myNewtonRaphson_Solution_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend =  paste("mean=",round(mean(myNewtonRaphson_Solution_F1), digits = -4),sep="" ))#
+hist(mySecant_Solution_F2, breaks = 20, main = "log(x)-exp(-x) with Secant", xlab = "Solutions")#
+abline(v=mean(mySecant_Solution_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend =  paste("mean=",round(mean(mySecant_Solution_F2), digits=4),sep="" ))#
+hist(myNewtonRaphson_Solution_F2, breaks = 20, main = "log(x)-exp(-x) with Newton Raphson", xlab = "Solutions")#
+abline(v=mean(myNewtonRaphson_Solution_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend =  paste("mean=",round(mean(myNewtonRaphson_Solution_F2), digits = 4),sep="" ))#
+dev.off()
+pdf("Solution_comparison.pdf")#
+par(mfrow=c(2,2))#
+hist(mySecant_Solution_F1, breaks = 20, main = "cos(x)-x with Secant", xlab = "Solutions")#
+abline(v=mean(mySecant_Solution_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = paste("mean=",round(mean(mySecant_Solution_F1), digits = 4),sep="" ))#
+hist(myNewtonRaphson_Solution_F1, breaks = 20, main = "cos(x)-x with Newton Raphson", xlab = "Solutions")#
+abline(v=mean(myNewtonRaphson_Solution_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend =  paste("mean=",signif(mean(myNewtonRaphson_Solution_F1), digits = 4),sep="" ))#
+hist(mySecant_Solution_F2, breaks = 20, main = "log(x)-exp(-x) with Secant", xlab = "Solutions")#
+abline(v=mean(mySecant_Solution_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend =  paste("mean=",round(mean(mySecant_Solution_F2), digits=4),sep="" ))#
+hist(myNewtonRaphson_Solution_F2, breaks = 20, main = "log(x)-exp(-x) with Newton Raphson", xlab = "Solutions")#
+abline(v=mean(myNewtonRaphson_Solution_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend =  paste("mean=",round(mean(myNewtonRaphson_Solution_F2), digits = 4),sep="" ))#
+dev.off()
+pdf("hw2_Solution_comparison.pdf")#
+par(mfrow=c(2,2))#
+hist(mySecant_Solution_F1, breaks = 20, main = "cos(x)-x with Secant", xlab = "Solutions")#
+abline(v=mean(mySecant_Solution_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend = paste("mean=",round(mean(mySecant_Solution_F1), digits = 4),sep="" ))#
+hist(myNewtonRaphson_Solution_F1, breaks = 20, main = "cos(x)-x with Newton Raphson", xlab = "Solutions")#
+abline(v=mean(myNewtonRaphson_Solution_F1), lwd = 2, col="red", cex = 0.2)#
+legend("topleft", lty = 1, col="red", legend =  paste("mean=",signif(mean(myNewtonRaphson_Solution_F1), digits = 4),sep="" ))#
+hist(mySecant_Solution_F2, breaks = 20, main = "log(x)-exp(-x) with Secant", xlab = "Solutions")#
+abline(v=mean(mySecant_Solution_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend =  paste("mean=",round(mean(mySecant_Solution_F2), digits=4),sep="" ))#
+hist(myNewtonRaphson_Solution_F2, breaks = 20, main = "log(x)-exp(-x) with Newton Raphson", xlab = "Solutions")#
+abline(v=mean(myNewtonRaphson_Solution_F2), lwd = 2, col="red", cex = 0.2)#
+legend("topright", lty = 1, col="red", legend =  paste("mean=",round(mean(myNewtonRaphson_Solution_F2), digits = 4),sep="" ))#
+dev.off()#
+pdf("hw2_Solution_comparison_along.pdf")#
+par(mfrow=c(2,2))#
+plot(myStart_F1-0.739, mySecant_Solution_F1, type = "n", main = "cos(x)-x with Secant", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(min(myNewtonRaphson_Solution_F1),max(myNewtonRaphson_Solution_F1)))#
+lines(myStart_F1-0.739, mySecant_Solution_F1)#
+abline(h=mean(mySecant_Solution_F1), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Solution_F1),sep="" ))#
+plot(myStart_F1-0.739, myNewtonRaphson_Solution_F1, type = "n", main = "cos(x)-x with Newton Raphson", xlab = "Distance from true solution", ylab="Number of Solutions",ylim=c(min(myNewtonRaphson_Solution_F1),max(myNewtonRaphson_Solution_F1)))#
+lines(myStart_F1-0.739, myNewtonRaphson_Solution_F1)#
+abline(h=mean(myNewtonRaphson_Solution_F1), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Solution_F1),sep=""))#
+plot(myStart_F2-1.310, mySecant_Solution_F2, type = "n", main = "log(x)-exp(-x) with Secant", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(1.30978, 1.30982))#
+lines(myStart_F2-1.310, mySecant_Solution_F2)#
+abline(h=mean(mySecant_Solution_F2), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Solution_F2),sep="" ))#
+plot(myStart_F2-1.310, myNewtonRaphson_Solution_F2, type = "n", main = "log(x)-exp(-x) with Newton Raphson", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(1.30978, 1.30982))#
+lines(myStart_F2-1.310, myNewtonRaphson_Solution_F2)#
+abline(h=mean(myNewtonRaphson_Solution_F2), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Solution_F2),sep=""))#
+#
+dev.off()
+pdf("hw2_Solution_comparison_along.pdf")#
+par(mfrow=c(2,2))#
+plot(myStart_F1-0.739, mySecant_Solution_F1, type = "n", main = "cos(x)-x with Secant", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(min(myNewtonRaphson_Solution_F1),max(max(myNewtonRaphson_Solution_F1), max(mySecant_Solution_F1))))#
+lines(myStart_F1-0.739, mySecant_Solution_F1)#
+abline(h=mean(mySecant_Solution_F1), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Solution_F1),sep="" ))#
+plot(myStart_F1-0.739, myNewtonRaphson_Solution_F1, type = "n", main = "cos(x)-x with Newton Raphson", xlab = "Distance from true solution", ylab="Number of Solutions",ylim=c(min(myNewtonRaphson_Solution_F1),max(max(myNewtonRaphson_Solution_F1), max(mySecant_Solution_F1))))#
+lines(myStart_F1-0.739, myNewtonRaphson_Solution_F1)#
+abline(h=mean(myNewtonRaphson_Solution_F1), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Solution_F1),sep=""))#
+plot(myStart_F2-1.310, mySecant_Solution_F2, type = "n", main = "log(x)-exp(-x) with Secant", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(1.30978, 1.30982))#
+lines(myStart_F2-1.310, mySecant_Solution_F2)#
+abline(h=mean(mySecant_Solution_F2), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Solution_F2),sep="" ))#
+plot(myStart_F2-1.310, myNewtonRaphson_Solution_F2, type = "n", main = "log(x)-exp(-x) with Newton Raphson", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(1.30978, 1.30982))#
+lines(myStart_F2-1.310, myNewtonRaphson_Solution_F2)#
+abline(h=mean(myNewtonRaphson_Solution_F2), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Solution_F2),sep=""))#
+#
+dev.off()
+pdf("hw2_Solution_comparison_along.pdf")#
+par(mfrow=c(2,2))#
+plot(myStart_F1-0.739, mySecant_Solution_F1, type = "n", main = "cos(x)-x with Secant", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(min(myNewtonRaphson_Solution_F1),max(max(myNewtonRaphson_Solution_F1), max(mySecant_Solution_F1))))#
+lines(myStart_F1-0.739, mySecant_Solution_F1)#
+abline(h=mean(mySecant_Solution_F1), lwd = 2, col="red", cex = 0.5)#
+legend("bottomright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Solution_F1),sep="" ))#
+plot(myStart_F1-0.739, myNewtonRaphson_Solution_F1, type = "n", main = "cos(x)-x with Newton Raphson", xlab = "Distance from true solution", ylab="Number of Solutions",ylim=c(min(myNewtonRaphson_Solution_F1),max(max(myNewtonRaphson_Solution_F1), max(mySecant_Solution_F1))))#
+lines(myStart_F1-0.739, myNewtonRaphson_Solution_F1)#
+abline(h=mean(myNewtonRaphson_Solution_F1), lwd = 2, col="red", cex = 0.5)#
+legend("bottomright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Solution_F1),sep=""))#
+plot(myStart_F2-1.310, mySecant_Solution_F2, type = "n", main = "log(x)-exp(-x) with Secant", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(1.30978, 1.30982))#
+lines(myStart_F2-1.310, mySecant_Solution_F2)#
+abline(h=mean(mySecant_Solution_F2), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(mySecant_Solution_F2),sep="" ))#
+plot(myStart_F2-1.310, myNewtonRaphson_Solution_F2, type = "n", main = "log(x)-exp(-x) with Newton Raphson", xlab = "Distance from true solution", ylab="Number of Solutions", ylim=c(1.30978, 1.30982))#
+lines(myStart_F2-1.310, myNewtonRaphson_Solution_F2)#
+abline(h=mean(myNewtonRaphson_Solution_F2), lwd = 2, col="red", cex = 0.5)#
+legend("topright", lty = 1, col="red", legend = paste("mean=",mean(myNewtonRaphson_Solution_F2),sep=""))#
+#
+dev.off()
