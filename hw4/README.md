@@ -4,7 +4,7 @@ In the current homework, we were asked to break the code, encoded using one-to-o
 
 # Contents
 
-PM5204.pdf contains final writeup for this homework
+PM520HW4.pdf contains final writeup for this homework
 
 codeBreak.R contains code for generating all results for this homework
 
