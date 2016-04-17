@@ -4,7 +4,7 @@ In the current homework, we were asked to break the code, encoded using one-to-o
 
 # Contents
 
-([PM520HW4.pdf](https://github.com/coco90417/PM520/blob/master/hw4/PM520HW4.pdf)) contains final writeup for this homework
+[PM520HW4.pdf](https://github.com/coco90417/PM520/blob/master/hw4/PM520HW4.pdf) contains final writeup for this homework
 
-([codeBreak.R](https://github.com/coco90417/PM520/blob/master/hw4/codeBreak.R)) contains code for generating all results for this homework
+[codeBreak.R](https://github.com/coco90417/PM520/blob/master/hw4/codeBreak.R) contains code for generating all results for this homework
 
